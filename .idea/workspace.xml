@@ -2,15 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/Abilities/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/Abilities/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/Alignment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/Character.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/root-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,6 +50,26 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="D:\git-clones\GitHub\pathfinder-character-sheet\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="es6.move.members.recent.items">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\GeneralCharacterProperties\Alignment.ts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -56,6 +94,8 @@
       <option name="presentableId" value="Default" />
       <updated>1578345067378</updated>
       <workItem from="1578345069116" duration="2105000" />
+      <workItem from="1578369632375" duration="8893000" />
+      <workItem from="1578404338964" duration="2908000" />
     </task>
     <servers />
   </component>
@@ -67,13 +107,39 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="177" key="#Notifications" timestamp="1578404349439">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="177" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578404349439" />
+    <state x="414" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578373784634">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578373784634" />
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1578404528867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578404528867" />
+    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1578404528867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578404528867" />
+    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1578404528866">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578404528866" />
+    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1578404528867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578404528867" />
     <state x="461" y="150" key="SettingsEditor" timestamp="1578369692439">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -82,5 +148,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="807" y="434" key="VCS.ChangelistChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578345270869" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578405696394">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578405696394" />
   </component>
 </project>
