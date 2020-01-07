@@ -3,8 +3,8 @@ export type abilityName = 'strength' | 'dexterity' | 'constitution' | 'intellige
 export type AbilityAttributes = {
   score: number
   modifier: number
-  temporaryAdjustmend: number
-  temporaryModifier: number
+  temporaryAdjustment?: number
+  temporaryModifier?: number
 }
 
 export type AbilityState = {
@@ -25,3 +25,5 @@ export type SetAbilityTempAdjustmentAction = {
   ability: keyof AbilityState
   adjustment: number
 }
+
+export type AbilitiesActionTypes = SetAbilityTempAdjustmentAction | SetAbilityScoreAction
