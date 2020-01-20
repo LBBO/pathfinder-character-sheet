@@ -26,6 +26,21 @@ export const DisplayAbilities = connector((
   return (
     <div>
       {abilityElements}
+      <div className={'inverted-rounded-corners'} style={{fontSize: '1em'}}>
+        Fertigkeiten
+      </div>
+      <br />
+      <div className={'inverted-rounded-corners'} style={{fontSize: '2em'}}>
+        Fertigkeiten
+      </div>
+      <br />
+      <div className={'inverted-rounded-corners'} style={{fontSize: '3em'}}>
+        Fertigkeiten
+      </div>
+      <br />
+      <div className={'inverted-rounded-corners'} style={{fontSize: '4em'}}>
+        Fertigkeiten
+      </div>
     </div>
   )
 })
