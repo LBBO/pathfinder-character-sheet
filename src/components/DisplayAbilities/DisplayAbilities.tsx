@@ -2,6 +2,7 @@ import {RootState} from '../../store/root-reducer'
 import {connect, ConnectedProps} from 'react-redux'
 import React, {ChangeEvent, useCallback} from 'react'
 import {setCharacterName, setPlayerName} from '../../store/CharacterMetaData/actions'
+import {InvertedBorderRadius} from '../InvertedBorderRadius/InvertedBorderRadius'
 
 const mapState = (state: RootState) => (
   {
@@ -26,21 +27,19 @@ export const DisplayAbilities = connector((
   return (
     <div>
       {abilityElements}
-      <div className={'inverted-rounded-corners'} style={{fontSize: '1em'}}>
+      <InvertedBorderRadius style={{fontSize: '1em'}}>
         Fertigkeiten
-      </div>
+      </InvertedBorderRadius>
       <br />
-      <div className={'inverted-rounded-corners'} style={{fontSize: '2em'}}>
+      <InvertedBorderRadius style={{fontSize: '2em'}}>
         Fertigkeiten
-      </div>
+      </InvertedBorderRadius>
       <br />
-      <div className={'inverted-rounded-corners'} style={{fontSize: '3em'}}>
+      <InvertedBorderRadius style={{fontSize: '3em'}}>
         Fertigkeiten
-      </div>
+      </InvertedBorderRadius>
       <br />
-      <div className={'inverted-rounded-corners'} style={{fontSize: '4em'}}>
-        Fertigkeiten
-      </div>
+
     </div>
   )
 })
