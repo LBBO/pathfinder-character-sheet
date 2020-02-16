@@ -14,3 +14,8 @@ export type Alignment = {
   morality: Morality
   ethics: Ethics
 }
+
+export const NeutralAlignment = {
+  morality: Morality.NEUTRAL,
+  ethics: Ethics.NEUTRAL,
+}

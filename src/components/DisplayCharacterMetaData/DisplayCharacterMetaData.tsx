@@ -1,19 +1,13 @@
 import { RootState } from '../../store/root-reducer'
 import { connect, ConnectedProps } from 'react-redux'
 import React, { ChangeEvent, useCallback } from 'react'
-import { setCharacterName, setPlayerName } from '../../store/CharacterMetaData/actions'
+import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions'
 
-const mapState = (state: RootState) => (
-  {
-    characterName: state.characterMetaData.characterName ?? '',
-    playerName: state.characterMetaData.playerName ?? '',
-  }
-)
+import './DisplayCharacterMetaData.css'
 
-const mapDispatchToProps = {
-  setCharacterName,
-  setPlayerName,
-}
+const mapState = (state: RootState) => state.characterMetaData
+
+const mapDispatchToProps = CharacterMetadataActions
 
 const connector = connect(mapState, mapDispatchToProps)
 
@@ -31,7 +25,11 @@ export const DisplayCharacterMetaData = connector(({
   )
 
   return (
-    <div>
+    <div className={'character-meta-data'}>
+      <div className={'character-name metadata-input-block'}>
+        <input value={characterName} onChange={callWithValue(setCharacterName)} id={'character-name'} />
+        <label htmlFor={'character-name'}>CharakterName</label>
+      </div>
       Character Name: <input value={characterName} onChange={callWithValue(setCharacterName)} /> <br />
       Player Name: <input value={playerName} onChange={callWithValue(setPlayerName)} /> <br />
     </div>

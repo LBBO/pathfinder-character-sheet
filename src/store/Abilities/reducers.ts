@@ -2,31 +2,20 @@ import {AbilitiesActionTypes, AbilityState} from './types'
 
 const getModifierFromScore = (score: number) => Math.floor(score / 2) - 5
 
+const createDefaultAbility = () => ({
+  score: 10,
+    modifier: 0,
+    temporaryAdjustment: 0,
+    temporaryModifier: 0,
+})
+
 const initialState: AbilityState = {
-  charisma: {
-    score: 10,
-    modifier: 0,
-  },
-  constitution: {
-    score: 10,
-    modifier: 0,
-  },
-  dexterity: {
-    score: 10,
-    modifier: 0,
-  },
-  intelligence: {
-    score: 10,
-    modifier: 0,
-  },
-  strength: {
-    score: 10,
-    modifier: 0,
-  },
-  wisdom: {
-    score: 10,
-    modifier: 0,
-  },
+  charisma: createDefaultAbility(),
+  constitution: createDefaultAbility(),
+  dexterity: createDefaultAbility(),
+  intelligence: createDefaultAbility(),
+  strength: createDefaultAbility(),
+  wisdom: createDefaultAbility(),
 }
 
 export const AbilitiesReducer = (state: AbilityState = initialState, action: AbilitiesActionTypes): AbilityState => {
@@ -35,6 +24,7 @@ export const AbilitiesReducer = (state: AbilityState = initialState, action: Abi
       const newState: AbilityState = {
         ...state,
         [action.ability]: {
+          ...state[action.ability],
           score: action.score,
           modifier: getModifierFromScore(action.score),
         },
@@ -48,12 +38,13 @@ export const AbilitiesReducer = (state: AbilityState = initialState, action: Abi
 
       return newState
     case 'SET_ABILITY_TEMP_ADJUSTMENT':
+      console.log(action, state[action.ability])
       return {
         ...state,
         [action.ability]: {
           ...state[action.ability],
-          tempAdjustment: action.adjustment,
-          tempModifier: getModifierFromScore(state[action.ability].score + action.adjustment),
+          temporaryAdjustment: action.adjustment,
+          temporaryModifier: getModifierFromScore(state[action.ability].score + action.adjustment),
         },
       }
     default:
