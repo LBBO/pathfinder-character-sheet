@@ -3,6 +3,7 @@ import { connect, ConnectedProps } from 'react-redux'
 import React, { ChangeEvent, useCallback } from 'react'
 import { setAbilityScore, setAbilityTempAdjustment } from '../../store/Abilities/actions'
 import { AbilityAttributes, AbilityState } from '../../store/Abilities/types'
+import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 
 const mapState = (state: RootState) => (
   {
@@ -35,7 +36,15 @@ export const DisplayAbilities = connector((
 
     return (
       <tr key={abilityName}>
-        <td>{abilityName}</td>
+        <td>
+          <InvertedBorderRadius
+            style={{
+              fontSize: '1em',
+            }}
+          >
+            {abilityName}
+          </InvertedBorderRadius>
+        </td>
         <td>
           <input
             type={'number'}

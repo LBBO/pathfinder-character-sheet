@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CharacterSheet/CharacterSheet.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DisplayAbilities/DisplayAbilities.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/InvertedBorderRadius/InvertedBorderRadius.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/InvertedBorderRadius/inverse-border-radius.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/InvertedBorderRadius/invertedBorderRadius.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DisplayAbilities/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/Abilities/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Abilities/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/Abilities/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Abilities/reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/Abilities/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Abilities/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/Alignment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/Alignment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayAbilities/DisplayAbilities.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayAbilities/DisplayAbilities.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,10 +152,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="807" y="434" key="VCS.ChangelistChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578345270869" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578432395346">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581893506985">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578432395346" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1581893506985" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578410324788" />
   </component>
 </project>
