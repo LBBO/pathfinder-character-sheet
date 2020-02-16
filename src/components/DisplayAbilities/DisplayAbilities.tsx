@@ -1,6 +1,6 @@
 import { RootState } from '../../store/root-reducer'
 import { connect, ConnectedProps } from 'react-redux'
-import React, { ChangeEvent, useCallback } from 'react'
+import React, { ChangeEvent } from 'react'
 import { setAbilityScore, setAbilityTempAdjustment } from '../../store/Abilities/actions'
 import { AbilityAttributes, AbilityState } from '../../store/Abilities/types'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'

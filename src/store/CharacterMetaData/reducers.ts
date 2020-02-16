@@ -2,6 +2,7 @@ import { CharacterMetaDataState, UpdateCharacterMetaDataActionTypes } from './ty
 
 const initialState: CharacterMetaDataState = {
   level: 0,
+  characterName: '',
 }
 
 export const CharacterMetaDataReducer = (

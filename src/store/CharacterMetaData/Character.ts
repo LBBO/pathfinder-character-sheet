@@ -16,7 +16,7 @@ export enum CharacterGender {
 export type CharacterRace = string
 
 export type CharacterMetaData = {
-  characterName?: string
+  characterName: string
   className?: CharacterClass
   race?: CharacterRace
   alignment?: Alignment
