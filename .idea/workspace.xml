@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/InvertedBorderRadius/invertedBorderRadius.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/Skills/reducers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/Skills/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InvertedBorderRadius/InvertedBorderRadius.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InvertedBorderRadius/InvertedBorderRadius.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InvertedBorderRadius/inverse-border-radius.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InvertedBorderRadius/invertedBorderRadius.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CharacterSheet/CharacterSheet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CharacterSheet/CharacterSheet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/root-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/root-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -53,6 +50,8 @@
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\GeneralCharacterProperties\Alignment.ts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src" />
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplaySkills" />
       <recent name="C:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayAbilities" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components" />
     </key>
@@ -97,8 +96,31 @@
       <workItem from="1578409803359" duration="1850000" />
       <workItem from="1579723587912" duration="632000" />
       <workItem from="1581893960823" duration="587000" />
-      <workItem from="1583572214329" duration="5180000" />
+      <workItem from="1583572214329" duration="5952000" />
+      <workItem from="1583603294907" duration="13868000" />
     </task>
+    <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
+      <created>1583605547856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583605547856</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Remove derived values from ability state">
+      <created>1583617481013</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583617481013</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Remove derived values from ability state">
+      <created>1583617680330</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1583617680330</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +139,11 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Hide temp ability modifier when 0" />
+    <MESSAGE value="Remove derived values from ability state" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove derived values from ability state" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="552" y="177" key="#Notifications" timestamp="1578404349439">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -130,25 +157,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578428248894" />
-    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1583578458984">
+    <state x="585" y="113" key="CommitChangelistDialog2" timestamp="1583617679777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583578458984" />
+    <state x="585" y="113" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583617679777" />
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1583618546237">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583618546237" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
-    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1583578458984">
+    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1583618546237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583578458984" />
+    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583618546237" />
     <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
-    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1583578458983">
+    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1583618546237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583578458983" />
+    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583618546237" />
     <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831821" />
-    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1583578458984">
+    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1583618546237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583578458984" />
+    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583618546237" />
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
     <state x="461" y="150" key="SettingsEditor" timestamp="1583572416995">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -158,10 +189,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="807" y="434" key="VCS.ChangelistChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578345270869" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1583577856912">
+    <state x="769" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583603653292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583577856912" />
+    <state x="769" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583603653292" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1583606245265">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583606245265" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578410324788" />
   </component>
 </project>
