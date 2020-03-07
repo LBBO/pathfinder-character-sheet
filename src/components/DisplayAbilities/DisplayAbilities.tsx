@@ -56,7 +56,8 @@ export const DisplayAbilities = connector((
         <td>
           <input
             type={'number'}
-            value={abilityAttributes.temporaryAdjustment ?? 0}
+             // Display an empty input if temp adjustment is 0
+            value={abilityAttributes.temporaryAdjustment || ''}
             onChange={onTempAdjustmentChange(abilityName as keyof AbilityState)}
           />
         </td>
