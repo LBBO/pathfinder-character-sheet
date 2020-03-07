@@ -1,12 +1,9 @@
-import {AbilitiesActionTypes, AbilityState} from './types'
-
-const getModifierFromScore = (score: number) => Math.floor(score / 2) - 5
+import { AbilitiesActionTypes, AbilityState } from './types'
+import { getModifierFromScore } from './selectors'
 
 const createDefaultAbility = () => ({
   score: 10,
-    modifier: 0,
-    temporaryAdjustment: 0,
-    temporaryModifier: 0,
+  temporaryAdjustment: 0,
 })
 
 const initialState: AbilityState = {
@@ -21,30 +18,22 @@ const initialState: AbilityState = {
 export const AbilitiesReducer = (state: AbilityState = initialState, action: AbilitiesActionTypes): AbilityState => {
   switch (action.type) {
     case 'SET_ABILITY_SCORE':
-      const newState: AbilityState = {
-        ...state,
-        [action.ability]: {
-          ...state[action.ability],
-          score: action.score,
-          modifier: getModifierFromScore(action.score),
-        },
-      }
-
-      const abilityName = action.ability
-      const tempAdjustment = state[abilityName].temporaryAdjustment
-      if (tempAdjustment) {
-        newState[abilityName].temporaryModifier = getModifierFromScore(action.score + tempAdjustment)
-      }
-
-      return newState
-    case 'SET_ABILITY_TEMP_ADJUSTMENT':
-      console.log(action, state[action.ability])
       return {
         ...state,
         [action.ability]: {
           ...state[action.ability],
-          temporaryAdjustment: action.adjustment,
-          temporaryModifier: getModifierFromScore(state[action.ability].score + action.adjustment),
+          // NaN --> 0
+          score: action.score || 0,
+          modifier: getModifierFromScore(action.score),
+        },
+      }
+    case 'SET_ABILITY_TEMP_ADJUSTMENT':
+      return {
+        ...state,
+        [action.ability]: {
+          ...state[action.ability],
+          // NaN --> 0
+          temporaryAdjustment: action.adjustment || 0,
         },
       }
     default:

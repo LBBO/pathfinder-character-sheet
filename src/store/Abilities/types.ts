@@ -2,9 +2,7 @@ export type abilityName = 'strength' | 'dexterity' | 'constitution' | 'intellige
 
 export type AbilityAttributes = {
   score: number
-  modifier: number
   temporaryAdjustment: number
-  temporaryModifier: number
 }
 
 export type AbilityState = {

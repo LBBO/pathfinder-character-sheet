@@ -4,6 +4,7 @@ import React, { ChangeEvent } from 'react'
 import { setAbilityScore, setAbilityTempAdjustment } from '../../store/Abilities/actions'
 import { AbilityAttributes, AbilityState } from '../../store/Abilities/types'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
+import { getModifierFromScore } from '../../store/Abilities/selectors'
 
 const mapState = (state: RootState) => (
   {
@@ -52,7 +53,7 @@ export const DisplayAbilities = connector((
             onChange={onScoreChange(abilityName as keyof AbilityState)}
           />
         </td>
-        <td>{abilityAttributes.modifier}</td>
+        <td>{getModifierFromScore(abilityAttributes.score)}</td>
         <td>
           <input
             type={'number'}
@@ -61,7 +62,11 @@ export const DisplayAbilities = connector((
             onChange={onTempAdjustmentChange(abilityName as keyof AbilityState)}
           />
         </td>
-        <td>{abilityAttributes.temporaryAdjustment ? abilityAttributes.temporaryModifier : ''}</td>
+        <td>{
+          abilityAttributes.temporaryAdjustment ?
+            getModifierFromScore(abilityAttributes.score + abilityAttributes.temporaryAdjustment) :
+            ''
+        }</td>
       </tr>
     )
   })
