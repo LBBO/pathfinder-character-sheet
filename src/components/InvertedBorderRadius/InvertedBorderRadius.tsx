@@ -1,6 +1,6 @@
 import React from 'react'
-import './invertedBorderRadius.css'
-import PropTypes, {InferProps} from 'prop-types'
+import './invertedBorderRadius.scss'
+import PropTypes, { InferProps } from 'prop-types'
 
 const InvertedBorderRadiusPropTypes = {
   className: PropTypes.string,
@@ -14,7 +14,9 @@ export const InvertedBorderRadius: React.FC<InferProps<typeof InvertedBorderRadi
   return <div
     className={`inverted-rounded-corners ${props.className ?? ''}`}
     style={{
-      ...(props.style ?? {}),
+      ...(
+        props.style ?? {}
+      ),
     }}
   >
     {props.children}

@@ -1,0 +1,35 @@
+.inverted-rounded-corners {
+	$actual-padding: 0.3rem;
+	$side-padding-for-corners: 2rem;
+	$circle-width: 1.7rem;
+	$circle-height: 1rem;
+	
+	background-color: black;
+	color: white;
+	font-size: 3em;
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: fit-content;
+	padding: $actual-padding #{$actual-padding + $side-padding-for-corners};
+	overflow: hidden;
+	
+	&::before, &::after {
+		content: '';
+		padding: $circle-height $circle-width;
+		border-radius: 50%;
+		background-color: #fff;
+		box-shadow:
+				0 0 currentColor,
+				0 #{1rem + $circle-height} currentColor;
+		position: absolute;
+		top: #{-1 * $circle-height};
+		left: #{-1 * $circle-width};
+	}
+	
+	&::after {
+		left: unset;
+		right: #{-1 * $circle-width};
+	}
+}
