@@ -9,6 +9,10 @@ import {
 import { abilityName } from '../Abilities/types'
 import { AbilityModifiers } from '../Abilities/selectors'
 
+const updateTotalSkillBonus = (skill: Skill) => {
+  skill.totalBonus = skill.abilityModifier + skill.ranks + skill.miscModifier + (skill.isClassSkill && skill.ranks >= 1 ? 3 : 0)
+}
+
 const creatInitialState = (abilityModifiers: AbilityModifiers) => {
   const result = {} as SkillState
 
@@ -20,16 +24,14 @@ const creatInitialState = (abilityModifiers: AbilityModifiers) => {
         isClassSkill: false,
         abilityModifier: abilityModifiers[baseAbilityName],
         miscModifier: 0,
-        ranks: 0,
+        ranks: 1,
         totalBonus: abilityModifiers[baseAbilityName],
       }
+
+      updateTotalSkillBonus(result[skillName])
     })
 
   return result
-}
-
-const updateTotalSkillBonus = (skill: Skill) => {
-  skill.totalBonus = skill.abilityModifier + skill.ranks + skill.miscModifier + (skill.isClassSkill && skill.ranks >= 1 ? 3 : 0)
 }
 
 const applyNewModifiers = (state: SkillState, abilities: AbilityModifiers): SkillState => {
@@ -70,28 +72,39 @@ export const SkillsReducer = (
         ...state[action?.payload.skillName],
         miscModifier: action?.payload.miscModifier,
       }
-
-      updateTotalSkillBonus(updatedSkill)
-
-      return {
-        ...state,
-        [action?.payload.skillName]: updatedSkill
-      }
+      break
 
     case UPDATE_SKILL_RANKS:
+      if (action?.payload.ranks < 0) {
+        // TODO: don't accept ranks > character level
+        console.warn('Ranks must be >= 0')
+      } else {
+        updatedSkill = {
+          ...state[action?.payload.skillName],
+          ranks: action?.payload.ranks,
+        }
+      }
+
+      break
+
+    case 'UPDATE_SKILL_IS_CLASS_SKILL':
       updatedSkill = {
         ...state[action?.payload.skillName],
-        ranks: action?.payload.ranks,
+        isClassSkill: action?.payload.isClassSkill,
       }
 
-      updateTotalSkillBonus(updatedSkill)
+      break
+  }
 
-      return {
-        ...state,
-        [action?.payload.skillName]: updatedSkill
-      }
+  // @ts-ignore updatedSkill is used before it is assigned
+  if (updatedSkill && action) {
+    updateTotalSkillBonus(updatedSkill)
 
-    default:
-      return state
+    return {
+      ...state,
+      [action?.payload.skillName]: updatedSkill,
+    }
+  } else {
+    return state
   }
 }

@@ -141,8 +141,10 @@ export const quickSkillDefinitions = {
   }
 }
 
+export type SkillName = keyof typeof quickSkillDefinitions
+
 export type Skill = {
-  name: string,
+  name: SkillName,
   abilityModifier: number,
   ranks: number,
   miscModifier: number,
@@ -156,21 +158,30 @@ export type SkillState = {
 
 export const UPDATE_SKILL_RANKS = 'UPDATE_SKILL_RANKS'
 export const UPDATE_SKILL_MISC_MODIFIER = 'UPDATE_SKILL_MISC_MODIFIER'
+export const UPDATE_SKILL_IS_CLASS_SKILL = 'UPDATE_SKILL_IS_CLASS_SKILL'
 
 export type UpdateSkillRankAction = {
   type: typeof UPDATE_SKILL_RANKS,
   payload: {
-    skillName: keyof typeof quickSkillDefinitions,
+    skillName: SkillName,
     ranks: number,
-  }
+  },
 }
 
 export type UpdateSkillMiscModifierAction = {
   type: typeof UPDATE_SKILL_MISC_MODIFIER,
   payload: {
-    skillName: keyof typeof quickSkillDefinitions,
+    skillName: SkillName,
     miscModifier: number,
-  }
+  },
 }
 
-export type UpdateSkillActionTypes = UpdateSkillRankAction | UpdateSkillMiscModifierAction
+export type UpdateSkillIsClassSkill = {
+  type: typeof UPDATE_SKILL_IS_CLASS_SKILL,
+  payload: {
+    skillName: SkillName,
+    isClassSkill: boolean,
+  },
+}
+
+export type UpdateSkillActionTypes = UpdateSkillRankAction | UpdateSkillMiscModifierAction | UpdateSkillIsClassSkill
