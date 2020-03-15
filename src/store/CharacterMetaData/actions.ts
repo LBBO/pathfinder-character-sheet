@@ -34,21 +34,21 @@ export const setCharacterClass = (className: string): UpdateCharacterMetaDataAct
   }
 )
 
-export const setCharacterRace = (race: CharacterRace): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterRace = (race: CharacterRace | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_RACE,
     payload: race,
   }
 )
 
-export const setCharacterAlignment = (alignment: Alignment): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterAlignment = (alignment: Alignment | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_ALIGNMENT,
     payload: alignment,
   }
 )
 
-export const setCharacterLevel = (level: number): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterLevel = (level: number | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_LEVEL,
     payload: level,
@@ -62,21 +62,21 @@ export const setCharacterDeity = (deity: string): UpdateCharacterMetaDataActionT
   }
 )
 
-export const setCharacterSizeCategory = (sizeCategory: SizeCategory): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterSizeCategory = (sizeCategory: SizeCategory | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_SIZE_CATEGORY,
     payload: sizeCategory,
   }
 )
 
-export const setCharacterGender = (gender: CharacterGender): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterGender = (gender: CharacterGender | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_GENDER,
     payload: gender,
   }
 )
 
-export const setCharacterAge = (age: number): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterAge = (age: number | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_AGE,
     payload: age,
@@ -90,14 +90,14 @@ export const setCharacterHomeland = (homeland: string): UpdateCharacterMetaDataA
   }
 )
 
-export const setCharacterHeight = (height: number): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterHeight = (height: number | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_HEIGHT,
     payload: height,
   }
 )
 
-export const setCharacterWeight = (weight: number): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterWeight = (weight: number | undefined): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_WEIGHT,
     payload: weight,

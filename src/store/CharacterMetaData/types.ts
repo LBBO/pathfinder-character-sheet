@@ -1,4 +1,4 @@
-import { CharacterClass, CharacterGender, CharacterMetaData, SizeCategory } from './Character'
+import { CharacterClass, CharacterGender, CharacterMetaData, CharacterRace, SizeCategory } from './Character'
 import { Alignment } from './Alignment'
 
 export const UPDATE_CHARACTER_NAME = 'UPDATE_CHARACTER_NAME'
@@ -25,22 +25,22 @@ type UpdateCharacterNameAction = {
 
 type UpdateCharacterClassAction = {
   type: typeof UPDATE_CHARACTER_CLASS
-  payload: CharacterClass
+  payload: CharacterClass | undefined
 }
 
 type UpdateCharacterRaceAction = {
   type: typeof UPDATE_CHARACTER_RACE
-  payload: string
+  payload: CharacterRace | undefined
 }
 
 type UpdateCharacterAlignmentAction = {
   type: typeof UPDATE_CHARACTER_ALIGNMENT
-  payload: Alignment
+  payload: Alignment | undefined
 }
 
 type UpdateCharacterLevelAction = {
   type: typeof UPDATE_CHARACTER_LEVEL
-  payload: number
+  payload: number | undefined
 }
 
 type UpdateCharacterDeityTypeAction = {
@@ -50,17 +50,17 @@ type UpdateCharacterDeityTypeAction = {
 
 type UpdateCharacterSizeCategoryAction = {
   type: typeof UPDATE_CHARACTER_SIZE_CATEGORY
-  payload: SizeCategory
+  payload: SizeCategory | undefined
 }
 
 type UpdateCharacterGenderAction = {
   type: typeof UPDATE_CHARACTER_GENDER
-  payload: CharacterGender
+  payload: CharacterGender | undefined
 }
 
 type UpdateCharacterAgeAction = {
   type: typeof UPDATE_CHARACTER_AGE
-  payload: number
+  payload: number | undefined
 }
 
 type UpdateCharacterHomelandAction = {
@@ -70,12 +70,12 @@ type UpdateCharacterHomelandAction = {
 
 type UpdateCharacterHeightAction = {
   type: typeof UPDATE_CHARACTER_HEIGHT
-  payload: number
+  payload: number | undefined
 }
 
 type UpdateCharacterWeightAction = {
   type: typeof UPDATE_CHARACTER_WEIGHT
-  payload: number
+  payload: number | undefined
 }
 
 type UpdateCharacterHAIRAction = {

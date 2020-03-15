@@ -1,0 +1,38 @@
+.character-meta-data {
+	display: grid;
+	grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+	grid-template-rows: repeat(3, 1fr);
+	grid-template-areas:
+			"character-name character-name character-name alignment alignment player-name player-name player-name player-name player-name"
+			"class-name class-name level race race campaign campaign campaign homeland homeland"
+			"deity size-category gender gender age height weight hair hair eyes";
+	grid-gap: 10px;
+	
+	.metadata-input-block {
+		& > * {
+			width: 100%;
+		}
+		
+		input {
+			display: block;
+			border: none;
+			border-bottom: 1px solid #000000;
+			padding: 2px;
+		}
+		
+		label {
+			font-family: "Times New Roman", serif;
+			text-transform: uppercase;
+			font-size: 0.8em;
+		}
+		
+		$classes: character-name, alignment, player-name, class-name, level, race, campaign,
+		homeland, deity, size-category, gender, age, height, weight, hair, eyes;
+		
+		@each $class in $classes {
+			&.#{$class} {
+				grid-area: #{$class};
+			}
+		}
+	}
+}
