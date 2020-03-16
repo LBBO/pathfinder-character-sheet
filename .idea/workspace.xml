@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +98,8 @@
       <workItem from="1583603294907" duration="14072000" />
       <workItem from="1584137315181" duration="3646000" />
       <workItem from="1584173187619" duration="13043000" />
+      <workItem from="1584275658550" duration="2500000" />
+      <workItem from="1584345016731" duration="4320000" />
     </task>
     <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
       <created>1583605547856</created>
@@ -144,7 +143,35 @@
       <option name="project" value="LOCAL" />
       <updated>1584187419819</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add GitHub action to run tests">
+      <created>1584347931730</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1584347931730</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Switch from yarn to npm">
+      <created>1584348503352</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1584348503352</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Run tests only on master and pull requests">
+      <created>1584348885741</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584348885741</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Deploy to GitHub Pages when pushed to master">
+      <created>1584348935661</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1584348935661</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +195,11 @@
     <MESSAGE value="Remove derived values from ability state" />
     <MESSAGE value="Add styled checkbox component" />
     <MESSAGE value="Add UI for skills" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add UI for skills" />
+    <MESSAGE value="Add GitHub action to run tests" />
+    <MESSAGE value="Switch from yarn to npm" />
+    <MESSAGE value="Run tests only on master and pull requests" />
+    <MESSAGE value="Deploy to GitHub Pages when pushed to master" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deploy to GitHub Pages when pushed to master" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -184,10 +215,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578428248894" />
-    <state x="44" y="0" width="1816" height="1029" key="CommitChangelistDialog2" timestamp="1584187418788">
+    <state x="44" y="0" width="1816" height="1029" key="CommitChangelistDialog2" timestamp="1584348934991">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="44" y="0" width="1816" height="1029" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584187418788" />
+    <state x="44" y="0" width="1816" height="1029" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584348934991" />
     <state x="1060" y="100" width="760" height="840" key="DiffContextDialog" timestamp="1584139678711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -232,10 +263,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584187258086" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584191535339">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584349332757">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584191535339" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584349332757" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578410324788" />
   </component>
 </project>

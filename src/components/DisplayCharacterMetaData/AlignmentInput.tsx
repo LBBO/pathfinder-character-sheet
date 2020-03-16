@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react'
-import { Alignment, Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
+import { Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
 import PropTypes from 'prop-types'
 
 const options = {
