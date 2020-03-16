@@ -2,6 +2,7 @@
   "name": "pathfinder-character-sheet",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://LBBO.github.io/pathfinder-character-sheet",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
