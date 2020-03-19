@@ -1,5 +1,7 @@
 import { AbilitiesReducer, createDefaultAbility } from './reducers'
 import { setAbilityScore, setAbilityTempAdjustment } from './actions'
+import { getCurrentModifiersFromAbilities, getModifierFromScore } from './selectors'
+import { AbilityState } from './types'
 
 const defaultAbility = { score: 10, temporaryAdjustment: 0 }
 
@@ -88,5 +90,68 @@ describe('AbilitiesReducer', () => {
       // @ts-ignore TypeScript wouldn't allow a different action
       { type: 'SOME_OTHER_ACTION' },
     )).toBe(otherState)
+  })
+})
+
+describe('getModifierFromScore', () => {
+  it('should return a modifier from 0 for a score of 10', () => {
+    expect(getModifierFromScore(10)).toBe(0)
+  })
+
+  it('should return a modifier from 1 for a score of 12', () => {
+    expect(getModifierFromScore(12)).toBe(1)
+  })
+
+  it('should return a modifier from -1 for a score of 8', () => {
+    expect(getModifierFromScore(8)).toBe(-1)
+  })
+
+  it('should floor the modifier when the score is uneven', () => {
+    expect(getModifierFromScore(11)).toBe(0)
+    expect(getModifierFromScore(13)).toBe(1)
+    expect(getModifierFromScore(9)).toBe(-1)
+  })
+})
+
+describe('map score and temp adjustment to modifier', () => {
+  const initialState = AbilitiesReducer()
+
+  it('should map the initial state to all 0s', () => {
+    Object.values(getCurrentModifiersFromAbilities(initialState)).forEach(score => {
+      expect(score).toBe(0)
+    })
+  })
+
+  it('should return the correct modifiers for example scores', () => {
+    const state: AbilityState = {
+      ...initialState,
+      charisma: {
+        score: 7,
+        temporaryAdjustment: 3,
+      },
+      constitution: {
+        score: 10,
+        temporaryAdjustment: 3,
+      },
+      dexterity: {
+        score: 12,
+        temporaryAdjustment: 0,
+      },
+      intelligence: {
+        score: 8,
+        temporaryAdjustment: -2,
+      },
+    }
+
+    const modifiers = getCurrentModifiersFromAbilities(state)
+
+    expect(modifiers).toMatchObject({
+      charisma: 0,
+      constitution: 1,
+      dexterity: 1,
+      intelligence: -2,
+      strength: 0,
+      wisdom: 0,
+    })
   })
 })
