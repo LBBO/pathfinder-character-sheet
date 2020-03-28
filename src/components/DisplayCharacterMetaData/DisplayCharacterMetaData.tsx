@@ -5,7 +5,7 @@ import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions
 import PropTypes from 'prop-types'
 
 import './DisplayCharacterMetaData.scss'
-import { AlignmentInput } from './AlignmentInput'
+import { AlignmentInput } from '../AlignmentInput/AlignmentInput'
 
 const mapState = (state: RootState) => state.characterMetaData
 
