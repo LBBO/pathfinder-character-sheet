@@ -2,6 +2,7 @@ import {
   quickSkillDefinitions,
   Skill,
   SkillState,
+  UPDATE_SKILL_IS_CLASS_SKILL,
   UPDATE_SKILL_MISC_MODIFIER,
   UPDATE_SKILL_RANKS,
   UpdateSkillActionTypes,
@@ -9,11 +10,11 @@ import {
 import { abilityName } from '../Abilities/types'
 import { AbilityModifiers } from '../Abilities/selectors'
 
-const updateTotalSkillBonus = (skill: Skill) => {
+export const updateTotalSkillBonus = (skill: Skill) => {
   skill.totalBonus = skill.abilityModifier + skill.ranks + skill.miscModifier + (skill.isClassSkill && skill.ranks >= 1 ? 3 : 0)
 }
 
-const creatInitialState = (abilityModifiers: AbilityModifiers) => {
+export const createInitialState = (abilityModifiers: AbilityModifiers) => {
   const result = {} as SkillState
 
   (Object.keys(quickSkillDefinitions) as Array<keyof SkillState>)
@@ -24,7 +25,7 @@ const creatInitialState = (abilityModifiers: AbilityModifiers) => {
         isClassSkill: false,
         abilityModifier: abilityModifiers[baseAbilityName],
         miscModifier: 0,
-        ranks: 1,
+        ranks: 0,
         totalBonus: abilityModifiers[baseAbilityName],
       }
 
@@ -34,7 +35,7 @@ const creatInitialState = (abilityModifiers: AbilityModifiers) => {
   return result
 }
 
-const applyNewModifiers = (state: SkillState, abilities: AbilityModifiers): SkillState => {
+export const applyNewModifiers = (state: SkillState, abilities: AbilityModifiers): SkillState => {
   const copy = { ...state };
 
   (Object.entries(state) as Array<[keyof SkillState, Skill]>).forEach(([skillName, skill]) => {
@@ -58,7 +59,7 @@ export const SkillsReducer = (
   abilitiesChanged = false
 ): SkillState => {
   if (!state) {
-    return creatInitialState(abilities!)
+    return createInitialState(abilities!)
   }
 
   if (abilitiesChanged) {
@@ -87,7 +88,7 @@ export const SkillsReducer = (
 
       break
 
-    case 'UPDATE_SKILL_IS_CLASS_SKILL':
+    case UPDATE_SKILL_IS_CLASS_SKILL:
       updatedSkill = {
         ...state[action?.payload.skillName],
         isClassSkill: action?.payload.isClassSkill,
