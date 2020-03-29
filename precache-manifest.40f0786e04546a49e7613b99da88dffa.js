@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1ce76282ff2b12cb48e3325c79c61e73",
+    "revision": "2e31066a9275dcf3da43bdf589cc2765",
     "url": "/pathfinder-character-sheet/index.html"
   },
   {
-    "revision": "0b0f8aeaae305f64ef69",
+    "revision": "b1f5024f2a5541cb6ffd",
     "url": "/pathfinder-character-sheet/static/css/main.b506f82d.chunk.css"
   },
   {
@@ -12,12 +12,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pathfinder-character-sheet/static/js/2.fb127bff.chunk.js"
   },
   {
-    "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/pathfinder-character-sheet/static/js/2.fb127bff.chunk.js.LICENSE"
+    "revision": "928d7b5eb39d16fe9a880722c974b51e",
+    "url": "/pathfinder-character-sheet/static/js/2.fb127bff.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0b0f8aeaae305f64ef69",
-    "url": "/pathfinder-character-sheet/static/js/main.3bf234da.chunk.js"
+    "revision": "b1f5024f2a5541cb6ffd",
+    "url": "/pathfinder-character-sheet/static/js/main.265644fe.chunk.js"
   },
   {
     "revision": "a3347af71d09e112470a",
