@@ -6,8 +6,8 @@ const initialState: CharacterMetaDataState = {
 }
 
 export const CharacterMetaDataReducer = (
-  state = initialState, action: UpdateCharacterMetaDataActionTypes): CharacterMetaDataState => {
-  switch (action.type) {
+  state = initialState, action?: UpdateCharacterMetaDataActionTypes): CharacterMetaDataState => {
+  switch (action?.type) {
     case 'UPDATE_CHARACTER_NAME':
       return {
         ...state,

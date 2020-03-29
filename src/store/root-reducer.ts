@@ -1,5 +1,5 @@
-import {CharacterMetaDataReducer} from './CharacterMetaData/reducers'
-import {AbilitiesReducer} from './Abilities/reducers'
+import { CharacterMetaDataReducer } from './CharacterMetaData/reducers'
+import { AbilitiesReducer } from './Abilities/reducers'
 import { SkillsReducer } from './Skills/reducers'
 import { CharacterMetaDataState, UpdateCharacterMetaDataActionTypes } from './CharacterMetaData/types'
 import { AbilitiesActionTypes, AbilityState } from './Abilities/types'
@@ -13,7 +13,7 @@ export type RootState = {
   skills: SkillState,
 }
 
-export type RootActionTypes = UpdateCharacterMetaDataActionTypes | AbilitiesActionTypes
+export type RootActionTypes = UpdateCharacterMetaDataActionTypes | AbilitiesActionTypes | UpdateSkillActionTypes
 
 export const rootReducer = (state?: RootState, action?: Action): RootState => {
   const characterMetaData = CharacterMetaDataReducer(state?.characterMetaData, action as UpdateCharacterMetaDataActionTypes)

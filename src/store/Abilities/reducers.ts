@@ -1,7 +1,7 @@
 import { AbilitiesActionTypes, AbilityState } from './types'
 import { getModifierFromScore } from './selectors'
 
-const createDefaultAbility = () => ({
+export const createDefaultAbility = () => ({
   score: 10,
   temporaryAdjustment: 0,
 })
@@ -15,8 +15,8 @@ const initialState: AbilityState = {
   wisdom: createDefaultAbility(),
 }
 
-export const AbilitiesReducer = (state: AbilityState = initialState, action: AbilitiesActionTypes): AbilityState => {
-  switch (action.type) {
+export const AbilitiesReducer = (state: AbilityState = initialState, action?: AbilitiesActionTypes): AbilityState => {
+  switch (action?.type) {
     case 'SET_ABILITY_SCORE':
       return {
         ...state,

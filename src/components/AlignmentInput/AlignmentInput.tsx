@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react'
-import { Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
+import { Alignment, Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
 import PropTypes from 'prop-types'
+import { Overwrite } from '../../types/util'
 
 const options = {
   'LG': { ethics: Ethics.LAW, morality: Morality.GOOD },
@@ -23,7 +24,11 @@ const SelectInputPropTypes = {
   label: PropTypes.string,
 }
 
-export const AlignmentInput: React.FC<PropTypes.InferProps<typeof SelectInputPropTypes>> = ({ value, onChange, id, label }) => {
+type PropsType = Overwrite<PropTypes.InferProps<typeof SelectInputPropTypes>, {
+  onChange: (alignment: Alignment) => void,
+}>
+
+export const AlignmentInput: React.FC<PropsType> = ({ value, onChange, id, label }) => {
   const onSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     const alignment = options[event.target.value as keyof typeof options]
     onChange(alignment)
@@ -31,11 +36,19 @@ export const AlignmentInput: React.FC<PropTypes.InferProps<typeof SelectInputPro
 
   const currentValue = Object.entries(options)
     .find(([, alignment]) =>
-      alignment?.ethics === value?.ethics && alignment?.morality === value?.morality
+      alignment?.ethics === value?.ethics && alignment?.morality === value?.morality,
     )?.[0] ?? 'none'
 
-  return <div className={`metadata-input-block ${id}`}>
-    <select onChange={onSelect} value={currentValue}>
+  return <div
+    className={`metadata-input-block ${id}`}
+    data-testid={'alignment-input-wrapper'}
+  >
+    <select
+      onChange={onSelect}
+      id={id}
+      value={currentValue}
+      data-testid={'alignment-input-select'}
+    >
       <option label={''} value={'none'} />
       {Object.keys(options).map((optionName, index) =>
         <option label={optionName} value={optionName} key={index} />,
