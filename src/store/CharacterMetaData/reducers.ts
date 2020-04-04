@@ -1,8 +1,10 @@
 import { CharacterMetaDataState, UpdateCharacterMetaDataActionTypes } from './types'
+import { SizeCategory } from './Character'
 
 const initialState: CharacterMetaDataState = {
   level: 0,
   characterName: '',
+  sizeCategory: SizeCategory.MEDIUM,
 }
 
 export const CharacterMetaDataReducer = (

@@ -5,7 +5,8 @@ import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions
 import PropTypes from 'prop-types'
 
 import './DisplayCharacterMetaData.scss'
-import { AlignmentInput } from '../AlignmentInput/AlignmentInput'
+import { AlignmentInput } from './AlignmentInput/AlignmentInput'
+import { SizeCategoryInput } from './SizeCategoryInput/SizeCategoryInput'
 
 const mapState = (state: RootState) => state.characterMetaData
 
@@ -58,6 +59,7 @@ export const DisplayCharacterMetaData = connector(({
   height, setCharacterHeight,
   weight, setCharacterWeight,
   alignment, setCharacterAlignment,
+  sizeCategory, setCharacterSizeCategory,
 }: Props) => {
   const callWithStringValue = useCallback(
     (callback: (value: string) => any) => useCallback(
@@ -115,6 +117,12 @@ export const DisplayCharacterMetaData = connector(({
         value={deity}
         label={'Deity'}
         onChange={callWithStringValue(setCharacterDeity)}
+      />
+      <SizeCategoryInput
+        id={'size-category'}
+        label={'Size Category'}
+        onChange={setCharacterSizeCategory}
+        value={sizeCategory}
       />
       <MetadataStringInput
         id={'campaign'}

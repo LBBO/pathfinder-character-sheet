@@ -1,7 +1,7 @@
-import { AlignmentInput } from '../../components/AlignmentInput/AlignmentInput'
+import { AlignmentInput } from './AlignmentInput'
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
-import { Alignment, Ethics, Morality } from './Alignment'
+import { Alignment, Ethics, Morality } from '../../../store/CharacterMetaData/Alignment'
 
 describe('Alignment input field', () => {
   // Initial definition just so that the type is set correctly

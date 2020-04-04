@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react'
-import { Alignment, Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
+import { Alignment, Ethics, Morality } from '../../../store/CharacterMetaData/Alignment'
 import PropTypes from 'prop-types'
-import { Overwrite } from '../../types/util'
+import { Overwrite } from '../../../types/util'
 
 const options = {
   'LG': { ethics: Ethics.LAW, morality: Morality.GOOD },

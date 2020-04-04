@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AlignmentInput/AlignmentInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AlignmentInput/AlignmentInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput/AlignmentInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/AlignmentInput.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput/AlignmentInput.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/Character.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/Character.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +49,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/DisplayCharacterMetaData" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -55,16 +61,25 @@
     <property name="ts.external.directory.path" value="D:\git-clones\GitHub\pathfinder-character-sheet\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData" />
+    </key>
     <key name="es6.move.members.recent.items">
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\GeneralCharacterProperties\Alignment.ts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\AlignmentInput" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplaySkills" />
       <recent name="C:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayAbilities" />
-      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="All Tests" />
+      <command value="start" />
+    </option>
   </component>
   <component name="RunManager" selected="npm.start">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
@@ -156,6 +171,8 @@
       <workItem from="1585156082809" duration="95000" />
       <workItem from="1585158543237" duration="101000" />
       <workItem from="1585382926846" duration="12336000" />
+      <workItem from="1585926294412" duration="824000" />
+      <workItem from="1585993243799" duration="2979000" />
     </task>
     <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
       <created>1583605547856</created>
@@ -295,29 +312,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1060" y="100" width="760" height="840" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584351704856" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1585431079542">
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1585994487168">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079542" />
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585994487168" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1585431079541">
+    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1585994487168">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079541" />
+    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585994487168" />
     <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1585431079541">
+    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1585994487168">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079541" />
+    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585994487168" />
     <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831821" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1585431079541">
+    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1585994487168">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079541" />
+    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585994487168" />
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
     <state width="1875" height="342" key="GridCell.Tab.1.bottom" timestamp="1584829804242">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -393,15 +410,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584187258086" />
-    <state x="616" y="235" width="672" height="677" key="run.anything.popup" timestamp="1584350721075">
+    <state x="616" y="235" width="672" height="677" key="run.anything.popup" timestamp="1585994486869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584350721075" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585430226002">
+    <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585994486869" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585994711453">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584795171686" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585430226002" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585994711453" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578410324788" />
   </component>
 </project>
