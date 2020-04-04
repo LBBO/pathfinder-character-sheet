@@ -11,6 +11,7 @@ export enum SizeCategory {
 export enum CharacterGender {
   MALE,
   FEMALE,
+  OTHER,
 }
 
 export type CharacterRace = string
@@ -22,7 +23,7 @@ export type CharacterMetaData = {
   alignment?: Alignment
   level?: number
   deity?: string
-  sizeCategory?: SizeCategory
+  sizeCategory: SizeCategory
   gender?: CharacterGender
   age?: number
   homeland?: string

@@ -5,15 +5,52 @@ import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions
 import PropTypes from 'prop-types'
 
 import './DisplayCharacterMetaData.scss'
-import { AlignmentInput } from '../AlignmentInput/AlignmentInput'
+import { CharacterGender, SizeCategory } from '../../store/CharacterMetaData/Character'
+import { MetadataSelect } from './MetadataSelect/MetadataSelect'
+import { Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
 
-const mapState = (state: RootState) => state.characterMetaData
+const GenderInputOptions = [
+  { label: undefined, value: undefined },
+  { label: 'Male', value: CharacterGender.MALE },
+  { label: 'Female', value: CharacterGender.FEMALE },
+  { label: 'Other', value: CharacterGender.OTHER },
+]
 
-const mapDispatchToProps = CharacterMetadataActions
+export enum GenderInputTestIds {
+  wrapper = 'gender-input-wrapper',
+  select = 'gender-input-select',
+}
 
-const connector = connect(mapState, mapDispatchToProps)
+const SizeCategoryInputOptions = [
+  { label: 'Small', value: SizeCategory.SMALL },
+  { label: 'Medium', value: SizeCategory.MEDIUM },
+  { label: 'large', value: SizeCategory.LARGE },
+]
 
-type Props = ConnectedProps<typeof connector>
+export enum SizeCategoryInputTestIds {
+  wrapper = 'size-category-input-wrapper',
+  select = 'size-category-input-select',
+}
+
+const AlignmentOptions = [
+  { label: undefined, value: undefined },
+  { label: 'LG', value: { ethics: Ethics.LAW, morality: Morality.GOOD } },
+  { label: 'LN', value: { ethics: Ethics.LAW, morality: Morality.NEUTRAL } },
+  { label: 'LB', value: { ethics: Ethics.LAW, morality: Morality.BAD } },
+
+  { label: 'NG', value: { ethics: Ethics.NEUTRAL, morality: Morality.GOOD } },
+  { label: 'N', value: { ethics: Ethics.NEUTRAL, morality: Morality.NEUTRAL } },
+  { label: 'NB', value: { ethics: Ethics.NEUTRAL, morality: Morality.BAD } },
+
+  { label: 'CG', value: { ethics: Ethics.CHAOS, morality: Morality.GOOD } },
+  { label: 'CN', value: { ethics: Ethics.CHAOS, morality: Morality.NEUTRAL } },
+  { label: 'CB', value: { ethics: Ethics.CHAOS, morality: Morality.BAD } },
+]
+
+export enum AlignmentInputTestIds {
+  wrapper = 'alignment-input-wrapper',
+  select = 'alignment-input-select',
+}
 
 const StringInputPropTypes = {
   value: PropTypes.string,
@@ -22,7 +59,7 @@ const StringInputPropTypes = {
   label: PropTypes.string,
 }
 
-const MetadataStringInput: React.FC<PropTypes.InferProps<typeof StringInputPropTypes>> = ({ value, onChange, id, label, }) => {
+const MetadataStringInput: React.FC<PropTypes.InferProps<typeof StringInputPropTypes>> = ({ value, onChange, id, label }) => {
   return <div className={`metadata-input-block ${id}`}>
     <input value={value ?? ''} onChange={onChange} id={id} />
     <label htmlFor={id}>{label}</label>
@@ -36,12 +73,20 @@ const NumberInputPropTypes = {
   label: PropTypes.string,
 }
 
-const MetadataNumberInput: React.FC<PropTypes.InferProps<typeof NumberInputPropTypes>> = ({ value, onChange, id, label, }) => {
+const MetadataNumberInput: React.FC<PropTypes.InferProps<typeof NumberInputPropTypes>> = ({ value, onChange, id, label }) => {
   return <div className={`metadata-input-block ${id}`}>
     <input value={value ?? undefined} onChange={onChange} id={id} type={'number'} />
     <label htmlFor={id}>{label}</label>
   </div>
 }
+
+const mapState = (state: RootState) => state.characterMetaData
+
+const mapDispatchToProps = CharacterMetadataActions
+
+const connector = connect(mapState, mapDispatchToProps)
+
+type Props = ConnectedProps<typeof connector>
 
 export const DisplayCharacterMetaData = connector(({
   characterName, setCharacterName,
@@ -58,6 +103,8 @@ export const DisplayCharacterMetaData = connector(({
   height, setCharacterHeight,
   weight, setCharacterWeight,
   alignment, setCharacterAlignment,
+  sizeCategory, setCharacterSizeCategory,
+  gender, setCharacterGender,
 }: Props) => {
   const callWithStringValue = useCallback(
     (callback: (value: string) => any) => useCallback(
@@ -86,11 +133,13 @@ export const DisplayCharacterMetaData = connector(({
         label={'Charakter Name'}
         onChange={callWithStringValue(setCharacterName)}
       />
-      <AlignmentInput
-        id={'alignment'}
-        value={alignment}
-        label={'Alignment'}
+      <MetadataSelect
         onChange={setCharacterAlignment}
+        options={AlignmentOptions}
+        id={'alignment'}
+        label={'Alignment'}
+        value={alignment}
+        testIds={AlignmentInputTestIds}
       />
       <MetadataStringInput
         id={'player-name'}
@@ -115,6 +164,22 @@ export const DisplayCharacterMetaData = connector(({
         value={deity}
         label={'Deity'}
         onChange={callWithStringValue(setCharacterDeity)}
+      />
+      <MetadataSelect
+        testIds={SizeCategoryInputTestIds}
+        onChange={setCharacterSizeCategory}
+        options={SizeCategoryInputOptions}
+        id={'size-category'}
+        value={sizeCategory}
+        label={'Size Category'}
+      />
+      <MetadataSelect
+        testIds={GenderInputTestIds}
+        onChange={setCharacterGender}
+        options={GenderInputOptions}
+        id={'gender'}
+        value={gender}
+        label={'Gender'}
       />
       <MetadataStringInput
         id={'campaign'}

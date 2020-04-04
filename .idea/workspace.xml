@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/GenderInput.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/SizeCategoryInput.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AlignmentInput/AlignmentInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput/AlignmentInput.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/AlignmentInput/AlignmentInput.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/GenderInput/GenderInput.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/GenderInput/GenderInput.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/MetadataSelect/MetadataSelect.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/MetadataSelect/MetadataSelect.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/SizeCategoryInput/SizeCategoryInput.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/SizeCategoryInput/SizeCategoryInput.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +26,8 @@
       <list>
         <option value="CSS File" />
         <option value="SCSS File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -43,7 +52,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/DisplayCharacterMetaData.tsx" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -51,22 +60,32 @@
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="D:\git-clones\GitHub\pathfinder-character-sheet\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="es6.move.members.recent.items">
-      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\GeneralCharacterProperties\Alignment.ts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\AlignmentInput" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplaySkills" />
       <recent name="C:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayAbilities" />
-      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData\DisplayCharacterMetaData.tsx" />
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\GeneralCharacterProperties\Alignment.ts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="start" />
+      <command value="All Tests" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Jest.All Tests">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -156,6 +175,8 @@
       <workItem from="1585156082809" duration="95000" />
       <workItem from="1585158543237" duration="101000" />
       <workItem from="1585382926846" duration="12336000" />
+      <workItem from="1585926294412" duration="824000" />
+      <workItem from="1585993243799" duration="16985000" />
     </task>
     <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
       <created>1583605547856</created>
@@ -234,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585384967089</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Create component for metadata select inputs">
+      <created>1586003566253</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1586003566253</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +298,8 @@
     <MESSAGE value="Run tests only on master and pull requests" />
     <MESSAGE value="Deploy to GitHub Pages when pushed to master" />
     <MESSAGE value="Add tests for skills reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add tests for skills reducer" />
+    <MESSAGE value="Create component for metadata select inputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create component for metadata select inputs" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -283,41 +312,45 @@
     </state>
     <state x="-1506" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584399621166" />
     <state x="414" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584640335564" />
-    <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578428248894">
+    <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586007520201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578428248894" />
-    <state x="44" y="0" width="1816" height="1029" key="CommitChangelistDialog2" timestamp="1585384966117">
+    <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586007520201" />
+    <state x="82" y="0" width="1816" height="1029" key="CommitChangelistDialog2" timestamp="1586003565772">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="44" y="0" width="1816" height="1029" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585384966117" />
+    <state x="82" y="0" width="1816" height="1029" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586003565772" />
     <state x="1060" y="100" width="760" height="840" key="DiffContextDialog" timestamp="1584351704856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1060" y="100" width="760" height="840" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584351704856" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1585431079542">
+    <state x="739" y="273" key="FileChooserDialogImpl" timestamp="1586003727596">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="273" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586003727596" />
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1586010126345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079542" />
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586010126345" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1585431079541">
+    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1586010126345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079541" />
+    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586010126345" />
     <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1585431079541">
+    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1586010126345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079541" />
+    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586010126345" />
     <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831821" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1585431079541">
+    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1586010126345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431079541" />
+    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586010126345" />
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578409831822" />
     <state width="1875" height="342" key="GridCell.Tab.1.bottom" timestamp="1584829804242">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -371,37 +404,41 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1232" y="229" key="RollbackChangesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584139694887" />
-    <state x="461" y="150" key="SettingsEditor" timestamp="1585431152352">
+    <state x="461" y="150" key="SettingsEditor" timestamp="1586009224582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1459" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584399747903" />
-    <state x="461" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585431152352" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1585430439613">
+    <state x="461" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586009224582" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1586006756142">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585430439613" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586006756142" />
     <state x="807" y="434" key="VCS.ChangelistChooser" timestamp="1578345270869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="807" y="434" key="VCS.ChangelistChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1578345270869" />
-    <state x="-1151" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584794798135">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="769" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586010149815">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1151" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584794798135" />
-    <state x="769" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1583603653292" />
+    <state x="769" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586010149815" />
     <state width="600" height="424" key="javadoc.popup" timestamp="1584187258086">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584187258086" />
-    <state x="616" y="235" width="672" height="677" key="run.anything.popup" timestamp="1584350721075">
+    <state x="701" y="149" key="refactoring.ChangeSignatureDialog" timestamp="1586006316489">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584350721075" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585430226002">
+    <state x="701" y="149" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586006316489" />
+    <state x="616" y="235" width="672" height="677" key="run.anything.popup" timestamp="1586010126287">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586010126287" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586010003149">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584795171686" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585430226002" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586010003149" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578410324788" />
   </component>
 </project>

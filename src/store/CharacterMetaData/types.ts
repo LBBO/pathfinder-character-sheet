@@ -50,7 +50,7 @@ type UpdateCharacterDeityTypeAction = {
 
 type UpdateCharacterSizeCategoryAction = {
   type: typeof UPDATE_CHARACTER_SIZE_CATEGORY
-  payload: SizeCategory | undefined
+  payload: SizeCategory
 }
 
 type UpdateCharacterGenderAction = {

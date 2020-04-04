@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "https://LBBO.github.io/pathfinder-character-sheet/",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.3.0",
+    "@testing-library/react": "^10.0.2",
+    "@testing-library/user-event": "^10.0.1",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
@@ -42,7 +42,9 @@
   },
   "devDependencies": {
     "@types/react-redux": "^7.1.5",
+    "@types/redux-mock-store": "^1.0.2",
     "node-sass": "^4.13.1",
-    "redux-devtools-extension": "latest"
+    "redux-devtools-extension": "latest",
+    "redux-mock-store": "^1.5.4"
   }
 }

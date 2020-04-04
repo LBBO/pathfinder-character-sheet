@@ -62,7 +62,7 @@ export const setCharacterDeity = (deity: string): UpdateCharacterMetaDataActionT
   }
 )
 
-export const setCharacterSizeCategory = (sizeCategory: SizeCategory | undefined): UpdateCharacterMetaDataActionTypes => (
+export const setCharacterSizeCategory = (sizeCategory: SizeCategory): UpdateCharacterMetaDataActionTypes => (
   {
     type: UPDATE_CHARACTER_SIZE_CATEGORY,
     payload: sizeCategory,
