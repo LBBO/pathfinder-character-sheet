@@ -1,20 +1,22 @@
 import { MetadataSelect, MetadataSelectTestIds } from './MetadataSelect'
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
-import { CharacterGender } from '../../../store/CharacterMetaData/Character'
 
 export const expectClickOnNthButtonToSetValue = (
   // This type is seemingly impossible to get other than having it inferred
-  selectElement = render(<></>),
-  onChangeSpy: jest.Mock,
+  wrapper = render(<></>),
+  onChangeSpy: jest.Mock | jest.SpyInstance,
   n: number,
-  expectedLabel: string,
-  expectedValue?: CharacterGender,
+  expectedValue?: any,
+  testId: string = MetadataSelectTestIds.select,
+  expectedLabel?: string,
 ) => {
-  const select = selectElement.getByTestId(MetadataSelectTestIds.select)
+  const select = wrapper.getByTestId(testId)
   const nthOption = select?.children.item(n)
   expect(nthOption).toBeDefined()
-  expect(nthOption?.getAttribute('label')).toBe(expectedLabel)
+  if (expectedLabel) {
+    expect(nthOption?.getAttribute('label')).toBe(expectedLabel)
+  }
 
   if (select) {
     fireEvent.change(select, {
@@ -64,7 +66,8 @@ describe('Gender input field', () => {
   describe('should call the onChange handler', () => {
     options.forEach(({ label, value }, index) => {
       it(`with ${value} when the option ${index} is clicked`, () => {
-        expectClickOnNthButtonToSetValue(genderInput, onChangeHandler, index, label, value)
+        expectClickOnNthButtonToSetValue(
+          genderInput, onChangeHandler, index, value, MetadataSelectTestIds.select, label)
       })
     })
   })
