@@ -11,6 +11,7 @@ export enum SizeCategory {
 export enum CharacterGender {
   MALE,
   FEMALE,
+  OTHER,
 }
 
 export type CharacterRace = string

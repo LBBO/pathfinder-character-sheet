@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import './DisplayCharacterMetaData.scss'
 import { AlignmentInput } from './AlignmentInput/AlignmentInput'
 import { SizeCategoryInput } from './SizeCategoryInput/SizeCategoryInput'
+import { GenderInput } from './GenderInput/GenderInput'
 
 const mapState = (state: RootState) => state.characterMetaData
 
@@ -23,7 +24,7 @@ const StringInputPropTypes = {
   label: PropTypes.string,
 }
 
-const MetadataStringInput: React.FC<PropTypes.InferProps<typeof StringInputPropTypes>> = ({ value, onChange, id, label, }) => {
+const MetadataStringInput: React.FC<PropTypes.InferProps<typeof StringInputPropTypes>> = ({ value, onChange, id, label }) => {
   return <div className={`metadata-input-block ${id}`}>
     <input value={value ?? ''} onChange={onChange} id={id} />
     <label htmlFor={id}>{label}</label>
@@ -37,7 +38,7 @@ const NumberInputPropTypes = {
   label: PropTypes.string,
 }
 
-const MetadataNumberInput: React.FC<PropTypes.InferProps<typeof NumberInputPropTypes>> = ({ value, onChange, id, label, }) => {
+const MetadataNumberInput: React.FC<PropTypes.InferProps<typeof NumberInputPropTypes>> = ({ value, onChange, id, label }) => {
   return <div className={`metadata-input-block ${id}`}>
     <input value={value ?? undefined} onChange={onChange} id={id} type={'number'} />
     <label htmlFor={id}>{label}</label>
@@ -60,6 +61,7 @@ export const DisplayCharacterMetaData = connector(({
   weight, setCharacterWeight,
   alignment, setCharacterAlignment,
   sizeCategory, setCharacterSizeCategory,
+  gender, setCharacterGender,
 }: Props) => {
   const callWithStringValue = useCallback(
     (callback: (value: string) => any) => useCallback(
@@ -123,6 +125,12 @@ export const DisplayCharacterMetaData = connector(({
         label={'Size Category'}
         onChange={setCharacterSizeCategory}
         value={sizeCategory}
+      />
+      <GenderInput
+        id={'gender'}
+        label={'Gender'}
+        onChange={setCharacterGender}
+        value={gender}
       />
       <MetadataStringInput
         id={'campaign'}
