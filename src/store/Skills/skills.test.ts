@@ -1,9 +1,12 @@
-import { Skill, SkillState } from './types'
-import { computeTotalSkillBonus, createInitialState, SkillsReducer } from './reducers'
+import { quickSkillDefinitions, Skill, SkillState } from './types'
+import { createInitialState, SkillsReducer } from './reducers'
 import { setAbilityScore } from '../Abilities/actions'
 import { setIsSkillClassSkill, setSkillMiscMod, setSkillRanks } from './actions'
 import { EmptyAction, RootReducer, RootState } from '../root-reducer'
 import { abilityName } from '../Abilities/types'
+import { computeTotalSkillBonus, getTotalSkillBonuses } from './selectors'
+import { setCharacterSizeCategory } from '../CharacterMetaData/actions'
+import { SizeCategory } from '../CharacterMetaData/Character'
 
 let initialRootState: RootState
 let initialState: SkillState
@@ -128,5 +131,38 @@ describe('SkillsReducer', () => {
         ranks: 1,
       },
     })
+  })
+})
+
+describe('total skill bonus selector', () => {
+  it('should update when an ability is changed', () => {
+    const oldTotalBonuses = getTotalSkillBonuses(initialRootState)
+    const action = setAbilityScore('dexterity', 14)
+    const newState = RootReducer(initialRootState, action)
+    const newTotalBonuses = getTotalSkillBonuses(newState)
+
+    expect(oldTotalBonuses).not.toBe(newTotalBonuses)
+    expect(quickSkillDefinitions.acrobatics.baseAbility).toBe('dexterity')
+    expect(newTotalBonuses.acrobatics).toBe(2)
+  })
+
+  it('should update when a skill is changed', () => {
+    initialRootState = RootReducer(initialRootState, setAbilityScore('dexterity', 10))
+    const oldTotalBonuses = getTotalSkillBonuses(initialRootState)
+    const action = setSkillRanks('acrobatics', 1)
+    const newState = RootReducer(initialRootState, action)
+    const newTotalBonuses = getTotalSkillBonuses(newState)
+
+    expect(oldTotalBonuses).not.toBe(newTotalBonuses)
+    expect(newTotalBonuses.acrobatics).toBe(1)
+  })
+
+  it('should not update something else is changed', () => {
+    const oldTotalBonuses = getTotalSkillBonuses(initialRootState)
+    const action = setCharacterSizeCategory(SizeCategory.SMALL)
+    const newState = RootReducer(initialRootState, action)
+    const newTotalBonuses = getTotalSkillBonuses(newState)
+
+    expect(oldTotalBonuses).toBe(newTotalBonuses)
   })
 })

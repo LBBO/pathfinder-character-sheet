@@ -7,7 +7,7 @@ import * as UpdateSkillsActions from '../../store/Skills/actions'
 import './DisplaySkills.scss'
 import { StyledCheckbox } from '../StyledCheckbox/StyledCheckbox'
 import { getAbilityModifiers } from '../../store/Abilities/selectors'
-import { getTotalSkillBonuses } from '../../store/Skills/reducers'
+import { getTotalSkillBonuses } from '../../store/Skills/selectors'
 
 const mapState = (state: RootState) => (
   {
