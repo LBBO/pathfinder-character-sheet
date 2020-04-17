@@ -3,7 +3,7 @@ import { applyNewModifiers, createInitialState, SkillsReducer, updateTotalSkillB
 import { AbilityModifiers, getAbilityModifiers } from '../Abilities/selectors'
 import { setAbilityScore } from '../Abilities/actions'
 import { setIsSkillClassSkill, setSkillMiscMod, setSkillRanks } from './actions'
-import { rootReducer, RootState } from '../root-reducer'
+import { RootReducer, RootState } from '../root-reducer'
 import { abilityName } from '../Abilities/types'
 
 let initialRootState: RootState
@@ -12,7 +12,7 @@ let initialState: SkillState
 const newModifierValue = 1
 
 const setup = () => {
-  initialRootState = rootReducer()
+  initialRootState = RootReducer()
   const abilityNames: abilityName[] = [
     'charisma',
     'constitution',
@@ -23,7 +23,7 @@ const setup = () => {
   ]
 
   abilityNames.forEach((abilityName) => {
-    initialRootState = rootReducer(
+    initialRootState = RootReducer(
       initialRootState,
       setAbilityScore(abilityName, 10 + newModifierValue * 2),
     )
@@ -83,7 +83,7 @@ describe('total skill bonus calculator', () => {
 })
 
 describe('createInitialState', () => {
-  const initialModifiers = getAbilityModifiers(rootReducer())
+  const initialModifiers = getAbilityModifiers(RootReducer())
 
   it('should always create the same state when called with initial modifiers', () => {
     expect(createInitialState(initialModifiers)).toMatchSnapshot()
@@ -137,7 +137,7 @@ describe('SkillsReducer', () => {
     const newAbilityMod = 14
     const changedAbilityName = 'charisma'
     const action = setAbilityScore(changedAbilityName, newAbilityMod)
-    const newModifiers = getAbilityModifiers(rootReducer(initialRootState, action))
+    const newModifiers = getAbilityModifiers(RootReducer(initialRootState, action))
 
     // compute new state after abilities changed
     const newSkillState = SkillsReducer(

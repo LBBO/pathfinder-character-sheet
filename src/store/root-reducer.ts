@@ -21,7 +21,7 @@ export type RootActionTypes =
   AbilitiesActionTypes |
   UpdateSkillActionTypes
 
-export const rootReducer = (state?: RootState, action?: RootActionTypes): RootState => {
+export const RootReducer = (state?: RootState, action?: RootActionTypes): RootState => {
   const characterMetaData = CharacterMetaDataReducer(state?.characterMetaData, action as UpdateCharacterMetaDataActionTypes)
   const abilities = AbilitiesReducer(state?.abilities, action as AbilitiesActionTypes)
   const abilityModifiers = getCurrentModifiersFromAbilities(abilities)
