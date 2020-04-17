@@ -4,9 +4,9 @@ import { SkillsReducer } from './Skills/reducers'
 import { CharacterMetaDataState, UpdateCharacterMetaDataActionTypes } from './CharacterMetaData/types'
 import { AbilitiesActionTypes, AbilityState } from './Abilities/types'
 import { SkillState, UpdateSkillActionTypes } from './Skills/types'
-import { getCurrentModifiersFromAbilities } from './Abilities/selectors'
 import { CombatValuesActionTypes, CombatValuesState } from './CombatValues/types'
 import { CombatValuesReducer } from './CombatValues/reducers'
+import { combineReducers } from 'redux'
 
 export type RootState = {
   characterMetaData: CharacterMetaDataState,
@@ -15,21 +15,32 @@ export type RootState = {
   combatValues: CombatValuesState,
 }
 
+export type EmptyActionType = { type: 'EMPTY_ACTION' }
+export const EmptyAction: EmptyActionType = {
+  type: 'EMPTY_ACTION',
+}
+
 export type RootActionTypes =
   CombatValuesActionTypes |
   UpdateCharacterMetaDataActionTypes |
   AbilitiesActionTypes |
-  UpdateSkillActionTypes
+  UpdateSkillActionTypes |
+  EmptyActionType
 
-export const RootReducer = (state?: RootState, action?: RootActionTypes): RootState => {
-  const characterMetaData = CharacterMetaDataReducer(state?.characterMetaData, action as UpdateCharacterMetaDataActionTypes)
-  const abilities = AbilitiesReducer(state?.abilities, action as AbilitiesActionTypes)
-  const abilityModifiers = getCurrentModifiersFromAbilities(abilities)
+// export const RootReducer = (state?: RootState, action?: RootActionTypes) => (
+//   {
+//     characterMetaData: CharacterMetaDataReducer(state?.characterMetaData, action),
+//     abilities: AbilitiesReducer(state?.abilities, action),
+//     skills: SkillsReducer(state?.skills, action),
+//     combatValues: CombatValuesReducer(state?.combatValues, action),
+//   }
+// )
 
-  return {
-    characterMetaData,
-    abilities,
-    skills: SkillsReducer(state?.skills, action as UpdateSkillActionTypes, abilityModifiers, abilities !== state?.abilities),
-    combatValues: CombatValuesReducer(state?.combatValues, action),
-  }
-}
+export const RootReducer = combineReducers<RootState, RootActionTypes>(
+  {
+    characterMetaData: CharacterMetaDataReducer,
+    abilities: AbilitiesReducer,
+    skills: SkillsReducer,
+    combatValues: CombatValuesReducer,
+  },
+)

@@ -1,7 +1,7 @@
 import { AbilitiesReducer, createDefaultAbility } from './reducers'
 import { setAbilityScore, setAbilityTempAdjustment } from './actions'
 import { getAbilityModifiers, getModifierFromScore } from './selectors'
-import { RootReducer, RootState } from '../root-reducer'
+import { EmptyAction, RootReducer, RootState } from '../root-reducer'
 
 const defaultAbility = { score: 10, temporaryAdjustment: 0 }
 
@@ -114,7 +114,7 @@ describe('getModifierFromScore', () => {
 })
 
 describe('map score and temp adjustment to modifier', () => {
-  const initialState = RootReducer()
+  const initialState = RootReducer(undefined, EmptyAction)
 
   it('should map the initial state to all 0s', () => {
     Object.values(getAbilityModifiers(initialState)).forEach(score => {

@@ -19,7 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="Add armor class values to reducer" />
+    <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="Rename RootReducer (capitalize first letter)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/createMockMetadataForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplayCharacterMetaData/createMockMetadataForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisplaySkills/DisplaySkills.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplaySkills/DisplaySkills.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Abilities/abilities.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Abilities/abilities.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Abilities/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Abilities/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Skills/__snapshots__/skills.test.ts.snap" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Skills/__snapshots__/skills.test.ts.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Skills/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Skills/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Skills/skills.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Skills/skills.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/Skills/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Skills/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/root-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/root-reducer.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +101,7 @@
       <command value="All Tests" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.All Tests">
+  <component name="RunManager" selected="npm.start">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -171,7 +184,7 @@
       <workItem from="1586280365847" duration="1978000" />
       <workItem from="1587135890841" duration="908000" />
       <workItem from="1587136809672" duration="8854000" />
-      <workItem from="1587145690341" duration="2301000" />
+      <workItem from="1587145690341" duration="8270000" />
     </task>
     <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
       <created>1583605547856</created>
@@ -334,11 +347,28 @@
       <option name="project" value="LOCAL" />
       <updated>1587147816450</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Rename RootReducer (capitalize first letter)">
+      <created>1587148251093</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1587148251093</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -380,7 +410,8 @@
     <MESSAGE value="Add armor class values to reducer" />
     <MESSAGE value="Add selector for ability modifiers from RootState" />
     <MESSAGE value="Start using new selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start using new selector" />
+    <MESSAGE value="Rename RootReducer (capitalize first letter)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename RootReducer (capitalize first letter)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -401,34 +432,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="82" y="0" width="1816" height="1029" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586280437397" />
-    <state x="1060" y="100" width="760" height="840" key="DiffContextDialog" timestamp="1584351704856">
+    <state x="654" y="-14" width="760" height="840" maximized="true" key="DiffContextDialog" timestamp="1587151020826">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1060" y="100" width="760" height="840" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584351704856" />
+    <state x="654" y="-14" width="760" height="840" maximized="true" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587151020826" />
     <state x="739" y="273" key="FileChooserDialogImpl" timestamp="1586003727596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="273" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586003727596" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1587147707029">
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1587154472288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587147707029" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1587147707028">
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587154472288" />
+    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1587154472288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587147707028" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1587147707028">
+    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587154472288" />
+    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1587154472288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587147707028" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1587147707029">
+    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587154472288" />
+    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1587154472288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587147707029" />
+    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587154472288" />
     <state width="1875" height="342" key="GridCell.Tab.1.bottom" timestamp="1584829804242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -486,10 +517,10 @@
     </state>
     <state x="-1459" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584399747903" />
     <state x="461" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587136799257" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1587144588080">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1587153944935">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587144588080" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587153944935" />
     <state x="841" y="363" key="cloudConfig.SelfSettingsDialog" timestamp="1587145467555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -511,10 +542,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587138771583" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587147890695">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587155072334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584795171686" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587147890695" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587155072334" />
   </component>
 </project>

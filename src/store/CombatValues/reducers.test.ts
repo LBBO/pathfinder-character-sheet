@@ -1,4 +1,4 @@
-import { RootReducer, RootState } from '../root-reducer'
+import { EmptyAction, RootReducer, RootState } from '../root-reducer'
 import { setAbilityScore } from '../Abilities/actions'
 import { getAbilityModifiers } from '../Abilities/selectors'
 import { armorClassReducer, CombatValuesReducer, initiativeReducer } from './reducers'
@@ -25,7 +25,7 @@ describe('initiativeReducer', () => {
   let rootState: RootState
 
   beforeEach(() => {
-    rootState = RootReducer()
+    rootState = RootReducer(undefined, EmptyAction)
   })
 
   it('should return the sum of misc initiative mod and dexterity mod', () => {
@@ -41,7 +41,7 @@ describe('armorClassReducer', () => {
   let rootState: RootState
 
   beforeEach(() => {
-    rootState = RootReducer()
+    rootState = RootReducer(undefined, EmptyAction)
   })
 
   it('should return 10 when all values are at 0', () => {

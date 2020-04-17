@@ -1,18 +1,16 @@
-import { quickSkillDefinitions, Skill, SkillState } from './types'
-import { applyNewModifiers, createInitialState, SkillsReducer, updateTotalSkillBonus } from './reducers'
-import { AbilityModifiers, getAbilityModifiers } from '../Abilities/selectors'
+import { Skill, SkillState } from './types'
+import { computeTotalSkillBonus, createInitialState, SkillsReducer } from './reducers'
 import { setAbilityScore } from '../Abilities/actions'
 import { setIsSkillClassSkill, setSkillMiscMod, setSkillRanks } from './actions'
-import { RootReducer, RootState } from '../root-reducer'
+import { EmptyAction, RootReducer, RootState } from '../root-reducer'
 import { abilityName } from '../Abilities/types'
 
 let initialRootState: RootState
-let initialAbilityModifiers: AbilityModifiers
 let initialState: SkillState
 const newModifierValue = 1
 
 const setup = () => {
-  initialRootState = RootReducer()
+  initialRootState = RootReducer(undefined, EmptyAction)
   const abilityNames: abilityName[] = [
     'charisma',
     'constitution',
@@ -29,9 +27,7 @@ const setup = () => {
     )
   })
 
-  initialAbilityModifiers = getAbilityModifiers(initialRootState)
-
-  initialState = createInitialState(initialAbilityModifiers)
+  initialState = createInitialState()
 }
 
 beforeEach(setup)
@@ -39,6 +35,7 @@ setup()
 
 describe('total skill bonus calculator', () => {
   let skill: Skill
+  let abilityModifier: number
 
   beforeEach(() => {
     skill = {
@@ -46,180 +43,89 @@ describe('total skill bonus calculator', () => {
       name: 'acrobatics',
       miscModifier: 0,
       ranks: 0,
-      abilityModifier: 0,
-      totalBonus: NaN,
     }
+    abilityModifier = 0
   })
 
   it('should return 0 when every modifier is 0', () => {
-    updateTotalSkillBonus(skill)
-    expect(skill.totalBonus).toBe(0)
+    expect(computeTotalSkillBonus(skill, abilityModifier)).toBe(0)
   })
 
   it('should include ability mod, ranks and misc mod in calculation', () => {
     skill.ranks = 1
-    skill.abilityModifier = 3
+    abilityModifier = 3
     skill.miscModifier = -2
 
-    updateTotalSkillBonus(skill)
-
-    expect(skill.totalBonus).toBe(2)
+    expect(computeTotalSkillBonus(skill, abilityModifier)).toBe(2)
   })
 
   it('should add a bonus of 3 if a class skill has at least one rank', () => {
     skill.isClassSkill = true
     skill.ranks = 0
-    updateTotalSkillBonus(skill)
 
-    expect(skill.totalBonus).toBe(0)
+    expect(computeTotalSkillBonus(skill, abilityModifier)).toBe(0)
 
     skill.ranks = 1
 
-    updateTotalSkillBonus(skill)
-
     // ranks + bonus for class skill = 4
-    expect(skill.totalBonus).toBe(4)
+    expect(computeTotalSkillBonus(skill, abilityModifier)).toBe(4)
   })
 })
 
 describe('createInitialState', () => {
-  const initialModifiers = getAbilityModifiers(RootReducer())
-
   it('should always create the same state when called with initial modifiers', () => {
-    expect(createInitialState(initialModifiers)).toMatchSnapshot()
-  })
-
-  it('should consider different modifiers', () => {
-    initialModifiers.strength = 2
-    initialModifiers.intelligence = -1
-
-    const initialState = createInitialState((
-      initialModifiers
-    ))
-
-    expect(initialState.climb.abilityModifier).toBe(2)
-    expect(initialState.climb.totalBonus).toBe(2)
-    expect(initialState.knowledgeArcana.abilityModifier).toBe(-1)
-    expect(initialState.knowledgeArcana.totalBonus).toBe(-1)
-  })
-})
-
-describe('applyNewModifiers', () => {
-  it('should set every skills ability modifier', () => {
-    const newState = applyNewModifiers(initialState, initialAbilityModifiers)
-
-    Object.values(newState).forEach(skill => {
-      expect(skill.abilityModifier).toBe(newModifierValue)
-    })
-  })
-
-  it('should set every total bonus', () => {
-    const newState = applyNewModifiers(initialState, initialAbilityModifiers)
-
-    Object.values(newState).forEach(skill => {
-      expect(skill.totalBonus).toBe(newModifierValue)
-    })
+    expect(createInitialState()).toMatchSnapshot()
   })
 })
 
 describe('SkillsReducer', () => {
   it('should return the correct initial state', () => {
-    expect(SkillsReducer(
-      undefined,
-      undefined,
-      initialAbilityModifiers,
-      undefined,
-    )).toMatchObject(initialState)
-  })
-
-  describe('when charisma was changed', () => {
-    // compute changed ability mods
-    const newAbilityMod = 14
-    const changedAbilityName = 'charisma'
-    const action = setAbilityScore(changedAbilityName, newAbilityMod)
-    const newModifiers = getAbilityModifiers(RootReducer(initialRootState, action))
-
-    // compute new state after abilities changed
-    const newSkillState = SkillsReducer(
-      initialState,
-      // @ts-ignore TS wouldn't allow to call reducer with unsupported action
-      action,
-      newModifiers,
-      true,
-    )
-
-    type SkillDefinition = typeof quickSkillDefinitions[keyof typeof quickSkillDefinitions]
-    (
-      Object.entries(quickSkillDefinitions) as Array<[keyof typeof quickSkillDefinitions, SkillDefinition]>
-    )
-      .forEach(([skillName, skillDefinition]) => {
-        // if skill is based on charisma, it should have a new ability mod and total bonus
-        if (skillDefinition.baseAbility === changedAbilityName) {
-          it(`should have updated ${skillName}`, () => {
-            const skill = newSkillState[skillName]
-            expect(skill.abilityModifier).toBe(newModifiers[changedAbilityName])
-            expect(skill.totalBonus).toBe(newModifiers[changedAbilityName])
-          })
-        } else {
-          // if skill is not based on charisma, it should be the same as before
-          it(`should not have changed ${skillName}`, () => {
-            expect(newSkillState[skillName]).toMatchObject(initialState[skillName])
-          })
-        }
-      })
+    expect(SkillsReducer()).toMatchObject(initialState)
   })
 
   it('should update a skill correctly when a misc mod is changed', () => {
     const action = setSkillMiscMod('acrobatics', 2)
-    const newState = SkillsReducer(initialState, action, initialAbilityModifiers)
+    const newState = SkillsReducer(initialState, action)
     expect(newState).toMatchObject({
       ...initialState,
       acrobatics: {
         ...initialState.acrobatics,
         miscModifier: 2,
-        // ability modifier of initialState is 1
-        totalBonus: 3,
       },
     })
   })
 
   it('should update a skill correctly when its ranks are changed', () => {
     const action = setSkillRanks('acrobatics', 2)
-    const newState = SkillsReducer(initialState, action, initialAbilityModifiers)
+    const newState = SkillsReducer(initialState, action)
     expect(newState).toMatchObject({
       ...initialState,
       acrobatics: {
         ...initialState.acrobatics,
         ranks: 2,
-        // ability modifier of initialState is 1
-        totalBonus: 3,
       },
     })
   })
 
   it('should update a skill correctly when its class skill flag is changed', () => {
     const setClassSkillAction = setIsSkillClassSkill('acrobatics', true)
-    const stateWithClassSkill = SkillsReducer(initialState, setClassSkillAction, initialAbilityModifiers)
+    const stateWithClassSkill = SkillsReducer(initialState, setClassSkillAction)
     expect(stateWithClassSkill).toMatchObject({
       ...initialState,
       acrobatics: {
         ...initialState.acrobatics,
         isClassSkill: true,
-        // ability modifier of initialState is 1
-        totalBonus: 1,
       },
     })
 
     const setRanksAction = setSkillRanks('acrobatics', 1)
-    const stateWithRank = SkillsReducer(stateWithClassSkill, setRanksAction, initialAbilityModifiers)
+    const stateWithRank = SkillsReducer(stateWithClassSkill, setRanksAction)
     expect(stateWithRank).toMatchObject({
       ...initialState,
       acrobatics: {
         ...initialState.acrobatics,
         isClassSkill: true,
         ranks: 1,
-        // ability modifier of initialState is 1
-        totalBonus: 5,
       },
     })
   })

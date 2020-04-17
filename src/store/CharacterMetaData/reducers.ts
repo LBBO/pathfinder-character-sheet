@@ -1,5 +1,6 @@
-import { CharacterMetaDataState, UpdateCharacterMetaDataActionTypes } from './types'
+import { CharacterMetaDataState } from './types'
 import { SizeCategory } from './Character'
+import { RootActionTypes } from '../root-reducer'
 
 const initialState: CharacterMetaDataState = {
   level: 0,
@@ -21,7 +22,7 @@ export const getSizeModifier = (characterMetadataState: CharacterMetaDataState) 
 }
 
 export const CharacterMetaDataReducer = (
-  state = initialState, action?: UpdateCharacterMetaDataActionTypes): CharacterMetaDataState => {
+  state = initialState, action?: RootActionTypes): CharacterMetaDataState => {
   switch (action?.type) {
     case 'UPDATE_CHARACTER_NAME':
       return {

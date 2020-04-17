@@ -6,10 +6,14 @@ import * as UpdateSkillsActions from '../../store/Skills/actions'
 
 import './DisplaySkills.scss'
 import { StyledCheckbox } from '../StyledCheckbox/StyledCheckbox'
+import { getAbilityModifiers } from '../../store/Abilities/selectors'
+import { getTotalSkillBonuses } from '../../store/Skills/reducers'
 
 const mapState = (state: RootState) => (
   {
     skills: state.skills,
+    abilityModifiers: getAbilityModifiers(state),
+    totalSkillBonuses: getTotalSkillBonuses(state),
   }
 )
 
@@ -25,6 +29,8 @@ export const DisplaySkills = connector((
     setIsSkillClassSkill,
     setSkillMiscMod,
     setSkillRanks,
+    abilityModifiers,
+    totalSkillBonuses,
   }: Props,
 ) => {
   const onSkillRanksChange = (skillName: SkillName) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -67,9 +73,9 @@ export const DisplaySkills = connector((
                 {/*<input onChange={() => setIsSkillClassSkill(skillName, !skill.isClassSkill)} />*/}
               </td>
               <td>{skillName}{isTrainedOnly ? '*' : ''}</td>
-              <td>{skill.totalBonus}</td>
+              <td>{totalSkillBonuses[skillName]}</td>
               <td>={abilityName}</td>
-              <td>{skill.abilityModifier}</td>
+              <td>{abilityModifiers[abilityName]}</td>
               <td>+</td>
               <td>
                 <input
