@@ -1,5 +1,4 @@
 import {
-  CombatValuesActionTypes,
   CombatValuesState,
   SET_ARMOR_BONUS,
   SET_BASE_ATTACK_BONUS,
@@ -19,6 +18,7 @@ import { AbilityModifiers } from '../Abilities/selectors'
 import { getInitialCombatValuesState } from './initialState'
 import { CharacterMetaDataState } from '../CharacterMetaData/types'
 import { getSizeModifier } from '../CharacterMetaData/reducers'
+import { RootActionTypes } from '../root-reducer'
 
 export const initiativeReducer = (state: CombatValuesState, abilityModifiers: AbilityModifiers) =>
   state.initiative.miscModifier + abilityModifiers.dexterity
@@ -34,7 +34,7 @@ export const armorClassReducer = (
 
 export const CombatValuesReducer = (
   state = getInitialCombatValuesState(),
-  action?: CombatValuesActionTypes,
+  action?: RootActionTypes,
 ): CombatValuesState => {
   // Handle actions that change saving throws
   if (
