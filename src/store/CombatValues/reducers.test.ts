@@ -5,11 +5,17 @@ import { armorClassReducer, CombatValuesReducer, initiativeReducer } from './red
 import { SizeCategory } from '../CharacterMetaData/Character'
 import { getInitialCombatValuesState } from './initialState'
 import {
+  setArmorBonus,
   setBaseAttackBonus,
   setBaseSave,
+  setDeflectionModifier,
   setInitiativeMiscModifier,
+  setMiscArmorModifier,
   setMiscSavingThrowModifier,
+  setNaturalArmor,
+  setOtherArmorModifiers,
   setSavingThrowMagicModifier,
+  setShieldBonus,
   setSpellResistance,
   setTemporarySavingThrowModifier,
 } from './actions'
@@ -111,5 +117,50 @@ describe('attack bonuses', () => {
     const action = setSpellResistance(2)
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.attackBonuses.spellResistance).toBe(2)
+  })
+})
+
+describe('armorClass', () => {
+  it('should set the shield bonus correctly', () => {
+    expect(getInitialCombatValuesState().armorClass.shieldBonus).toBe(0)
+    const action = setShieldBonus(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.armorClass.shieldBonus).toBe(2)
+  })
+
+  it('should set the armor bonus correctly', () => {
+    expect(getInitialCombatValuesState().armorClass.armorBonus).toBe(0)
+    const action = setArmorBonus(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.armorClass.armorBonus).toBe(2)
+  })
+
+  it('should set the deflection modifier correctly', () => {
+    expect(getInitialCombatValuesState().armorClass.deflectionModifier).toBe(0)
+    const action = setDeflectionModifier(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.armorClass.deflectionModifier).toBe(2)
+  })
+
+  it('should set the misc modifier correctly', () => {
+    expect(getInitialCombatValuesState().armorClass.miscModifier).toBe(0)
+    const action = setMiscArmorModifier(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.armorClass.miscModifier).toBe(2)
+  })
+
+  it('should set the natural armor correctly', () => {
+    expect(getInitialCombatValuesState().armorClass.naturalArmor).toBe(0)
+    const action = setNaturalArmor(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.armorClass.naturalArmor).toBe(2)
+  })
+
+  it('should set the other modifiers correctly', () => {
+    expect(getInitialCombatValuesState().armorClass.otherModifiers).toBe('')
+    const otherArmorModifiers = 'other armor modifiers'
+    const action = setOtherArmorModifiers(otherArmorModifiers)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.armorClass.otherModifiers).toBe(otherArmorModifiers)
   })
 })

@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="Set initiative via reducer">
+    <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="Add attack bonuses to reducer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/CombatValues/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" afterDir="false" />
@@ -175,7 +175,7 @@
       <workItem from="1585993243799" duration="16985000" />
       <workItem from="1586280365847" duration="1978000" />
       <workItem from="1587135890841" duration="908000" />
-      <workItem from="1587136809672" duration="7157000" />
+      <workItem from="1587136809672" duration="8128000" />
     </task>
     <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
       <created>1583605547856</created>
@@ -310,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587143467305</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Add attack bonuses to reducer">
+      <created>1587144058243</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1587144058243</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +359,8 @@
     <MESSAGE value="Add combat values to root state" />
     <MESSAGE value="Add saving throw actions to reducer" />
     <MESSAGE value="Set initiative via reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set initiative via reducer" />
+    <MESSAGE value="Add attack bonuses to reducer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add attack bonuses to reducer" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -454,10 +462,10 @@
     </state>
     <state x="-1459" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584399747903" />
     <state x="461" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587136799257" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1587143947018">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1587144588080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587143947018" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587144588080" />
     <state x="769" y="435" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586010149815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

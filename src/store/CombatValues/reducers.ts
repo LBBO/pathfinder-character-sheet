@@ -1,11 +1,17 @@
 import {
   CombatValuesActionTypes,
   CombatValuesState,
+  SET_ARMOR_BONUS,
   SET_BASE_ATTACK_BONUS,
   SET_BASE_SAVE,
+  SET_DEFLECTION_MODIFIER,
   SET_INITIATIVE_MISC_MODIFIER,
+  SET_MISC_ARMOR_MODIFIER,
   SET_MISC_SAVING_THROW_MODIFIER,
+  SET_NATURAL_ARMOR,
+  SET_OTHER_ARMOR_MODIFIERS,
   SET_SAVING_THROW_MAGIC_MODIFIER,
+  SET_SHIELD_BONUS,
   SET_SPELL_RESISTANCE,
   SET_TEMPORARY_SAVING_THROW_MODIFIER,
 } from './types'
@@ -65,6 +71,7 @@ export const CombatValuesReducer = (
 
     return stateCopy
   }
+
   switch (action?.type) {
     case SET_INITIATIVE_MISC_MODIFIER:
       return {
@@ -91,6 +98,61 @@ export const CombatValuesReducer = (
           spellResistance: action?.payload,
         },
       }
+
+    case SET_SHIELD_BONUS:
+      return {
+        ...state,
+        armorClass: {
+          ...state.armorClass,
+          shieldBonus: action?.payload,
+        },
+      }
+
+    case SET_ARMOR_BONUS:
+      return {
+        ...state,
+        armorClass: {
+          ...state.armorClass,
+          armorBonus: action?.payload,
+        },
+      }
+
+    case SET_DEFLECTION_MODIFIER:
+      return {
+        ...state,
+        armorClass: {
+          ...state.armorClass,
+          deflectionModifier: action?.payload,
+        },
+      }
+
+    case SET_MISC_ARMOR_MODIFIER:
+      return {
+        ...state,
+        armorClass: {
+          ...state.armorClass,
+          miscModifier: action?.payload,
+        },
+      }
+
+    case SET_NATURAL_ARMOR:
+      return {
+        ...state,
+        armorClass: {
+          ...state.armorClass,
+          naturalArmor: action?.payload,
+        },
+      }
+
+    case SET_OTHER_ARMOR_MODIFIERS:
+      return {
+        ...state,
+        armorClass: {
+          ...state.armorClass,
+          otherModifiers: action?.payload,
+        },
+      }
+
     default:
       return state
   }
