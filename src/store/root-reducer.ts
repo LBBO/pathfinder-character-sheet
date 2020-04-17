@@ -6,7 +6,7 @@ import { AbilitiesActionTypes, AbilityState } from './Abilities/types'
 import { SkillState, UpdateSkillActionTypes } from './Skills/types'
 import { Action } from 'redux'
 import { getCurrentModifiersFromAbilities } from './Abilities/selectors'
-import { CombatValuesState } from './CombatValues/types'
+import { CombatValuesActionTypes, CombatValuesState } from './CombatValues/types'
 import { CombatValuesReducer } from './CombatValues/reducers'
 
 export type RootState = {
@@ -16,7 +16,11 @@ export type RootState = {
   combatValues: CombatValuesState,
 }
 
-export type RootActionTypes = UpdateCharacterMetaDataActionTypes | AbilitiesActionTypes | UpdateSkillActionTypes
+export type RootActionTypes =
+  CombatValuesActionTypes |
+  UpdateCharacterMetaDataActionTypes |
+  AbilitiesActionTypes |
+  UpdateSkillActionTypes
 
 export const rootReducer = (state?: RootState, action?: Action): RootState => {
   const characterMetaData = CharacterMetaDataReducer(state?.characterMetaData, action as UpdateCharacterMetaDataActionTypes)
