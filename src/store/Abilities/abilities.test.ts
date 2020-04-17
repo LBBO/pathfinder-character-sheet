@@ -1,7 +1,7 @@
 import { AbilitiesReducer, createDefaultAbility } from './reducers'
 import { setAbilityScore, setAbilityTempAdjustment } from './actions'
-import { getCurrentModifiersFromAbilities, getModifierFromScore } from './selectors'
-import { AbilityState } from './types'
+import { getAbilityModifiers, getModifierFromScore } from './selectors'
+import { rootReducer, RootState } from '../root-reducer'
 
 const defaultAbility = { score: 10, temporaryAdjustment: 0 }
 
@@ -114,36 +114,39 @@ describe('getModifierFromScore', () => {
 })
 
 describe('map score and temp adjustment to modifier', () => {
-  const initialState = AbilitiesReducer()
+  const initialState = rootReducer()
 
   it('should map the initial state to all 0s', () => {
-    Object.values(getCurrentModifiersFromAbilities(initialState)).forEach(score => {
+    Object.values(getAbilityModifiers(initialState)).forEach(score => {
       expect(score).toBe(0)
     })
   })
 
   it('should return the correct modifiers for example scores', () => {
-    const state: AbilityState = {
+    const state: RootState = {
       ...initialState,
-      charisma: {
-        score: 7,
-        temporaryAdjustment: 3,
-      },
-      constitution: {
-        score: 10,
-        temporaryAdjustment: 3,
-      },
-      dexterity: {
-        score: 12,
-        temporaryAdjustment: 0,
-      },
-      intelligence: {
-        score: 8,
-        temporaryAdjustment: -2,
-      },
+      abilities: {
+        ...initialState.abilities,
+        charisma: {
+          score: 7,
+          temporaryAdjustment: 3,
+        },
+        constitution: {
+          score: 10,
+          temporaryAdjustment: 3,
+        },
+        dexterity: {
+          score: 12,
+          temporaryAdjustment: 0,
+        },
+        intelligence: {
+          score: 8,
+          temporaryAdjustment: -2,
+        },
+      }
     }
 
-    const modifiers = getCurrentModifiersFromAbilities(state)
+    const modifiers = getAbilityModifiers(state)
 
     expect(modifiers).toMatchObject({
       charisma: 0,
