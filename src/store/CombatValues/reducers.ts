@@ -1,10 +1,12 @@
 import {
   CombatValuesActionTypes,
   CombatValuesState,
+  SET_BASE_ATTACK_BONUS,
   SET_BASE_SAVE,
   SET_INITIATIVE_MISC_MODIFIER,
   SET_MISC_SAVING_THROW_MODIFIER,
   SET_SAVING_THROW_MAGIC_MODIFIER,
+  SET_SPELL_RESISTANCE,
   SET_TEMPORARY_SAVING_THROW_MODIFIER,
 } from './types'
 import { AbilityModifiers } from '../Abilities/selectors'
@@ -69,6 +71,24 @@ export const CombatValuesReducer = (
         ...state,
         initiative: {
           miscModifier: action?.payload,
+        },
+      }
+
+    case SET_BASE_ATTACK_BONUS:
+      return {
+        ...state,
+        attackBonuses: {
+          ...state.attackBonuses,
+          baseAttackBonus: action?.payload,
+        },
+      }
+
+    case SET_SPELL_RESISTANCE:
+      return {
+        ...state,
+        attackBonuses: {
+          ...state.attackBonuses,
+          spellResistance: action?.payload,
         },
       }
     default:

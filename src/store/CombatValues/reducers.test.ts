@@ -5,10 +5,12 @@ import { armorClassReducer, CombatValuesReducer, initiativeReducer } from './red
 import { SizeCategory } from '../CharacterMetaData/Character'
 import { getInitialCombatValuesState } from './initialState'
 import {
+  setBaseAttackBonus,
   setBaseSave,
   setInitiativeMiscModifier,
   setMiscSavingThrowModifier,
   setSavingThrowMagicModifier,
+  setSpellResistance,
   setTemporarySavingThrowModifier,
 } from './actions'
 
@@ -93,5 +95,21 @@ describe('initiative misc modifier', () => {
     const action = setInitiativeMiscModifier(2)
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.initiative.miscModifier).toBe(2)
+  })
+})
+
+describe('attack bonuses', () => {
+  it('should set the base attack bonus correctly', () => {
+    expect(getInitialCombatValuesState().attackBonuses.baseAttackBonus).toBe(0)
+    const action = setBaseAttackBonus(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.attackBonuses.baseAttackBonus).toBe(2)
+  })
+
+  it('should set the spell resistance bonus correctly', () => {
+    expect(getInitialCombatValuesState().attackBonuses.spellResistance).toBe(0)
+    const action = setSpellResistance(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.attackBonuses.spellResistance).toBe(2)
   })
 })
