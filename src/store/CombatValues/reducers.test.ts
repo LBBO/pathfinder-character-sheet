@@ -1,6 +1,6 @@
 import { rootReducer, RootState } from '../root-reducer'
 import { setAbilityScore } from '../Abilities/actions'
-import { getCurrentModifiersFromAbilities } from '../Abilities/selectors'
+import { getAbilityModifiers } from '../Abilities/selectors'
 import { armorClassReducer, CombatValuesReducer, initiativeReducer } from './reducers'
 import { SizeCategory } from '../CharacterMetaData/Character'
 import { getInitialCombatValuesState } from './initialState'
@@ -19,6 +19,7 @@ import {
   setSpellResistance,
   setTemporarySavingThrowModifier,
 } from './actions'
+import { setCharacterSizeCategory } from '../CharacterMetaData/actions'
 
 describe('initiativeReducer', () => {
   let rootState: RootState
@@ -29,7 +30,7 @@ describe('initiativeReducer', () => {
 
   it('should return the sum of misc initiative mod and dexterity mod', () => {
     rootState = rootReducer(rootState, setAbilityScore('dexterity', 14))
-    const abilityModifiers = getCurrentModifiersFromAbilities(rootState.abilities)
+    const abilityModifiers = getAbilityModifiers(rootState)
     rootState.combatValues.initiative.miscModifier = -1
 
     expect(initiativeReducer(rootState.combatValues, abilityModifiers)).toBe(1)
@@ -44,21 +45,21 @@ describe('armorClassReducer', () => {
   })
 
   it('should return 10 when all values are at 0', () => {
-    const abilityModifiers = getCurrentModifiersFromAbilities(rootState.abilities)
+    const abilityModifiers = getAbilityModifiers(rootState)
     expect(armorClassReducer(rootState.combatValues, abilityModifiers, rootState.characterMetaData)).toBe(10)
   })
 
   it('should return the sum of all values plus 10', () => {
-    rootState.combatValues.armorClass.armorBonus = 1
-    rootState.combatValues.armorClass.shieldBonus = 1
-    rootState.combatValues.armorClass.naturalArmor = 1
-    rootState.combatValues.armorClass.deflectionModifier = 1
-    rootState.combatValues.armorClass.miscModifier = 1
+    rootState = rootReducer(rootState, setArmorBonus(1))
+    rootState = rootReducer(rootState, setShieldBonus(1))
+    rootState = rootReducer(rootState, setNaturalArmor(1))
+    rootState = rootReducer(rootState, setDeflectionModifier(1))
+    rootState = rootReducer(rootState, setMiscArmorModifier(1))
     // Evaluates to dex mod of +1
-    rootState.abilities.dexterity.score = 12
+    rootState = rootReducer(rootState, setAbilityScore('dexterity', 12))
     // Evaluates to size mod of +1
-    rootState.characterMetaData.sizeCategory = SizeCategory.SMALL
-    const abilityMods = getCurrentModifiersFromAbilities(rootState.abilities)
+    rootState = rootReducer(rootState, setCharacterSizeCategory(SizeCategory.SMALL))
+    const abilityMods = getAbilityModifiers(rootState)
 
     expect(armorClassReducer(rootState.combatValues, abilityMods, rootState.characterMetaData))
       .toBe(17)

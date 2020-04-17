@@ -1,17 +1,18 @@
 import { quickSkillDefinitions, Skill, SkillState } from './types'
 import { applyNewModifiers, createInitialState, SkillsReducer, updateTotalSkillBonus } from './reducers'
-import { AbilityModifiers, getCurrentModifiersFromAbilities } from '../Abilities/selectors'
-import { AbilitiesReducer } from '../Abilities/reducers'
+import { AbilityModifiers, getAbilityModifiers } from '../Abilities/selectors'
 import { setAbilityScore } from '../Abilities/actions'
-import { abilityName, AbilityState } from '../Abilities/types'
 import { setIsSkillClassSkill, setSkillMiscMod, setSkillRanks } from './actions'
+import { rootReducer, RootState } from '../root-reducer'
+import { abilityName } from '../Abilities/types'
 
-let initialAbilities: AbilityState
+let initialRootState: RootState
 let initialAbilityModifiers: AbilityModifiers
 let initialState: SkillState
 const newModifierValue = 1
 
 const setup = () => {
+  initialRootState = rootReducer()
   const abilityNames: abilityName[] = [
     'charisma',
     'constitution',
@@ -22,13 +23,13 @@ const setup = () => {
   ]
 
   abilityNames.forEach((abilityName) => {
-    initialAbilities = AbilitiesReducer(
-      initialAbilities,
+    initialRootState = rootReducer(
+      initialRootState,
       setAbilityScore(abilityName, 10 + newModifierValue * 2),
     )
   })
 
-  initialAbilityModifiers = getCurrentModifiersFromAbilities(initialAbilities)
+  initialAbilityModifiers = getAbilityModifiers(initialRootState)
 
   initialState = createInitialState(initialAbilityModifiers)
 }
@@ -82,7 +83,7 @@ describe('total skill bonus calculator', () => {
 })
 
 describe('createInitialState', () => {
-  const initialModifiers = getCurrentModifiersFromAbilities(AbilitiesReducer())
+  const initialModifiers = getAbilityModifiers(rootReducer())
 
   it('should always create the same state when called with initial modifiers', () => {
     expect(createInitialState(initialModifiers)).toMatchSnapshot()
@@ -136,7 +137,7 @@ describe('SkillsReducer', () => {
     const newAbilityMod = 14
     const changedAbilityName = 'charisma'
     const action = setAbilityScore(changedAbilityName, newAbilityMod)
-    const newModifiers = getCurrentModifiersFromAbilities(AbilitiesReducer(initialAbilities, action))
+    const newModifiers = getAbilityModifiers(rootReducer(initialRootState, action))
 
     // compute new state after abilities changed
     const newSkillState = SkillsReducer(
