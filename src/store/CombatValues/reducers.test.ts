@@ -3,9 +3,10 @@ import { setAbilityScore } from '../Abilities/actions'
 import { getCurrentModifiersFromAbilities } from '../Abilities/selectors'
 import { armorClassReducer, CombatValuesReducer, initiativeReducer } from './reducers'
 import { SizeCategory } from '../CharacterMetaData/Character'
-import { initialCombatValuesState } from './initialState'
+import { getInitialCombatValuesState } from './initialState'
 import {
   setBaseSave,
+  setInitiativeMiscModifier,
   setMiscSavingThrowModifier,
   setSavingThrowMagicModifier,
   setTemporarySavingThrowModifier,
@@ -56,38 +57,41 @@ describe('armorClassReducer', () => {
   })
 })
 
-describe('attackBonusesReducer', () => {})
-
 describe('savingThrowReducer', () => {
   it('should set base save correctly', () => {
-    expect(initialCombatValuesState.savingThrows.fortitude.baseSave).not.toBe(2)
+    expect(getInitialCombatValuesState().savingThrows.fortitude.baseSave).toBe(0)
     const action = setBaseSave(2, 'fortitude')
-    const newState = CombatValuesReducer(initialCombatValuesState, action)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.baseSave).toBe(2)
   })
 
   it('should set magic modifier correctly', () => {
-    expect(initialCombatValuesState.savingThrows.fortitude.magicModifier).not.toBe(2)
+    expect(getInitialCombatValuesState().savingThrows.fortitude.magicModifier).toBe(0)
     const action = setSavingThrowMagicModifier(2, 'fortitude')
-    const newState = CombatValuesReducer(initialCombatValuesState, action)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.magicModifier).toBe(2)
   })
 
   it('should set misc modifier correctly', () => {
-    expect(initialCombatValuesState.savingThrows.fortitude.miscModifier).not.toBe(2)
+    expect(getInitialCombatValuesState().savingThrows.fortitude.miscModifier).toBe(0)
     const action = setMiscSavingThrowModifier(2, 'fortitude')
-    const newState = CombatValuesReducer(initialCombatValuesState, action)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.miscModifier).toBe(2)
   })
 
   it('should set temp modifier correctly', () => {
-    expect(initialCombatValuesState.savingThrows.fortitude.temporaryModifier).not.toBe(2)
+    expect(getInitialCombatValuesState().savingThrows.fortitude.temporaryModifier).toBe(0)
     const action = setTemporarySavingThrowModifier(2, 'fortitude')
-    const newState = CombatValuesReducer(initialCombatValuesState, action)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.temporaryModifier).toBe(2)
   })
+})
 
-  describe('fortitude', () => {})
-  describe('reflex', () => {})
-  describe('will', () => {})
+describe('initiative misc modifier', () => {
+  it('should be set correctly', () => {
+    expect(getInitialCombatValuesState().initiative.miscModifier).toBe(0)
+    const action = setInitiativeMiscModifier(2)
+    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
+    expect(newState.initiative.miscModifier).toBe(2)
+  })
 })

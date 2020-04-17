@@ -2,12 +2,13 @@ import {
   CombatValuesActionTypes,
   CombatValuesState,
   SET_BASE_SAVE,
+  SET_INITIATIVE_MISC_MODIFIER,
   SET_MISC_SAVING_THROW_MODIFIER,
   SET_SAVING_THROW_MAGIC_MODIFIER,
   SET_TEMPORARY_SAVING_THROW_MODIFIER,
 } from './types'
 import { AbilityModifiers } from '../Abilities/selectors'
-import { initialCombatValuesState } from './initialState'
+import { getInitialCombatValuesState } from './initialState'
 import { CharacterMetaDataState } from '../CharacterMetaData/types'
 import { getSizeModifier } from '../CharacterMetaData/reducers'
 
@@ -24,7 +25,7 @@ export const armorClassReducer = (
   state.armorClass.miscModifier
 
 export const CombatValuesReducer = (
-  state = initialCombatValuesState,
+  state = getInitialCombatValuesState(),
   action?: CombatValuesActionTypes,
 ): CombatValuesState => {
   // Handle actions that change saving throws
@@ -63,6 +64,13 @@ export const CombatValuesReducer = (
     return stateCopy
   }
   switch (action?.type) {
+    case SET_INITIATIVE_MISC_MODIFIER:
+      return {
+        ...state,
+        initiative: {
+          miscModifier: action?.payload,
+        },
+      }
     default:
       return state
   }

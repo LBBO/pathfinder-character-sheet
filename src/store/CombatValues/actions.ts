@@ -1,10 +1,12 @@
 import {
   SavingThrowsState,
   SET_BASE_SAVE,
+  SET_INITIATIVE_MISC_MODIFIER,
   SET_MISC_SAVING_THROW_MODIFIER,
   SET_SAVING_THROW_MAGIC_MODIFIER,
   SET_TEMPORARY_SAVING_THROW_MODIFIER,
   SetBaseSaveAction,
+  SetInitiativeMiscModifierAction,
   SetMiscSavingThrowModifierAction,
   SetSavingThrowMagicModifierAction,
   SetTemporarySavingThrowModifierAction,
@@ -44,5 +46,12 @@ export const setTemporarySavingThrowModifier = (
     payload: {
       newTemporaryModifier, savingThrowType,
     },
+  }
+)
+
+export const setInitiativeMiscModifier = (newMiscModifier: number): SetInitiativeMiscModifierAction => (
+  {
+    type: SET_INITIATIVE_MISC_MODIFIER,
+    payload: newMiscModifier,
   }
 )
