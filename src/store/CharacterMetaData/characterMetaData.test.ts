@@ -1,9 +1,9 @@
-import { CharacterMetaDataReducer } from './reducers'
-import { CharacterMetaDataState } from './types'
+import { CharacterMetaDataReducer, getSizeModifier } from './reducers'
 import { CharacterGender, SizeCategory } from './Character'
 import { NeutralAlignment } from './Alignment'
 import {
-  setCampaign, setCharacterAge,
+  setCampaign,
+  setCharacterAge,
   setCharacterAlignment,
   setCharacterClass,
   setCharacterDeity,
@@ -73,5 +73,22 @@ describe('CharacterMetaDataReducer', () => {
       initialState,
     )
     expect(finalState).toMatchObject(expectedEndState)
+  })
+})
+
+describe('getSizeModifier', () => {
+  it('should return 0 when the size category is medium', () => {
+    const state = CharacterMetaDataReducer(undefined, setCharacterSizeCategory(SizeCategory.MEDIUM))
+    expect(getSizeModifier(state)).toBe(0)
+  })
+
+  it('should return 1 when the size category is small', () => {
+    const state = CharacterMetaDataReducer(undefined, setCharacterSizeCategory(SizeCategory.SMALL))
+    expect(getSizeModifier(state)).toBe(1)
+  })
+
+  it('should return -1 when the size category is large', () => {
+    const state = CharacterMetaDataReducer(undefined, setCharacterSizeCategory(SizeCategory.LARGE))
+    expect(getSizeModifier(state)).toBe(-1)
   })
 })
