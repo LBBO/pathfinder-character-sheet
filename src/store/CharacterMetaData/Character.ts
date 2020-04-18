@@ -2,6 +2,8 @@ import { Alignment } from './Alignment'
 
 export type CharacterClass = string
 
+// TODO: add other size categories
+//  http://prd.5footstep.de/Grundregelwerk/Kampf/DieGrundregelndesKampfes/Ruestungsklasse
 export enum SizeCategory {
   SMALL = -1,
   MEDIUM = 0,

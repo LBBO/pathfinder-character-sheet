@@ -1,5 +1,6 @@
-import { AbilitiesActionTypes, AbilityState } from './types'
+import { AbilityState } from './types'
 import { getModifierFromScore } from './selectors'
+import { RootActionTypes } from '../root-reducer'
 
 export const createDefaultAbility = () => ({
   score: 10,
@@ -15,7 +16,7 @@ const initialState: AbilityState = {
   wisdom: createDefaultAbility(),
 }
 
-export const AbilitiesReducer = (state: AbilityState = initialState, action?: AbilitiesActionTypes): AbilityState => {
+export const AbilitiesReducer = (state: AbilityState = initialState, action?: RootActionTypes): AbilityState => {
   switch (action?.type) {
     case 'SET_ABILITY_SCORE':
       return {

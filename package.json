@@ -17,6 +17,7 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "redux-devtools": "^3.5.0",
+    "reselect": "^4.0.0",
     "typescript": "~3.7.2"
   },
   "scripts": {

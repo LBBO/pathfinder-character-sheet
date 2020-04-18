@@ -1,14 +1,57 @@
-export const quickSkillDefinitions = {
+import { abilityName } from '../Abilities/types'
+
+export type SkillName = 'acrobatics' |
+  'appraise' |
+  'bluff' |
+  'climb' |
+  'craft' |
+  'diplomacy' |
+  'disableDevice' |
+  'disguise' |
+  'escapeArtist' |
+  'fly' |
+  'handleAnimal' |
+  'heal' |
+  'intimidate' |
+  'knowledgeArcana' |
+  'knowledgeDungeoneering' |
+  'knowledgeEngineering' |
+  'knowledgeGeography' |
+  'knowledgeHistory' |
+  'knowledgeLocal' |
+  'knowledgeNature' |
+  'knowledgeNobility' |
+  'knowledgePlanes' |
+  'knowledgeReligion' |
+  'linguistics' |
+  'perception' |
+  'perform' |
+  'profession' |
+  'ride' |
+  'senseMotive' |
+  'sleightOfHand' |
+  'spellcraft' |
+  'stealth' |
+  'survival' |
+  'swim' |
+  'useMagicDevice'
+
+export const quickSkillDefinitions: {
+  [k in SkillName]: {
+    baseAbility: abilityName,
+    isTrainedOnly: boolean,
+  }
+} = {
   acrobatics: {
-    baseAbility: "dexterity",
-    isTrainedOnly: false
+    baseAbility: 'dexterity',
+    isTrainedOnly: false,
   },
   appraise: {
-    baseAbility: "intelligence",
-    isTrainedOnly: false
+    baseAbility: 'intelligence',
+    isTrainedOnly: false,
   },
   bluff: {
-    baseAbility: "charisma",
+    baseAbility: 'charisma',
     isTrainedOnly: false
   },
   climb: {
@@ -141,19 +184,15 @@ export const quickSkillDefinitions = {
   }
 }
 
-export type SkillName = keyof typeof quickSkillDefinitions
-
 export type Skill = {
   name: SkillName,
-  abilityModifier: number,
   ranks: number,
   miscModifier: number,
-  totalBonus: number,
   isClassSkill: boolean
 }
 
 export type SkillState = {
-  [k in keyof typeof quickSkillDefinitions]: Skill
+  [k in SkillName]: Skill
 }
 
 export const UPDATE_SKILL_RANKS = 'UPDATE_SKILL_RANKS'
