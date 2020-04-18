@@ -20,11 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="Use getTotalSkillBonus throughout the app">
-      <change afterPath="$PROJECT_DIR$/src/store/Skills/selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CombatValues/selectors.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DisplaySkills/DisplaySkills.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisplaySkills/DisplaySkills.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/Skills/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Skills/reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/Skills/skills.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/Skills/skills.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/Character.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/Character.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/characterMetaData.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/characterMetaData.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CombatValues/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/store/Skills/selectors.ts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/store/CombatValues/selectors.ts" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -73,20 +76,22 @@
     <property name="ts.external.directory.path" value="D:\git-clones\GitHub\pathfinder-character-sheet\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\CombatValues\selectors.ts" />
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\CharacterMetaData\selectors.ts" />
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\Skills\selectors.ts" />
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData\DisplayCharacterMetaData.tsx" />
+      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\GeneralCharacterProperties\Alignment.ts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\AlignmentInput" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src" />
       <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplaySkills" />
       <recent name="C:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayAbilities" />
-    </key>
-    <key name="es6.move.members.recent.items">
-      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\Skills\selectors.ts" />
-      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData\DisplayCharacterMetaData.tsx" />
-      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\store\GeneralCharacterProperties\Alignment.ts" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\git-clones\GitHub\pathfinder-character-sheet\src\components\DisplayCharacterMetaData" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -95,7 +100,7 @@
       <command value="All Tests" />
     </option>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Jest.All Tests">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -179,6 +184,7 @@
       <workItem from="1587135890841" duration="908000" />
       <workItem from="1587136809672" duration="8854000" />
       <workItem from="1587145690341" duration="10037000" />
+      <workItem from="1587199642067" duration="1913000" />
     </task>
     <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
       <created>1583605547856</created>
@@ -439,30 +445,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="654" y="-14" width="760" height="840" maximized="true" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587151020826" />
-    <state x="739" y="273" key="FileChooserDialogImpl" timestamp="1587155922590">
+    <state x="739" y="273" key="FileChooserDialogImpl" timestamp="1587199902210">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="273" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587155922590" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1587156874821">
+    <state x="739" y="273" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587199902210" />
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom" timestamp="1587201363458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587156874821" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1587156874821">
+    <state width="1875" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587201363458" />
+    <state width="1875" height="282" key="GridCell.Tab.0.center" timestamp="1587201363458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587156874821" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1587156874821">
+    <state width="1875" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587201363458" />
+    <state width="1875" height="282" key="GridCell.Tab.0.left" timestamp="1587201363457">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587156874821" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1587156874821">
+    <state width="1875" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587201363457" />
+    <state width="1875" height="282" key="GridCell.Tab.0.right" timestamp="1587201363458">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584400416519" />
-    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587156874821" />
+    <state width="1875" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587201363458" />
     <state width="1875" height="342" key="GridCell.Tab.1.bottom" timestamp="1584829804242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -520,10 +526,10 @@
     </state>
     <state x="-1459" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584399747903" />
     <state x="461" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587136799257" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1587155424177">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1587200268582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587155424177" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587200268582" />
     <state x="841" y="363" key="cloudConfig.SelfSettingsDialog" timestamp="1587145467555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -545,14 +551,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="701" y="149" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586006316489" />
-    <state x="616" y="235" width="672" height="677" key="run.anything.popup" timestamp="1587138771583">
+    <state x="616" y="235" width="672" height="677" key="run.anything.popup" timestamp="1587199666331">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587138771583" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587157036452">
+    <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587199666331" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587200578152">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584795171686" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587157036452" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587200578152" />
   </component>
 </project>

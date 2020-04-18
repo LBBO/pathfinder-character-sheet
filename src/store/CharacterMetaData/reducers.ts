@@ -8,19 +8,6 @@ const initialState: CharacterMetaDataState = {
   sizeCategory: SizeCategory.MEDIUM,
 }
 
-export const getSizeModifier = (characterMetadataState: CharacterMetaDataState) => {
-  switch (characterMetadataState.sizeCategory) {
-    case SizeCategory.LARGE:
-      return -1
-    case SizeCategory.MEDIUM:
-      return 0
-    case SizeCategory.SMALL:
-      return 1
-    default:
-      return NaN
-  }
-}
-
 export const CharacterMetaDataReducer = (
   state = initialState, action?: RootActionTypes): CharacterMetaDataState => {
   switch (action?.type) {

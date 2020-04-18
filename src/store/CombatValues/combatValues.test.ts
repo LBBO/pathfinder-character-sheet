@@ -1,7 +1,6 @@
 import { EmptyAction, RootReducer, RootState } from '../root-reducer'
 import { setAbilityScore } from '../Abilities/actions'
-import { getAbilityModifiers } from '../Abilities/selectors'
-import { armorClassReducer, CombatValuesReducer, initiativeReducer } from './reducers'
+import { CombatValuesReducer } from './reducers'
 import { SizeCategory } from '../CharacterMetaData/Character'
 import { getInitialCombatValuesState } from './initialState'
 import {
@@ -20,8 +19,9 @@ import {
   setTemporarySavingThrowModifier,
 } from './actions'
 import { setCharacterSizeCategory } from '../CharacterMetaData/actions'
+import { getArmorClass, getFlatFootedArmorClass, getTotalInitiativeBonus, getTouchArmorClass } from './selectors'
 
-describe('initiativeReducer', () => {
+describe('getTotalInitiativeBonus', () => {
   let rootState: RootState
 
   beforeEach(() => {
@@ -30,14 +30,13 @@ describe('initiativeReducer', () => {
 
   it('should return the sum of misc initiative mod and dexterity mod', () => {
     rootState = RootReducer(rootState, setAbilityScore('dexterity', 14))
-    const abilityModifiers = getAbilityModifiers(rootState)
-    rootState.combatValues.initiative.miscModifier = -1
+    rootState = RootReducer(rootState, setInitiativeMiscModifier(-1))
 
-    expect(initiativeReducer(rootState.combatValues, abilityModifiers)).toBe(1)
+    expect(getTotalInitiativeBonus(rootState)).toBe(1)
   })
 })
 
-describe('armorClassReducer', () => {
+describe('getArmorClass', () => {
   let rootState: RootState
 
   beforeEach(() => {
@@ -45,24 +44,48 @@ describe('armorClassReducer', () => {
   })
 
   it('should return 10 when all values are at 0', () => {
-    const abilityModifiers = getAbilityModifiers(rootState)
-    expect(armorClassReducer(rootState.combatValues, abilityModifiers, rootState.characterMetaData)).toBe(10)
+    expect(getArmorClass(rootState)).toBe(10)
   })
 
-  it('should return the sum of all values plus 10', () => {
-    rootState = RootReducer(rootState, setArmorBonus(1))
-    rootState = RootReducer(rootState, setShieldBonus(1))
-    rootState = RootReducer(rootState, setNaturalArmor(1))
-    rootState = RootReducer(rootState, setDeflectionModifier(1))
-    rootState = RootReducer(rootState, setMiscArmorModifier(1))
-    // Evaluates to dex mod of +1
-    rootState = RootReducer(rootState, setAbilityScore('dexterity', 12))
-    // Evaluates to size mod of +1
-    rootState = RootReducer(rootState, setCharacterSizeCategory(SizeCategory.SMALL))
-    const abilityMods = getAbilityModifiers(rootState)
+  describe('different armor classes', () => {
+    beforeEach(() => {
+      rootState = RootReducer(rootState, setArmorBonus(1))
+      rootState = RootReducer(rootState, setShieldBonus(1))
+      rootState = RootReducer(rootState, setNaturalArmor(1))
+      rootState = RootReducer(rootState, setDeflectionModifier(1))
+      rootState = RootReducer(rootState, setMiscArmorModifier(1))
+      // Evaluates to dex mod of +1
+      rootState = RootReducer(rootState, setAbilityScore('dexterity', 12))
+      // Evaluates to size mod of +1
+      rootState = RootReducer(rootState, setCharacterSizeCategory(SizeCategory.SMALL))
+    })
 
-    expect(armorClassReducer(rootState.combatValues, abilityMods, rootState.characterMetaData))
-      .toBe(17)
+    it('armor class should return the sum of all values plus 10', () => {
+      expect(getArmorClass(rootState)).toBe(17)
+    })
+
+    it('touch armor class should ignore armor bonuses', () => {
+      // Should be ignored
+      rootState = RootReducer(rootState, setArmorBonus(2))
+      rootState = RootReducer(rootState, setNaturalArmor(2))
+      rootState = RootReducer(rootState, setShieldBonus(2))
+
+      expect(getTouchArmorClass(rootState)).toBe(14)
+    })
+
+    it('flatt-footed should ignore dex mod if it is positive', () => {
+      // Should be ignored
+      rootState = RootReducer(rootState, setAbilityScore('dexterity', 14))
+
+      expect(getFlatFootedArmorClass(rootState)).toBe(16)
+    })
+
+    it('flatt-footed should NOT ignore dex mod if it is negative', () => {
+      // Should NOT be ignored
+      rootState = RootReducer(rootState, setAbilityScore('dexterity', 6))
+
+      expect(getFlatFootedArmorClass(rootState)).toBe(14)
+    })
   })
 })
 

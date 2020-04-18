@@ -14,23 +14,8 @@ import {
   SET_SPELL_RESISTANCE,
   SET_TEMPORARY_SAVING_THROW_MODIFIER,
 } from './types'
-import { AbilityModifiers } from '../Abilities/selectors'
 import { getInitialCombatValuesState } from './initialState'
-import { CharacterMetaDataState } from '../CharacterMetaData/types'
-import { getSizeModifier } from '../CharacterMetaData/reducers'
 import { RootActionTypes } from '../root-reducer'
-
-export const initiativeReducer = (state: CombatValuesState, abilityModifiers: AbilityModifiers) =>
-  state.initiative.miscModifier + abilityModifiers.dexterity
-
-export const armorClassReducer = (
-  state: CombatValuesState,
-  abilityModifiers: AbilityModifiers,
-  characterMetaDataState: CharacterMetaDataState,
-) =>
-  10 + state.armorClass.armorBonus + state.armorClass.shieldBonus + abilityModifiers.dexterity +
-  getSizeModifier(characterMetaDataState) + state.armorClass.naturalArmor + state.armorClass.deflectionModifier +
-  state.armorClass.miscModifier
 
 export const CombatValuesReducer = (
   state = getInitialCombatValuesState(),
