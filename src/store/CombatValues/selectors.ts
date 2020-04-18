@@ -85,3 +85,20 @@ export const getWillBonus = createSelector(
       savingThrow.temporaryModifier
   },
 )
+
+export const getCombatManeuverBonus = createSelector(
+  [getCombatValues, getAbilityModifiers, getSizeModifier],
+  (
+    state: CombatValuesState,
+    abilityModifiers: AbilityModifiers,
+    sizeModifier: number,
+  ) => state.attackBonuses.baseAttackBonus + abilityModifiers.strength - sizeModifier,
+)
+
+export const getCombatManeuverDefense = createSelector(
+  [getCombatManeuverBonus, getAbilityModifiers],
+  (
+    combatManeuverBonus: number,
+    abilityModifiers: AbilityModifiers,
+  ) => combatManeuverBonus + abilityModifiers.dexterity + 10,
+)

@@ -21,6 +21,8 @@ import {
 import { setCharacterSizeCategory } from '../CharacterMetaData/actions'
 import {
   getArmorClass,
+  getCombatManeuverBonus,
+  getCombatManeuverDefense,
   getFlatFootedArmorClass,
   getFortitudeBonus,
   getReflexBonus,
@@ -182,6 +184,27 @@ describe('attack bonuses', () => {
       setValuesFor('will')
       state = RootReducer(state, setAbilityScore('wisdom', 14))
       expect(getWillBonus(state)).toBe(6)
+    })
+  })
+
+  describe('combat maneuvers', () => {
+    it('should correctly calculate combat maneuver bonus', () => {
+      let state = RootReducer(undefined, setBaseAttackBonus(1))
+      state = RootReducer(state, setAbilityScore('strength', 12))
+      // Size modifiers are inverted in combat maneuvers! Large is good; small is bad
+      state = RootReducer(state, setCharacterSizeCategory(SizeCategory.LARGE))
+
+      expect(getCombatManeuverBonus(state)).toBe(3)
+    })
+
+    it('should correctly calculate combat maneuver defense', () => {
+      let state = RootReducer(undefined, setBaseAttackBonus(1))
+      state = RootReducer(state, setAbilityScore('strength', 12))
+      // Size modifiers are inverted in combat maneuvers! Large is good; small is bad
+      state = RootReducer(state, setCharacterSizeCategory(SizeCategory.LARGE))
+      state = RootReducer(state, setAbilityScore('dexterity', 12))
+
+      expect(getCombatManeuverDefense(state)).toBe(14)
     })
   })
 })
