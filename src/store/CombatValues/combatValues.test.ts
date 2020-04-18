@@ -19,7 +19,16 @@ import {
   setTemporarySavingThrowModifier,
 } from './actions'
 import { setCharacterSizeCategory } from '../CharacterMetaData/actions'
-import { getArmorClass, getFlatFootedArmorClass, getTotalInitiativeBonus, getTouchArmorClass } from './selectors'
+import {
+  getArmorClass,
+  getFlatFootedArmorClass,
+  getFortitudeBonus,
+  getReflexBonus,
+  getTotalInitiativeBonus,
+  getTouchArmorClass,
+  getWillBonus,
+} from './selectors'
+import { SavingThrowsState } from './types'
 
 describe('getTotalInitiativeBonus', () => {
   let rootState: RootState
@@ -141,6 +150,39 @@ describe('attack bonuses', () => {
     const action = setSpellResistance(2)
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.attackBonuses.spellResistance).toBe(2)
+  })
+
+  describe('saving throws', () => {
+    let state =
+
+      beforeEach(() => {
+        state = RootReducer(undefined, EmptyAction)
+      })
+
+    const setValuesFor = (savingThrowName: keyof SavingThrowsState) => {
+      state = RootReducer(state, setBaseSave(1, savingThrowName))
+      state = RootReducer(state, setSavingThrowMagicModifier(1, savingThrowName))
+      state = RootReducer(state, setMiscSavingThrowModifier(1, savingThrowName))
+      state = RootReducer(state, setTemporarySavingThrowModifier(1, savingThrowName))
+    }
+
+    it('should return the sum of all required values and constitution mod for fortitude', () => {
+      setValuesFor('fortitude')
+      state = RootReducer(state, setAbilityScore('constitution', 14))
+      expect(getFortitudeBonus(state)).toBe(6)
+    })
+
+    it('should return the sum of all required values and dexterity mod for reflex', () => {
+      setValuesFor('reflex')
+      state = RootReducer(state, setAbilityScore('dexterity', 14))
+      expect(getReflexBonus(state)).toBe(6)
+    })
+
+    it('should return the sum of all required values and wisdom mod for will', () => {
+      setValuesFor('will')
+      state = RootReducer(state, setAbilityScore('wisdom', 14))
+      expect(getWillBonus(state)).toBe(6)
+    })
   })
 })
 

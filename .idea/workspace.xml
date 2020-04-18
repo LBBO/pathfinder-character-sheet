@@ -19,15 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="Use getTotalSkillBonus throughout the app">
-      <change afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/selectors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/CombatValues/selectors.ts" afterDir="false" />
+    <list default="true" id="b80bd71a-bb38-4d53-a798-a350c50cb4cc" name="Default Changelist" comment="Add selectors for armor classes&#10;&#10;References #7">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/Character.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/Character.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/characterMetaData.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/characterMetaData.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CharacterMetaData/reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/reducers.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/CombatValues/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CombatValues/combatValues.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/combatValues.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/CombatValues/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/CombatValues/selectors.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +179,7 @@
       <workItem from="1587135890841" duration="908000" />
       <workItem from="1587136809672" duration="8854000" />
       <workItem from="1587145690341" duration="10037000" />
-      <workItem from="1587199642067" duration="1913000" />
+      <workItem from="1587199642067" duration="3085000" />
     </task>
     <task id="LOCAL-00001" summary="Hide temp ability modifier when 0">
       <created>1583605547856</created>
@@ -361,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587155384958</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Add selectors for armor classes&#10;&#10;References #7">
+      <created>1587201843908</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1587201843908</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,7 +421,8 @@
     <MESSAGE value="Start using new selector" />
     <MESSAGE value="Rename RootReducer (capitalize first letter)" />
     <MESSAGE value="Use getTotalSkillBonus throughout the app" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use getTotalSkillBonus throughout the app" />
+    <MESSAGE value="Add selectors for armor classes&#10;&#10;References #7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add selectors for armor classes&#10;&#10;References #7" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -526,10 +529,10 @@
     </state>
     <state x="-1459" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584399747903" />
     <state x="461" y="150" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587136799257" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1587200268582">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1587201996060">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587200268582" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587201996060" />
     <state x="841" y="363" key="cloudConfig.SelfSettingsDialog" timestamp="1587145467555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -555,10 +558,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="235" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587199666331" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587200578152">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587201992081">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584795171686" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587200578152" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587201992081" />
   </component>
 </project>

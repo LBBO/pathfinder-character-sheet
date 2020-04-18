@@ -46,3 +46,42 @@ export const getFlatFootedArmorClass = createSelector(
     sizeModifier + state.armorClass.naturalArmor + state.armorClass.deflectionModifier +
     state.armorClass.miscModifier,
 )
+
+export const getFortitudeBonus = createSelector(
+  [getCombatValues, getAbilityModifiers],
+  (
+    state: CombatValuesState,
+    abilityModifiers: AbilityModifiers,
+  ) => {
+    const savingThrow = state.savingThrows.fortitude
+
+    return savingThrow.baseSave + abilityModifiers.constitution + savingThrow.magicModifier + savingThrow.miscModifier +
+      savingThrow.temporaryModifier
+  },
+)
+
+export const getReflexBonus = createSelector(
+  [getCombatValues, getAbilityModifiers],
+  (
+    state: CombatValuesState,
+    abilityModifiers: AbilityModifiers,
+  ) => {
+    const savingThrow = state.savingThrows.reflex
+
+    return savingThrow.baseSave + abilityModifiers.dexterity + savingThrow.magicModifier + savingThrow.miscModifier +
+      savingThrow.temporaryModifier
+  },
+)
+
+export const getWillBonus = createSelector(
+  [getCombatValues, getAbilityModifiers],
+  (
+    state: CombatValuesState,
+    abilityModifiers: AbilityModifiers,
+  ) => {
+    const savingThrow = state.savingThrows.will
+
+    return savingThrow.baseSave + abilityModifiers.wisdom + savingThrow.magicModifier + savingThrow.miscModifier +
+      savingThrow.temporaryModifier
+  },
+)
