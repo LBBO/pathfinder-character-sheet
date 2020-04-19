@@ -1,0 +1,43 @@
+.box-input {
+	$borderWidth: 1px;
+	
+	text-transform: uppercase;
+	display: inline-grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto min-content;
+	text-align: center;
+	font-size: 0.8em;
+	height: 100%;
+	width: 2.5em;
+	
+	&.hide-box {
+		input {
+			border: $borderWidth solid transparent;
+		}
+	}
+	
+	input {
+		border: $borderWidth solid #000000;
+		appearance: none;
+		text-align: center;
+		width: calc(100% - #{2 * $borderWidth});
+		height: calc(100% - #{2 * $borderWidth});
+		font-size: 1em;
+		//padding: 0.2em;
+		
+		&[disabled] {
+			background-color: inherit;
+			cursor: not-allowed;
+		}
+	}
+	
+	span {
+		margin-top: 0.3em;
+		font-size: 0.6em;
+		overflow: hidden;
+	}
+}
+
+.combat-values {
+	font-size: 1.5em;
+}
