@@ -29,6 +29,13 @@
 			background-color: inherit;
 			cursor: not-allowed;
 		}
+		
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button,
+		&[type=number] {
+			-webkit-appearance: none;
+			-moz-appearance: textfield;
+		}
 	}
 	
 	span {
