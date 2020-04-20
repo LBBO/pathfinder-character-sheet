@@ -3,9 +3,19 @@ import { connect, ConnectedProps } from 'react-redux'
 import React from 'react'
 import { setAbilityScore, setAbilityTempAdjustment } from '../../store/Abilities/actions'
 import { AbilityAttributes, abilityName, AbilityState } from '../../store/Abilities/types'
-import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 import { getModifierFromScore } from '../../store/Abilities/selectors'
 import { BoxNumberInput } from '../BoxInput/BoxNumberInput'
+import './DisplayAbilities.scss'
+import { BlackBox } from '../BlackBox/BlackBox'
+
+const abilityShorthands: { [key in abilityName]: string } = {
+  dexterity: 'dex',
+  strength: 'str',
+  wisdom: 'wis',
+  constitution: 'con',
+  charisma: 'cha',
+  intelligence: 'int',
+}
 
 const mapState = (state: RootState) => (
   {
@@ -45,10 +55,11 @@ export const DisplayAbilities = connector(({
     return (
       <tr key={abilityName}>
         <td>
-          <InvertedBorderRadius
+          <BlackBox
           >
-            {abilityName}
-          </InvertedBorderRadius>
+            {abilityShorthands[abilityName]}
+            <aside>{abilityName}</aside>
+          </BlackBox>
         </td>
         <td>
           <BoxNumberInput

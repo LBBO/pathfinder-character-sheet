@@ -8,9 +8,11 @@
 	color: white;
 	position: relative;
 	width: fit-content;
+	height: min-content;
 	overflow: hidden;
 	padding: $actual-padding #{$actual-padding + $side-padding-for-corners};
 	display: inline-block;
+	text-align: center;
 
 	&::before, &::after {
 		content: '';

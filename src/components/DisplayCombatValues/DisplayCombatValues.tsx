@@ -20,6 +20,8 @@ import { SavingThrowsState } from '../../store/CombatValues/types'
 import { abilityName } from '../../store/Abilities/types'
 import { BoxNumberInput } from '../BoxInput/BoxNumberInput'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
+import './DisplayCombatValues.scss'
+import { BlackBox } from '../BlackBox/BlackBox'
 
 const callIfDefined: <T>(callback: (param: T) => void) => (param?: T) => void = (callback) => {
   return (param) => {
@@ -89,9 +91,12 @@ export const DisplayCombatValues = connector(({
     [],
   )
 
-  return <div className={'combat-values'}>
+  return <div className={'combat-values-wrapper'}>
     <div className={'initiative'} data-testid={'initiative-container'}>
-      Initiative Modifier:
+      <BlackBox>
+        Initiative
+        <aside>Modifier</aside>
+      </BlackBox>
       <BoxNumberInput
         value={totalInitiativeBonus}
         label={'total'}
@@ -112,7 +117,12 @@ export const DisplayCombatValues = connector(({
       />
     </div>
     <div className={'armor-class'}>
-      AC Armor Class:
+      <BlackBox>
+        AC
+        <aside>
+          Armor Class
+        </aside>
+      </BlackBox>
       <BoxNumberInput
         value={totalArmorClass}
         testId={'total-armor-class'}
@@ -172,14 +182,20 @@ export const DisplayCombatValues = connector(({
       />
     </div>
     <div className={'touch-armor-class'}>
-      Touch Armor Class:
+      <BlackBox>
+        Touch
+        <aside>Armor Class</aside>
+      </BlackBox>
       <BoxNumberInput
         value={touchArmorClass}
         testId={'touch-armor-class'}
       />
     </div>
     <div className={'flat-footed-armor-class'}>
-      Flat-Footed Armor Class:
+      <BlackBox>
+        Flat-Footed
+        <aside>Armor Class</aside>
+      </BlackBox>
       <BoxNumberInput
         value={flatFootedArmorClass}
         testId={'flat-footed-class'}
@@ -211,10 +227,15 @@ export const DisplayCombatValues = connector(({
 
           const abilityModifier = abilityModifiers[baseAbilityName]
 
-          return <div
+          return <React.Fragment
             key={index}
           >
-            {savingThrowName} ({baseAbilityName})
+            <BlackBox>
+              {savingThrowName}
+              <aside>
+                ({baseAbilityName})
+              </aside>
+            </BlackBox>
             <BoxNumberInput
               value={savingThrowBonus}
             />
@@ -242,31 +263,29 @@ export const DisplayCombatValues = connector(({
               value={savingThrow.temporaryModifier}
               onChange={setForCertainSavingThrow(savingThrowName, setTemporarySavingThrowModifier)}
             />
-          </div>
+          </React.Fragment>
         })}
     </div>
-    <div className={'base-attack-bonus'}>
-      <label>
-        <InvertedBorderRadius>
-          Base Attack Bonus
-        </InvertedBorderRadius>
-        <BoxNumberInput
-          value={combatValues.attackBonuses.baseAttackBonus}
-          onChange={callIfDefined(setBaseAttackBonus)}
-        />
-      </label>
-    </div>
-    <div className={'spell-resistance'}>
-      <label>
-        Spell Resistance:
-        <BoxNumberInput
-          value={combatValues.attackBonuses.spellResistance}
-          onChange={callIfDefined(setSpellResistance)}
-        />
-      </label>
-    </div>
+    <label className={'base-attack-bonus'}>
+      <InvertedBorderRadius>
+        Base Attack Bonus
+      </InvertedBorderRadius>
+      <BoxNumberInput
+        value={combatValues.attackBonuses.baseAttackBonus}
+        onChange={callIfDefined(setBaseAttackBonus)}
+      />
+    </label>
+    <label className={'spell-resistance'}>
+      <BlackBox>
+        Spell Resistance
+      </BlackBox>
+      <BoxNumberInput
+        value={combatValues.attackBonuses.spellResistance}
+        onChange={callIfDefined(setSpellResistance)}
+      />
+    </label>
     <div className={'combat-values'}>
-      <div>
+      <div className={'combat-bonus'}>
         <InvertedBorderRadius>
           Combat Maneuver Bonus
         </InvertedBorderRadius>
@@ -290,7 +309,7 @@ export const DisplayCombatValues = connector(({
           label={'size modifier'}
         />
       </div>
-      <div>
+      <div className={'combat-defense'}>
         <InvertedBorderRadius>
           Combat Maneuver Defense
         </InvertedBorderRadius>
