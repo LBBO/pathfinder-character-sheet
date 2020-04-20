@@ -5,10 +5,10 @@
 	grid-template-columns: 1fr;
 	grid-template-rows: auto min-content;
 	text-align: center;
-	font-size: 0.8em;
+	font-size: 1em;
 	height: 100%;
-	width: 2.2em;
-	margin: 0 0.15em;
+	width: 3em;
+	justify-items: center;
 	
 	&.hide-box {
 		input {
@@ -21,7 +21,7 @@
 		appearance: none;
 		text-align: center;
 		box-sizing: border-box;
-		width: 100%;
+		width: 85%;
 		height: 100%;
 		font-size: 1em;
 		padding: 0.1em;
@@ -40,8 +40,9 @@
 	}
 	
 	span {
+		width: 100%;
 		margin-top: 0.3em;
-		font-size: 0.4em;
+		font-size: 0.43em;
 		overflow: hidden;
 		font-weight: bold;
 	}
