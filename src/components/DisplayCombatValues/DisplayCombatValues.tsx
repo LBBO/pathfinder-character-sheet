@@ -19,6 +19,7 @@ import { getSizeModifier } from '../../store/CharacterMetaData/selectors'
 import { SavingThrowsState } from '../../store/CombatValues/types'
 import { abilityName } from '../../store/Abilities/types'
 import { BoxNumberInput } from '../BoxInput/BoxNumberInput'
+import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 
 const callIfDefined: <T>(callback: (param: T) => void) => (param?: T) => void = (callback) => {
   return (param) => {
@@ -99,14 +100,14 @@ export const DisplayCombatValues = connector(({
       =
       <BoxNumberInput
         value={abilityModifiers.dexterity}
-        label={'dex mod'}
+        label={'dexterity modifier'}
         testId={'initiative-dexterity-modifier'}
       />
       +
       <BoxNumberInput
         onChange={callIfDefined(setInitiativeMiscModifier)}
         value={combatValues.initiative.miscModifier}
-        label={'misc mod'}
+        label={'misc modifier'}
         testId={'initiative-misc-modifier'}
       />
     </div>
@@ -139,13 +140,13 @@ export const DisplayCombatValues = connector(({
       +
       <BoxNumberInput
         value={abilityModifiers.dexterity}
-        label={'dexterity mod'}
+        label={'dexterity modifier'}
         testId={'armor-class-dexterity-mod'}
       />
       +
       <BoxNumberInput
         value={sizeModifier}
-        label={'size mod'}
+        label={'size modifier'}
         testId={'armor-class-size-modifier'}
       />
       +
@@ -245,21 +246,30 @@ export const DisplayCombatValues = connector(({
         })}
     </div>
     <div className={'base-attack-bonus'}>
-      Base Attack Bonus: <BoxNumberInput
-      value={combatValues.attackBonuses.baseAttackBonus}
-      onChange={callIfDefined(setBaseAttackBonus)}
-    />
+      <label>
+        <InvertedBorderRadius>
+          Base Attack Bonus
+        </InvertedBorderRadius>
+        <BoxNumberInput
+          value={combatValues.attackBonuses.baseAttackBonus}
+          onChange={callIfDefined(setBaseAttackBonus)}
+        />
+      </label>
     </div>
     <div className={'spell-resistance'}>
-      Spell Resistance:
-      <BoxNumberInput
-        value={combatValues.attackBonuses.spellResistance}
-        onChange={callIfDefined(setSpellResistance)}
-      />
+      <label>
+        Spell Resistance:
+        <BoxNumberInput
+          value={combatValues.attackBonuses.spellResistance}
+          onChange={callIfDefined(setSpellResistance)}
+        />
+      </label>
     </div>
     <div className={'combat-values'}>
       <div>
-        Combat Maneuver Bonus:
+        <InvertedBorderRadius>
+          Combat Maneuver Bonus
+        </InvertedBorderRadius>
         <BoxNumberInput
           value={combatManeuverBonus}
           label={'total'}
@@ -281,7 +291,9 @@ export const DisplayCombatValues = connector(({
         />
       </div>
       <div>
-        Combat Maneuver Defense:
+        <InvertedBorderRadius>
+          Combat Maneuver Defense
+        </InvertedBorderRadius>
         <BoxNumberInput
           value={combatManeuverDefense}
           label={'total'}
