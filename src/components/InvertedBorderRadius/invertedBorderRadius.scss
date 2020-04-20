@@ -9,8 +9,8 @@
 	position: relative;
 	width: fit-content;
 	overflow: hidden;
-	font-size: 3em;
 	padding: $actual-padding #{$actual-padding + $side-padding-for-corners};
+	display: inline-block;
 
 	&::before, &::after {
 		content: '';

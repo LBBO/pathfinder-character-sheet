@@ -46,9 +46,6 @@ export const DisplayAbilities = connector(({
       <tr key={abilityName}>
         <td>
           <InvertedBorderRadius
-            style={{
-              fontSize: '1em',
-            }}
           >
             {abilityName}
           </InvertedBorderRadius>
