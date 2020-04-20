@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/pathfinder-character-sheet/static/css/main.990c80f8.chunk.css",
-    "main.js": "/pathfinder-character-sheet/static/js/main.ff0bb116.chunk.js",
-    "main.js.map": "/pathfinder-character-sheet/static/js/main.ff0bb116.chunk.js.map",
+    "main.css": "/pathfinder-character-sheet/static/css/main.77940d74.chunk.css",
+    "main.js": "/pathfinder-character-sheet/static/js/main.89fca50e.chunk.js",
+    "main.js.map": "/pathfinder-character-sheet/static/js/main.89fca50e.chunk.js.map",
     "runtime-main.js": "/pathfinder-character-sheet/static/js/runtime-main.670e68c1.js",
     "runtime-main.js.map": "/pathfinder-character-sheet/static/js/runtime-main.670e68c1.js.map",
-    "static/js/2.bfb4cb87.chunk.js": "/pathfinder-character-sheet/static/js/2.bfb4cb87.chunk.js",
-    "static/js/2.bfb4cb87.chunk.js.map": "/pathfinder-character-sheet/static/js/2.bfb4cb87.chunk.js.map",
+    "static/js/2.0089c1a4.chunk.js": "/pathfinder-character-sheet/static/js/2.0089c1a4.chunk.js",
+    "static/js/2.0089c1a4.chunk.js.map": "/pathfinder-character-sheet/static/js/2.0089c1a4.chunk.js.map",
     "index.html": "/pathfinder-character-sheet/index.html",
-    "precache-manifest.327fa21e8e1a9a521e669618afec35ab.js": "/pathfinder-character-sheet/precache-manifest.327fa21e8e1a9a521e669618afec35ab.js",
+    "precache-manifest.6534c9cae2a45c7b0e632714e692ba00.js": "/pathfinder-character-sheet/precache-manifest.6534c9cae2a45c7b0e632714e692ba00.js",
     "service-worker.js": "/pathfinder-character-sheet/service-worker.js",
-    "static/css/main.990c80f8.chunk.css.map": "/pathfinder-character-sheet/static/css/main.990c80f8.chunk.css.map",
-    "static/js/2.bfb4cb87.chunk.js.LICENSE.txt": "/pathfinder-character-sheet/static/js/2.bfb4cb87.chunk.js.LICENSE.txt"
+    "static/css/main.77940d74.chunk.css.map": "/pathfinder-character-sheet/static/css/main.77940d74.chunk.css.map",
+    "static/js/2.0089c1a4.chunk.js.LICENSE.txt": "/pathfinder-character-sheet/static/js/2.0089c1a4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/pathfinder-character-sheet/static/media/IMFellEnglish-Regular.74dd8478.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.670e68c1.js",
-    "static/js/2.bfb4cb87.chunk.js",
-    "static/css/main.990c80f8.chunk.css",
-    "static/js/main.ff0bb116.chunk.js"
+    "static/js/2.0089c1a4.chunk.js",
+    "static/css/main.77940d74.chunk.css",
+    "static/js/main.89fca50e.chunk.js"
   ]
 }
