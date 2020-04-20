@@ -45,7 +45,6 @@ export const DisplaySkills = connector((
     <table>
       <thead>
         <tr>
-          <th> {/* Checkbox */} </th>
           <th>Skill Names</th>
           <th>Total Bonus</th>
           <th> {/* Base ability name */} </th>
@@ -66,13 +65,15 @@ export const DisplaySkills = connector((
               key={index}
             >
               <td>
-                <StyledCheckbox
-                  checked={skill.isClassSkill}
-                  onChange={() => setIsSkillClassSkill(skillName, !skill.isClassSkill)}
-                />
-                {/*<input onChange={() => setIsSkillClassSkill(skillName, !skill.isClassSkill)} />*/}
+                <label>
+                  <StyledCheckbox
+                    checked={skill.isClassSkill}
+                    onChange={() => setIsSkillClassSkill(skillName, !skill.isClassSkill)}
+                  />
+
+                  {skillName}{isTrainedOnly ? '*' : ''}
+                </label>
               </td>
-              <td>{skillName}{isTrainedOnly ? '*' : ''}</td>
               <td>{totalSkillBonuses[skillName]}</td>
               <td>={abilityName}</td>
               <td>{abilityModifiers[abilityName]}</td>
@@ -96,9 +97,9 @@ export const DisplaySkills = connector((
           })}
         <tr className={'legend'}>
           <td>
-            <StyledCheckbox checked={true} />
+            <StyledCheckbox checked={true} disabled />
+            Class Skill &nbsp; &nbsp; * Trained Only
           </td>
-          <td>Class Skill &nbsp; &nbsp; * Trained Only</td>
         </tr>
       </tbody>
     </table>

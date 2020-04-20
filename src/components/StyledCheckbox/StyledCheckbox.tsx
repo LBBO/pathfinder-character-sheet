@@ -7,14 +7,16 @@ const propTypes = {
   checked: PropTypes.bool,
   className: PropTypes.string,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool.isRequired,
 }
 
-export const StyledCheckbox: React.FC<PropTypes.InferProps<typeof propTypes>> = (props) => {
+export const StyledCheckbox = (props: PropTypes.InferProps<typeof propTypes>) => {
   return <input
     className={`styled-checkbox ${props.className}`}
     type={'checkbox'}
     checked={props.checked ?? false}
     onChange={props.onChange!}
+    disabled={props.disabled}
   />
 }
 
@@ -23,4 +25,5 @@ StyledCheckbox.defaultProps = {
   checked: false,
   className: '',
   onChange: () => {},
+  disabled: false,
 }

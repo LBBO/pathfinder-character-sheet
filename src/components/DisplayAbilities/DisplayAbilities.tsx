@@ -1,10 +1,21 @@
 import { RootState } from '../../store/root-reducer'
 import { connect, ConnectedProps } from 'react-redux'
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import { setAbilityScore, setAbilityTempAdjustment } from '../../store/Abilities/actions'
-import { AbilityAttributes, AbilityState } from '../../store/Abilities/types'
-import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
+import { AbilityAttributes, abilityName, AbilityState } from '../../store/Abilities/types'
 import { getModifierFromScore } from '../../store/Abilities/selectors'
+import { BoxNumberInput } from '../BoxInput/BoxNumberInput'
+import './DisplayAbilities.scss'
+import { BlackBox } from '../BlackBox/BlackBox'
+
+const abilityShorthands: { [key in abilityName]: string } = {
+  dexterity: 'dex',
+  strength: 'str',
+  wisdom: 'wis',
+  constitution: 'con',
+  charisma: 'cha',
+  intelligence: 'int',
+}
 
 const mapState = (state: RootState) => (
   {
@@ -21,52 +32,59 @@ const connector = connect(mapState, mapDispatchToProps)
 
 type Props = ConnectedProps<typeof connector>
 
-export const DisplayAbilities = connector((
-  { abilities, setAbilityScore, setAbilityTempAdjustment }: Props,
-) => {
-  const onScoreChange = (abilityName: keyof AbilityState) => (event: ChangeEvent<HTMLInputElement>) => {
-    setAbilityScore(abilityName, parseInt(event.target.value))
+export const DisplayAbilities = connector(({
+  abilities,
+  setAbilityScore,
+  setAbilityTempAdjustment,
+}: Props) => {
+  const onScoreChange = (abilityName: keyof AbilityState) => (newVal?: number) => {
+    if (newVal !== undefined) {
+      setAbilityScore(abilityName, newVal)
+    }
   }
-  const onTempAdjustmentChange = (abilityName: keyof AbilityState) => (event: ChangeEvent<HTMLInputElement>) => {
-    setAbilityTempAdjustment(abilityName, parseInt(event.target.value))
+  const onTempAdjustmentChange = (abilityName: keyof AbilityState) => (newVal?: number) => {
+    if (newVal !== undefined) {
+      setAbilityTempAdjustment(abilityName, newVal)
+    }
   }
 
-  const abilityElements = Object.keys(abilities).map((abilityName) => {
-    // @ts-ignore
+  const abilityNames = Object.keys(abilities) as Array<abilityName>
+  const abilityElements = abilityNames.map((abilityName) => {
     const abilityAttributes: AbilityAttributes = abilities[abilityName]
 
     return (
       <tr key={abilityName}>
         <td>
-          <InvertedBorderRadius
-            style={{
-              fontSize: '1em',
-            }}
+          <BlackBox
           >
-            {abilityName}
-          </InvertedBorderRadius>
+            {abilityShorthands[abilityName]}
+            <aside>{abilityName}</aside>
+          </BlackBox>
         </td>
         <td>
-          <input
-            type={'number'}
+          <BoxNumberInput
             value={abilityAttributes.score}
-            onChange={onScoreChange(abilityName as keyof AbilityState)}
+            onChange={onScoreChange(abilityName)}
           />
         </td>
-        <td>{getModifierFromScore(abilityAttributes.score)}</td>
         <td>
-          <input
-            type={'number'}
-             // Display an empty input if temp adjustment is 0
-            value={abilityAttributes.temporaryAdjustment || ''}
-            onChange={onTempAdjustmentChange(abilityName as keyof AbilityState)}
+          <BoxNumberInput
+            value={getModifierFromScore(abilityAttributes.score)}
           />
         </td>
-        <td>{
-          abilityAttributes.temporaryAdjustment ?
-            getModifierFromScore(abilityAttributes.score + abilityAttributes.temporaryAdjustment) :
-            ''
-        }</td>
+        <td>
+          <BoxNumberInput
+            value={abilityAttributes.temporaryAdjustment || null}
+            onChange={onTempAdjustmentChange(abilityName)}
+          />
+        </td>
+        <td>
+          <BoxNumberInput
+            value={abilityAttributes.temporaryAdjustment ?
+              getModifierFromScore(abilityAttributes.score + abilityAttributes.temporaryAdjustment)
+              : null
+            }
+          /></td>
       </tr>
     )
   })

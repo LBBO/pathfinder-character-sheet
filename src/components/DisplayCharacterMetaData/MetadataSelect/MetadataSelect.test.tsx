@@ -30,7 +30,7 @@ export const expectClickOnNthButtonToSetValue = (
   expect(onChangeSpy.mock.calls[0]).toMatchObject([expectedValue])
 }
 
-describe('Gender input field', () => {
+describe('Metadata select', () => {
   // Initial definition just so that the type is set correctly
   let genderInput = render(<></>)
   let onChangeHandler = jest.fn()
@@ -76,5 +76,52 @@ describe('Gender input field', () => {
     const labelTarget = genderInput.getByLabelText(/.*/)
     expect(labelTarget.tagName).toMatch(/select/i)
     expect(labelTarget.getAttribute('data-testid')).toBe(MetadataSelectTestIds.select)
+  })
+
+  it('should render the correct label when the value is different data types', () => {
+    const options = [
+      { label: 'string', value: 'string' },
+      { label: 'number', value: 1 },
+      { label: 'boolean', value: true },
+      { label: 'array', value: [1, 2, 3] },
+      { label: 'object', value: { foo: 'bar' } },
+      { label: 'undefined', value: undefined },
+    ]
+
+    options.forEach((option, index) => {
+      genderInput.unmount()
+      genderInput = render(<MetadataSelect
+        onChange={onChangeHandler}
+        id={'gender'}
+        options={options}
+        value={option.value}
+      />)
+
+      const selectElement = genderInput.getByTestId(MetadataSelectTestIds.select) as HTMLSelectElement
+      const selectedIndex = selectElement.selectedIndex
+      expect(selectedIndex).toBe(index)
+    })
+  })
+
+  it('should log an error when there is both an undefined and an empty string option', () => {
+    const options = [
+      { label: 'empty string', value: '' },
+      { label: 'undefined', value: undefined },
+    ]
+    const consoleErrorMock = jest.spyOn(console, 'error')
+    consoleErrorMock.mockImplementation(() => {})
+
+    expect(consoleErrorMock).not.toHaveBeenCalled()
+
+    render(<MetadataSelect
+      onChange={onChangeHandler}
+      id={'gender'}
+      options={options}
+      value={undefined}
+    />)
+
+    expect(consoleErrorMock).toHaveBeenCalledTimes(1)
+
+    consoleErrorMock.mockRestore()
   })
 })

@@ -18,32 +18,17 @@ import { getAbilityModifiers } from '../../store/Abilities/selectors'
 import { getSizeModifier } from '../../store/CharacterMetaData/selectors'
 import { SavingThrowsState } from '../../store/CombatValues/types'
 import { abilityName } from '../../store/Abilities/types'
+import { BoxNumberInput } from '../BoxInput/BoxNumberInput'
+import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
+import './DisplayCombatValues.scss'
+import { BlackBox } from '../BlackBox/BlackBox'
 
-const NumberInput = ({
-  value,
-  onChange,
-  label,
-  testId,
-}: {
-  value: number,
-  onChange?: (n: number) => void,
-  label?: string,
-  testId?: string
-}) => {
-  const onChangeHandler = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(parseInt(evt.target.value))
-  }, [onChange])
-  return <label>
-    <input
-      type={'number'}
-      value={value}
-      onChange={onChangeHandler}
-      disabled={!Boolean(onChange)}
-      data-testid={testId}
-    />
-    {label ? `(${label})` : null}
-  </label>
-
+const callIfDefined: <T>(callback: (param: T) => void) => (param?: T) => void = (callback) => {
+  return (param) => {
+    if (param !== undefined) {
+      callback(param)
+    }
+  }
 }
 
 const mapStateToProps = (state: RootState) => (
@@ -98,89 +83,120 @@ export const DisplayCombatValues = connector(({
       savingThrowName: keyof SavingThrowsState,
       setter: (val: number, savingThrowName: keyof SavingThrowsState) => void,
     ) =>
-      useCallback((newValue: number) => {
-        setter(newValue, savingThrowName)
+      useCallback((newValue?: number) => {
+        if (newValue !== undefined) {
+          setter(newValue, savingThrowName)
+        }
       }, [savingThrowName, setter]),
     [],
   )
 
-  return <div className={'combat-values'}>
+  return <div className={'combat-values-wrapper'}>
     <div className={'initiative'} data-testid={'initiative-container'}>
-      Initiative Modifier:
-      <NumberInput
+      <BlackBox>
+        Initiative
+        <aside>Modifier</aside>
+      </BlackBox>
+      <BoxNumberInput
         value={totalInitiativeBonus}
         label={'total'}
         testId={'initiative-total-bonus'}
-      /> =
-      <NumberInput
+      />
+      =
+      <BoxNumberInput
         value={abilityModifiers.dexterity}
-        label={'dex mod'}
+        label={'dexterity modifier'}
         testId={'initiative-dexterity-modifier'}
-      />+
-      <NumberInput
-        onChange={setInitiativeMiscModifier}
+      />
+      +
+      <BoxNumberInput
+        onChange={callIfDefined(setInitiativeMiscModifier)}
         value={combatValues.initiative.miscModifier}
-        label={'misc mod'}
+        label={'misc modifier'}
         testId={'initiative-misc-modifier'}
       />
     </div>
     <div className={'armor-class'}>
-      AC Armor Class:
-      <NumberInput
+      <BlackBox>
+        AC
+        <aside>
+          Armor Class
+        </aside>
+      </BlackBox>
+      <BoxNumberInput
         value={totalArmorClass}
         testId={'total-armor-class'}
-      />=
-      <NumberInput
-        onChange={setArmorBonus}
+      />
+      =
+      <BoxNumberInput
+        value={10}
+        testId={'armor-class-general-bonus'}
+        hideBox={true}
+      />
+      +
+      <BoxNumberInput
+        onChange={callIfDefined(setArmorBonus)}
         value={combatValues.armorClass.armorBonus}
         label={'armor class'}
         testId={'armor-class-armor-bonus'}
-      /> +
-      <NumberInput
-        onChange={setShieldBonus}
+      />
+      +
+      <BoxNumberInput
+        onChange={callIfDefined(setShieldBonus)}
         value={combatValues.armorClass.shieldBonus}
         label={'shield bonus'}
         testId={'armor-class-shield-bonus'}
-      /> +
-      <NumberInput
+      />
+      +
+      <BoxNumberInput
         value={abilityModifiers.dexterity}
-        label={'dexterity mod'}
+        label={'dexterity modifier'}
         testId={'armor-class-dexterity-mod'}
-      /> +
-      <NumberInput
+      />
+      +
+      <BoxNumberInput
         value={sizeModifier}
-        label={'size mod'}
+        label={'size modifier'}
         testId={'armor-class-size-modifier'}
-      /> +
-      <NumberInput
-        onChange={setNaturalArmor}
+      />
+      +
+      <BoxNumberInput
+        onChange={callIfDefined(setNaturalArmor)}
         value={combatValues.armorClass.naturalArmor}
         label={'natural armor'}
         testId={'armor-class-natural-armor'}
-      /> +
-      <NumberInput
-        onChange={setDeflectionModifier}
+      />
+      +
+      <BoxNumberInput
+        onChange={callIfDefined(setDeflectionModifier)}
         value={combatValues.armorClass.deflectionModifier}
         label={'deflection mod'}
         testId={'armor-class-deflection-modifier'}
-      /> +
-      <NumberInput
-        onChange={setMiscArmorModifier}
+      />
+      +
+      <BoxNumberInput
+        onChange={callIfDefined(setMiscArmorModifier)}
         value={combatValues.armorClass.miscModifier}
         label={'misc mod'}
         testId={'armor-class-misc-modifier'}
       />
     </div>
     <div className={'touch-armor-class'}>
-      Touch Armor Class:
-      <NumberInput
+      <BlackBox>
+        Touch
+        <aside>Armor Class</aside>
+      </BlackBox>
+      <BoxNumberInput
         value={touchArmorClass}
         testId={'touch-armor-class'}
       />
     </div>
     <div className={'flat-footed-armor-class'}>
-      Flat-Footed Armor Class:
-      <NumberInput
+      <BlackBox>
+        Flat-Footed
+        <aside>Armor Class</aside>
+      </BlackBox>
+      <BoxNumberInput
         value={flatFootedArmorClass}
         testId={'flat-footed-class'}
       />
@@ -211,92 +227,120 @@ export const DisplayCombatValues = connector(({
 
           const abilityModifier = abilityModifiers[baseAbilityName]
 
-          return <div
+          return <React.Fragment
             key={index}
           >
-            {savingThrowName} ({baseAbilityName})
-            <NumberInput
+            <BlackBox>
+              {savingThrowName}
+              <aside>
+                ({baseAbilityName})
+              </aside>
+            </BlackBox>
+            <BoxNumberInput
               value={savingThrowBonus}
-            /> =
-            <NumberInput
+            />
+            =
+            <BoxNumberInput
               value={savingThrow.baseSave}
               onChange={setForCertainSavingThrow(savingThrowName, setBaseSave)}
-            /> +
-            <NumberInput
+            />
+            +
+            <BoxNumberInput
               value={abilityModifier}
-            /> +
-            <NumberInput
+            />
+            +
+            <BoxNumberInput
               value={savingThrow.magicModifier}
               onChange={setForCertainSavingThrow(savingThrowName, setSavingThrowMagicModifier)}
-            /> +
-            <NumberInput
+            />
+            +
+            <BoxNumberInput
               value={savingThrow.miscModifier}
               onChange={setForCertainSavingThrow(savingThrowName, setMiscSavingThrowModifier)}
-            /> +
-            <NumberInput
+            />
+            +
+            <BoxNumberInput
               value={savingThrow.temporaryModifier}
               onChange={setForCertainSavingThrow(savingThrowName, setTemporarySavingThrowModifier)}
-            /> +
-          </div>
+            />
+          </React.Fragment>
         })}
     </div>
-    <div className={'base-attack-bonus'}>
-      Base Attack Bonus: <NumberInput
-      value={combatValues.attackBonuses.baseAttackBonus}
-      onChange={setBaseAttackBonus}
-    />
-    </div>
-    <div className={'spell-resistance'}>
-      Spell Resistance:
-      <NumberInput
-        value={combatValues.attackBonuses.spellResistance}
-        onChange={setSpellResistance}
+    <label className={'base-attack-bonus'}>
+      <InvertedBorderRadius>
+        Base Attack Bonus
+      </InvertedBorderRadius>
+      <BoxNumberInput
+        value={combatValues.attackBonuses.baseAttackBonus}
+        onChange={callIfDefined(setBaseAttackBonus)}
       />
-    </div>
+    </label>
+    <label className={'spell-resistance'}>
+      <BlackBox>
+        Spell Resistance
+      </BlackBox>
+      <BoxNumberInput
+        value={combatValues.attackBonuses.spellResistance}
+        onChange={callIfDefined(setSpellResistance)}
+      />
+    </label>
     <div className={'combat-values'}>
-      <div>
-        Combat Maneuver Bonus:
-        <NumberInput
+      <div className={'combat-bonus'}>
+        <InvertedBorderRadius>
+          Combat Maneuver Bonus
+        </InvertedBorderRadius>
+        <BoxNumberInput
           value={combatManeuverBonus}
           label={'total'}
-        /> =
-        <NumberInput
+        />
+        =
+        <BoxNumberInput
           value={combatValues.attackBonuses.baseAttackBonus}
           label={'base attack bonus'}
-        /> +
-        <NumberInput
+        />
+        +
+        <BoxNumberInput
           value={abilityModifiers.strength}
           label={'strength modifier'}
-        /> +
-        <NumberInput
+        />
+        +
+        <BoxNumberInput
           value={-sizeModifier}
           label={'size modifier'}
         />
       </div>
-      <div>
-        Combat Maneuver Defense:
-        <NumberInput
+      <div className={'combat-defense'}>
+        <InvertedBorderRadius>
+          Combat Maneuver Defense
+        </InvertedBorderRadius>
+        <BoxNumberInput
           value={combatManeuverDefense}
           label={'total'}
-        /> =
-        <NumberInput
+        />
+        =
+        <BoxNumberInput
           value={combatValues.attackBonuses.baseAttackBonus}
           label={'base attack bonus'}
-        /> +
-        <NumberInput
+        />
+        +
+        <BoxNumberInput
           value={abilityModifiers.strength}
           label={'strength modifier'}
-        /> +
-        <NumberInput
+        />
+        +
+        <BoxNumberInput
           value={abilityModifiers.dexterity}
           label={'dexterity modifier'}
-        /> +
-        <NumberInput
+        />
+        +
+        <BoxNumberInput
           value={-sizeModifier}
           label={'size modifier'}
-        /> +
-        <NumberInput
+        />
+        +
+        <BoxNumberInput
           value={10}
+          hideBox={true}
         />
       </div>
     </div>

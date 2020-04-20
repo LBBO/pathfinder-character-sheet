@@ -1,0 +1,48 @@
+.box-input {
+	$borderWidth: 1px;
+	
+	display: inline-grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: min-content auto;
+	text-align: center;
+	font-size: 1em;
+	width: 3em;
+	justify-items: center;
+	
+	&.hide-box {
+		input {
+			border: $borderWidth solid transparent;
+		}
+	}
+	
+	input {
+		border: $borderWidth solid #000000;
+		appearance: none;
+		text-align: center;
+		box-sizing: border-box;
+		width: 85%;
+		height: 100%;
+		font-size: 1em;
+		padding: 0.1em;
+		
+		&[disabled] {
+			background-color: inherit;
+			cursor: not-allowed;
+		}
+		
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button,
+		&[type=number] {
+			-webkit-appearance: none;
+			-moz-appearance: textfield;
+		}
+	}
+	
+	span {
+		width: 100%;
+		margin-top: 0.3em;
+		font-size: 0.43em;
+		overflow: hidden;
+		font-weight: bold;
+	}
+}
