@@ -66,7 +66,7 @@ export const DisplayAbilities = connector(({
         </td>
         <td>
           <BoxNumberInput
-            value={abilityAttributes.temporaryAdjustment || undefined}
+            value={abilityAttributes.temporaryAdjustment || null}
             onChange={onTempAdjustmentChange(abilityName)}
           />
         </td>
@@ -74,7 +74,7 @@ export const DisplayAbilities = connector(({
           <BoxNumberInput
             value={abilityAttributes.temporaryAdjustment ?
               getModifierFromScore(abilityAttributes.score + abilityAttributes.temporaryAdjustment)
-              : undefined
+              : null
             }
           /></td>
       </tr>
