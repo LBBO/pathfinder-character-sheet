@@ -1,6 +1,6 @@
 import { RootState } from '../../store/root-reducer'
 import { connect, ConnectedProps } from 'react-redux'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   setAbilityScore,
   setAbilityTempAdjustment,
@@ -14,15 +14,7 @@ import { getModifierFromScore } from '../../store/Abilities/selectors'
 import { BoxNumberInput } from '../BoxInput/BoxNumberInput'
 import './DisplayAbilities.scss'
 import { BlackBox } from '../BlackBox/BlackBox'
-
-const abilityShorthands: { [key in abilityName]: string } = {
-  dexterity: 'dex',
-  strength: 'str',
-  wisdom: 'wis',
-  constitution: 'con',
-  charisma: 'cha',
-  intelligence: 'int',
-}
+import { useTranslation } from 'react-i18next'
 
 const mapState = (state: RootState) => ({
   abilities: state.abilities,
@@ -39,6 +31,8 @@ type Props = ConnectedProps<typeof connector>
 
 export const DisplayAbilities = connector(
   ({ abilities, setAbilityScore, setAbilityTempAdjustment }: Props) => {
+    const { t } = useTranslation()
+
     const onScoreChange = (abilityName: keyof AbilityState) => (
       newVal?: number,
     ) => {
@@ -54,50 +48,60 @@ export const DisplayAbilities = connector(
       }
     }
 
-    const abilityNames = Object.keys(abilities) as Array<abilityName>
-    const abilityElements = abilityNames.map((abilityName) => {
-      const abilityAttributes: AbilityAttributes = abilities[abilityName]
+    useEffect(() => {
+      console.log('first render')
+    }, [])
 
-      return (
-        <tr key={abilityName}>
-          <td>
-            <BlackBox>
-              {abilityShorthands[abilityName]}
-              <aside>{abilityName}</aside>
-            </BlackBox>
-          </td>
-          <td>
-            <BoxNumberInput
-              value={abilityAttributes.score}
-              onChange={onScoreChange(abilityName)}
-            />
-          </td>
-          <td>
-            <BoxNumberInput
-              value={getModifierFromScore(abilityAttributes.score)}
-            />
-          </td>
-          <td>
-            <BoxNumberInput
-              value={abilityAttributes.temporaryAdjustment || null}
-              onChange={onTempAdjustmentChange(abilityName)}
-            />
-          </td>
-          <td>
-            <BoxNumberInput
-              value={
-                abilityAttributes.temporaryAdjustment
-                  ? getModifierFromScore(
-                      abilityAttributes.score +
-                        abilityAttributes.temporaryAdjustment,
-                    )
-                  : null
-              }
-            />
-          </td>
-        </tr>
+    const abilityNames = Object.keys(abilities) as Array<abilityName>
+    const abilityElements = abilityNames
+      .sort((nameA, nameB) =>
+        t(`abilities.${nameA}.short`).localeCompare(
+          t(`abilities.${nameB}.short`),
+        ),
       )
-    })
+      .map((abilityName) => {
+        const abilityAttributes: AbilityAttributes = abilities[abilityName]
+
+        return (
+          <tr key={abilityName}>
+            <td>
+              <BlackBox>
+                {t(`abilities.${abilityName}.short`)}
+                <aside>{t(`abilities.${abilityName}.long`)}</aside>
+              </BlackBox>
+            </td>
+            <td>
+              <BoxNumberInput
+                value={abilityAttributes.score}
+                onChange={onScoreChange(abilityName)}
+              />
+            </td>
+            <td>
+              <BoxNumberInput
+                value={getModifierFromScore(abilityAttributes.score)}
+              />
+            </td>
+            <td>
+              <BoxNumberInput
+                value={abilityAttributes.temporaryAdjustment || null}
+                onChange={onTempAdjustmentChange(abilityName)}
+              />
+            </td>
+            <td>
+              <BoxNumberInput
+                value={
+                  abilityAttributes.temporaryAdjustment
+                    ? getModifierFromScore(
+                        abilityAttributes.score +
+                          abilityAttributes.temporaryAdjustment,
+                      )
+                    : null
+                }
+              />
+            </td>
+          </tr>
+        )
+      })
     return (
       <table>
         <thead>
