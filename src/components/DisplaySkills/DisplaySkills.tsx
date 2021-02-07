@@ -12,6 +12,7 @@ import './DisplaySkills.scss'
 import { StyledCheckbox } from '../StyledCheckbox/StyledCheckbox'
 import { getAbilityModifiers } from '../../store/Abilities/selectors'
 import { getTotalSkillBonuses } from '../../store/Skills/selectors'
+import { useTranslation } from 'react-i18next'
 
 const mapState = (state: RootState) => ({
   skills: state.skills,
@@ -34,6 +35,7 @@ export const DisplaySkills = connector(
     abilityModifiers,
     totalSkillBonuses,
   }: Props) => {
+    const { t } = useTranslation()
     const onSkillRanksChange = (skillName: SkillName) => (
       event: ChangeEvent<HTMLInputElement>,
     ) => {
@@ -84,7 +86,7 @@ export const DisplaySkills = connector(
                       </label>
                     </td>
                     <td>{totalSkillBonuses[skillName]}</td>
-                    <td>={abilityName}</td>
+                    <td>={t(`abilities.${abilityName}.short`)}</td>
                     <td>{abilityModifiers[abilityName]}</td>
                     <td>+</td>
                     <td>
