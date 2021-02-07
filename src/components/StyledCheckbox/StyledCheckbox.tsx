@@ -10,14 +10,18 @@ const propTypes = {
   disabled: PropTypes.bool.isRequired,
 }
 
-export const StyledCheckbox = (props: PropTypes.InferProps<typeof propTypes>) => {
-  return <input
-    className={`styled-checkbox ${props.className}`}
-    type={'checkbox'}
-    checked={props.checked ?? false}
-    onChange={props.onChange!}
-    disabled={props.disabled}
-  />
+export const StyledCheckbox = (
+  props: PropTypes.InferProps<typeof propTypes>,
+) => {
+  return (
+    <input
+      className={`styled-checkbox ${props.className}`}
+      type={'checkbox'}
+      checked={props.checked ?? false}
+      onChange={props.onChange!}
+      disabled={props.disabled}
+    />
+  )
 }
 
 StyledCheckbox.propTypes = propTypes

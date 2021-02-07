@@ -1,18 +1,24 @@
 import { CharacterMetaDataReducer } from './CharacterMetaData/reducers'
 import { AbilitiesReducer } from './Abilities/reducers'
 import { SkillsReducer } from './Skills/reducers'
-import { CharacterMetaDataState, UpdateCharacterMetaDataActionTypes } from './CharacterMetaData/types'
+import {
+  CharacterMetaDataState,
+  UpdateCharacterMetaDataActionTypes,
+} from './CharacterMetaData/types'
 import { AbilitiesActionTypes, AbilityState } from './Abilities/types'
 import { SkillState, UpdateSkillActionTypes } from './Skills/types'
-import { CombatValuesActionTypes, CombatValuesState } from './CombatValues/types'
+import {
+  CombatValuesActionTypes,
+  CombatValuesState,
+} from './CombatValues/types'
 import { CombatValuesReducer } from './CombatValues/reducers'
 import { combineReducers } from 'redux'
 
 export type RootState = {
-  characterMetaData: CharacterMetaDataState,
-  abilities: AbilityState,
-  skills: SkillState,
-  combatValues: CombatValuesState,
+  characterMetaData: CharacterMetaDataState
+  abilities: AbilityState
+  skills: SkillState
+  combatValues: CombatValuesState
 }
 
 export type EmptyActionType = { type: 'EMPTY_ACTION' }
@@ -21,11 +27,11 @@ export const EmptyAction: EmptyActionType = {
 }
 
 export type RootActionTypes =
-  CombatValuesActionTypes |
-  UpdateCharacterMetaDataActionTypes |
-  AbilitiesActionTypes |
-  UpdateSkillActionTypes |
-  EmptyActionType
+  | CombatValuesActionTypes
+  | UpdateCharacterMetaDataActionTypes
+  | AbilitiesActionTypes
+  | UpdateSkillActionTypes
+  | EmptyActionType
 
 // export const RootReducer = (state?: RootState, action?: RootActionTypes) => (
 //   {
@@ -36,11 +42,9 @@ export type RootActionTypes =
 //   }
 // )
 
-export const RootReducer = combineReducers<RootState, RootActionTypes>(
-  {
-    characterMetaData: CharacterMetaDataReducer,
-    abilities: AbilitiesReducer,
-    skills: SkillsReducer,
-    combatValues: CombatValuesReducer,
-  },
-)
+export const RootReducer = combineReducers<RootState, RootActionTypes>({
+  characterMetaData: CharacterMetaDataReducer,
+  abilities: AbilitiesReducer,
+  skills: SkillsReducer,
+  combatValues: CombatValuesReducer,
+})

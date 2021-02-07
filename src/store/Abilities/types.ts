@@ -1,4 +1,10 @@
-export type abilityName = 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma'
+export type abilityName =
+  | 'strength'
+  | 'dexterity'
+  | 'constitution'
+  | 'intelligence'
+  | 'wisdom'
+  | 'charisma'
 
 export type AbilityAttributes = {
   score: number
@@ -24,4 +30,6 @@ export type SetAbilityTempAdjustmentAction = {
   adjustment: number
 }
 
-export type AbilitiesActionTypes = SetAbilityTempAdjustmentAction | SetAbilityScoreAction
+export type AbilitiesActionTypes =
+  | SetAbilityTempAdjustmentAction
+  | SetAbilityScoreAction

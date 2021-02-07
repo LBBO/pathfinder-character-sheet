@@ -16,7 +16,10 @@ const initialState: AbilityState = {
   wisdom: createDefaultAbility(),
 }
 
-export const AbilitiesReducer = (state: AbilityState = initialState, action?: RootActionTypes): AbilityState => {
+export const AbilitiesReducer = (
+  state: AbilityState = initialState,
+  action?: RootActionTypes,
+): AbilityState => {
   switch (action?.type) {
     case 'SET_ABILITY_SCORE':
       return {

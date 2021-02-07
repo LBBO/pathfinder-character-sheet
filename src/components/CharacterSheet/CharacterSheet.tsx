@@ -7,7 +7,11 @@ import { DisplayCombatValues } from '../DisplayCombatValues/DisplayCombatValues'
 export const CharacterSheet: React.FC = () => {
   return (
     <div>
-      <img className={'pathfinder-logo'} alt={'Pathfinder logo'} src={'./pathfinderDE-logo.png'} />
+      <img
+        className={'pathfinder-logo'}
+        alt={'Pathfinder logo'}
+        src={'./pathfinderDE-logo.png'}
+      />
       <DisplayCharacterMetaData />
       <DisplayAbilities />
       <DisplayCombatValues />

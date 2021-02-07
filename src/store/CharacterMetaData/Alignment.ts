@@ -7,7 +7,7 @@ export enum Morality {
 export enum Ethics {
   LAW,
   NEUTRAL,
-  CHAOS
+  CHAOS,
 }
 
 export type Alignment = {

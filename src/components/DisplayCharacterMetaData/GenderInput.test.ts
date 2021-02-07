@@ -20,7 +20,9 @@ describe('Gender input field', () => {
   })
 
   it('should render successfully', () => {
-    expect(characterMetadataForm.getByTestId(GenderInputTestIds.wrapper)).toBeInTheDocument()
+    expect(
+      characterMetadataForm.getByTestId(GenderInputTestIds.wrapper),
+    ).toBeInTheDocument()
   })
 
   it('should render a select element with 4 children', () => {
@@ -31,28 +33,51 @@ describe('Gender input field', () => {
 
   describe('should call the onChange handler', () => {
     it('with undefined when the first option is clicked', () => {
-      expectClickOnNthButtonToSetValue(characterMetadataForm, onChangeHandler, 0, undefined, GenderInputTestIds.select)
+      expectClickOnNthButtonToSetValue(
+        characterMetadataForm,
+        onChangeHandler,
+        0,
+        undefined,
+        GenderInputTestIds.select,
+      )
     })
 
     it('with male when the first option is clicked', () => {
       expectClickOnNthButtonToSetValue(
-        characterMetadataForm, onChangeHandler, 1, CharacterGender.MALE, GenderInputTestIds.select)
+        characterMetadataForm,
+        onChangeHandler,
+        1,
+        CharacterGender.MALE,
+        GenderInputTestIds.select,
+      )
     })
 
     it('with female when the second option is clicked', () => {
       expectClickOnNthButtonToSetValue(
-        characterMetadataForm, onChangeHandler, 2, CharacterGender.FEMALE, GenderInputTestIds.select)
+        characterMetadataForm,
+        onChangeHandler,
+        2,
+        CharacterGender.FEMALE,
+        GenderInputTestIds.select,
+      )
     })
 
     it('with other when the third option is clicked', () => {
       expectClickOnNthButtonToSetValue(
-        characterMetadataForm, onChangeHandler, 3, CharacterGender.OTHER, GenderInputTestIds.select)
+        characterMetadataForm,
+        onChangeHandler,
+        3,
+        CharacterGender.OTHER,
+        GenderInputTestIds.select,
+      )
     })
   })
 
   it('should focus on the select when the label is clicked', () => {
     const labelTarget = characterMetadataForm.getByLabelText(/gender/gim)
     expect(labelTarget.tagName).toMatch(/select/i)
-    expect(labelTarget.getAttribute('data-testid')).toBe(GenderInputTestIds.select)
+    expect(labelTarget.getAttribute('data-testid')).toBe(
+      GenderInputTestIds.select,
+    )
   })
 })

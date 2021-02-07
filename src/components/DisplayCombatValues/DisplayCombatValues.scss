@@ -1,69 +1,66 @@
 .combat-values-wrapper {
-	display: grid;
-	grid-template-rows: auto auto auto auto auto;
-	grid-template-columns: auto auto auto;
-	grid-template-areas: 'armor-class armor-class armor-class' 'touch-armor-class flat-footed-armor-class initiative' 'saving-throws saving-throws saving-throws' 'base-attack-bonus base-attack-bonus spell-resistance' 'combat-values combat-values combat-values';
-	grid-gap: 10px;
-	
-	$classes: 'initiative',
-	'armor-class',
-	'touch-armor-class',
-	'flat-footed-armor-class',
-	'saving-throws',
-	'base-attack-bonus',
-	'spell-resistance',
-	'combat-values' ;
-	
-	@each $class in $classes {
-		.#{$class} {
-			grid-area: #{$class};
-			display: flex;
-		}
-		
-		.black-box {
-			height: min-content;
-		}
-	}
-	
-	.base-attack-bonus {
-		align-items: center;
-		
-		.inverted-rounded-corners {
-			flex-grow: 1;
-		}
-	}
-	
-	.spell-resistance, .touch-armor-class, .flat-footed-armor-class {
-		align-items: center;
-		
-		& > * {
-			height: inherit;
-		}
-	}
-	
-	.saving-throws {
-		display: grid;
-		//grid-template-columns: auto repeat(11, min-content);
-		grid-template-columns: auto min-content repeat(5, 1fr min-content);
-		grid-template-rows: repeat(3, 1fr);
-		grid-gap: 4px;
-		align-items: center;
-	}
-	
-	.combat-values {
-		display: grid;
-		grid-template-rows: 1fr 1fr;
-		grid-template-columns: auto auto;
-		grid-template-areas: 'bonus .' 'defense defense';
-		
-		.combat-bonus {
-			grid-area: bonus;
-			display: flex;
-		}
-		
-		.combat-defense {
-			display: flex;
-			grid-area: defense;
-		}
-	}
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: 'armor-class armor-class armor-class' 'touch-armor-class flat-footed-armor-class initiative' 'saving-throws saving-throws saving-throws' 'base-attack-bonus base-attack-bonus spell-resistance' 'combat-values combat-values combat-values';
+  grid-gap: 10px;
+
+  $classes: 'initiative', 'armor-class', 'touch-armor-class',
+    'flat-footed-armor-class', 'saving-throws', 'base-attack-bonus',
+    'spell-resistance', 'combat-values';
+
+  @each $class in $classes {
+    .#{$class} {
+      grid-area: #{$class};
+      display: flex;
+    }
+
+    .black-box {
+      height: min-content;
+    }
+  }
+
+  .base-attack-bonus {
+    align-items: center;
+
+    .inverted-rounded-corners {
+      flex-grow: 1;
+    }
+  }
+
+  .spell-resistance,
+  .touch-armor-class,
+  .flat-footed-armor-class {
+    align-items: center;
+
+    & > * {
+      height: inherit;
+    }
+  }
+
+  .saving-throws {
+    display: grid;
+    //grid-template-columns: auto repeat(11, min-content);
+    grid-template-columns: auto min-content repeat(5, 1fr min-content);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 4px;
+    align-items: center;
+  }
+
+  .combat-values {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: auto auto;
+    grid-template-areas: 'bonus .' 'defense defense';
+
+    .combat-bonus {
+      grid-area: bonus;
+      display: flex;
+    }
+
+    .combat-defense {
+      display: flex;
+      grid-area: defense;
+    }
+  }
 }

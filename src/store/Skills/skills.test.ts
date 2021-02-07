@@ -147,7 +147,10 @@ describe('total skill bonus selector', () => {
   })
 
   it('should update when a skill is changed', () => {
-    initialRootState = RootReducer(initialRootState, setAbilityScore('dexterity', 10))
+    initialRootState = RootReducer(
+      initialRootState,
+      setAbilityScore('dexterity', 10),
+    )
     const oldTotalBonuses = getTotalSkillBonuses(initialRootState)
     const action = setSkillRanks('acrobatics', 1)
     const newState = RootReducer(initialRootState, action)

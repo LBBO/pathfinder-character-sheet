@@ -28,26 +28,31 @@ export const BoxInputDefaultProps = {
   disabled: false,
 }
 
-type PropType = Overwrite<PropTypes.InferProps<typeof BoxInputPropTypes>, {
-  onChange?: React.EventHandler<React.ChangeEvent>
-}>
+type PropType = Overwrite<
+  PropTypes.InferProps<typeof BoxInputPropTypes>,
+  {
+    onChange?: React.EventHandler<React.ChangeEvent>
+  }
+>
 
 export const BoxInput = (props: PropType) => {
-  return <label
-    className={`box-input ${props.hideBox ? 'hide-box' : ''} ${props.className}`}
-    data-testid={props.labelTestId}
-  >
-    <input
-      onChange={props.onChange}
-      value={props.value}
-      data-testid={props.testId}
-      type={props.type}
-      disabled={props.disabled}
-    />
-    {props.label ? <span className={'label'}>
-      {props.label}
-    </span> : null}
-  </label>
+  return (
+    <label
+      className={`box-input ${props.hideBox ? 'hide-box' : ''} ${
+        props.className
+      }`}
+      data-testid={props.labelTestId}
+    >
+      <input
+        onChange={props.onChange}
+        value={props.value}
+        data-testid={props.testId}
+        type={props.type}
+        disabled={props.disabled}
+      />
+      {props.label ? <span className={'label'}>{props.label}</span> : null}
+    </label>
+  )
 }
 
 BoxInput.propTypes = BoxInputPropTypes

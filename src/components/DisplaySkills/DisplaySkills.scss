@@ -1,36 +1,38 @@
 .skills {
-	table {
-		text-align: center;
-		
-		th {
-			font-weight: normal;
-			
-			&:nth-child(2), &:nth-child(4) {
-				text-align: start;
-			}
-		}
-		
-		tr {
-			&:last-child {
-				font-size: 0.8em;
-			}
-			
-			td {
-				&:nth-child(1), &:nth-child(3) {
-					text-align: start;
-				}
-				
-				.styled-checkbox {
-					margin-right: 0.6em;
-				}
-			}
-		}
-		
-		.legend {
-			.styled-checkbox {
-				color: inherit;
-				cursor: initial;
-			}
-		}
-	}
+  table {
+    text-align: center;
+
+    th {
+      font-weight: normal;
+
+      &:nth-child(2),
+      &:nth-child(4) {
+        text-align: start;
+      }
+    }
+
+    tr {
+      &:last-child {
+        font-size: 0.8em;
+      }
+
+      td {
+        &:nth-child(1),
+        &:nth-child(3) {
+          text-align: start;
+        }
+
+        .styled-checkbox {
+          margin-right: 0.6em;
+        }
+      }
+    }
+
+    .legend {
+      .styled-checkbox {
+        color: inherit;
+        cursor: initial;
+      }
+    }
+  }
 }

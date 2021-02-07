@@ -51,7 +51,8 @@ export const CombatValuesReducer = (
         currentSavingThrow.miscModifier = action.payload.newMiscModifier
         break
       case SET_TEMPORARY_SAVING_THROW_MODIFIER:
-        currentSavingThrow.temporaryModifier = action.payload.newTemporaryModifier
+        currentSavingThrow.temporaryModifier =
+          action.payload.newTemporaryModifier
     }
 
     return stateCopy

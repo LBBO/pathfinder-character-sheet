@@ -1,56 +1,58 @@
 @function getColoredDownArrow($color) {
-	@return url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23#{$color}%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  @return url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23#{$color}%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
 }
 
 .character-meta-data {
-	display: grid;
-	grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-	grid-template-rows: repeat(3, 1fr);
-	grid-template-areas:
-			"character-name character-name character-name alignment alignment player-name player-name player-name player-name player-name"
-			"class-name class-name level race race campaign campaign campaign homeland homeland"
-			"deity size-category gender gender age height weight hair hair eyes";
-	grid-gap: 10px;
-	
-	.metadata-input-block {
-		& > * {
-			width: 100%;
-		}
-		
-		input, select {
-			display: block;
-			border: none;
-			border-bottom: 1px solid #000000;
-			padding: 2px;
-		}
-		
-		select {
-			-moz-appearance: none;
-			-webkit-appearance: none;
-			appearance: none;
-			$downArrowColor: 000000;
-			background-image: getColoredDownArrow($downArrowColor);
-			background-repeat: no-repeat, repeat;
-			background-position: right .7em top 50%, 0 0;
-			background-size: .65em auto, 100%;
-			
-			&::-ms-expand {
-				display: none;
-			}
-		}
-		
-		label {
-			font-family: "Times New Roman", serif;
-			font-size: 0.8em;
-		}
-		
-		$classes: character-name, alignment, player-name, class-name, level, race, campaign,
-		homeland, deity, size-category, gender, age, height, weight, hair, eyes;
-		
-		@each $class in $classes {
-			&.#{$class} {
-				grid-area: #{$class};
-			}
-		}
-	}
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'character-name character-name character-name alignment alignment player-name player-name player-name player-name player-name'
+    'class-name class-name level race race campaign campaign campaign homeland homeland'
+    'deity size-category gender gender age height weight hair hair eyes';
+  grid-gap: 10px;
+
+  .metadata-input-block {
+    & > * {
+      width: 100%;
+    }
+
+    input,
+    select {
+      display: block;
+      border: none;
+      border-bottom: 1px solid #000000;
+      padding: 2px;
+    }
+
+    select {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      $downArrowColor: 000000;
+      background-image: getColoredDownArrow($downArrowColor);
+      background-repeat: no-repeat, repeat;
+      background-position: right 0.7em top 50%, 0 0;
+      background-size: 0.65em auto, 100%;
+
+      &::-ms-expand {
+        display: none;
+      }
+    }
+
+    label {
+      font-family: 'Times New Roman', serif;
+      font-size: 0.8em;
+    }
+
+    $classes: character-name, alignment, player-name, class-name, level, race,
+      campaign, homeland, deity, size-category, gender, age, height, weight,
+      hair, eyes;
+
+    @each $class in $classes {
+      &.#{$class} {
+        grid-area: #{$class};
+      }
+    }
+  }
 }

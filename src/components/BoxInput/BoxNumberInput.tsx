@@ -16,24 +16,38 @@ const defaultProps = {
   onChange: undefined,
 }
 
-type PropTypes = Overwrite<PropTypes.InferProps<typeof propTypes>, {
-  onChange?: (value: number | undefined, evt: React.ChangeEvent<HTMLInputElement>) => void,
-}>
+type PropTypes = Overwrite<
+  PropTypes.InferProps<typeof propTypes>,
+  {
+    onChange?: (
+      value: number | undefined,
+      evt: React.ChangeEvent<HTMLInputElement>,
+    ) => void
+  }
+>
 
 export const BoxNumberInput = (props: PropTypes) => {
   const changeHandlerFromProps = props.onChange
-  const changeHandler = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
-    let valueAsNumber = parseInt(evt.target.value)
-    changeHandlerFromProps?.(Number.isNaN(valueAsNumber) ? undefined : valueAsNumber, evt)
-  }, [changeHandlerFromProps])
+  const changeHandler = useCallback(
+    (evt: React.ChangeEvent<HTMLInputElement>) => {
+      let valueAsNumber = parseInt(evt.target.value)
+      changeHandlerFromProps?.(
+        Number.isNaN(valueAsNumber) ? undefined : valueAsNumber,
+        evt,
+      )
+    },
+    [changeHandlerFromProps],
+  )
 
-  return <BoxInput
-    {...props}
-    value={props.value === null ? undefined : props.value}
-    onChange={changeHandler}
-    type={'number'}
-    disabled={!Boolean(props.onChange)}
-  />
+  return (
+    <BoxInput
+      {...props}
+      value={props.value === null ? undefined : props.value}
+      onChange={changeHandler}
+      type={'number'}
+      disabled={!Boolean(props.onChange)}
+    />
+  )
 }
 BoxNumberInput.propTypes = propTypes
 BoxNumberInput.defaultProps = defaultProps
