@@ -22,6 +22,7 @@ import { BoxNumberInput } from '../BoxInput/BoxNumberInput'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 import './DisplayCombatValues.scss'
 import { BlackBox } from '../BlackBox/BlackBox'
+import { useTranslation } from 'react-i18next'
 
 const callIfDefined: <T>(
   callback: (param: T) => void,
@@ -79,6 +80,7 @@ export const DisplayCombatValues = connector(
     setBaseAttackBonus,
     setSpellResistance,
   }: Props) => {
+    const { t } = useTranslation()
     const setForCertainSavingThrow = useCallback(
       (
         savingThrowName: keyof SavingThrowsState,
@@ -207,72 +209,78 @@ export const DisplayCombatValues = connector(
         <div className={'saving-throws'}>
           {(Object.keys(combatValues.savingThrows) as Array<
             keyof SavingThrowsState
-          >).map((savingThrowName, index) => {
-            const savingThrow = combatValues.savingThrows[savingThrowName]
-            let baseAbilityName: abilityName
-            let savingThrowBonus: number
-
-            switch (savingThrowName) {
-              case 'fortitude':
-                baseAbilityName = 'constitution'
-                savingThrowBonus = fortitudeBonus
-                break
-              case 'reflex':
-                baseAbilityName = 'dexterity'
-                savingThrowBonus = reflexBonus
-                break
-              case 'will':
-                savingThrowBonus = willBonus
-                baseAbilityName = 'wisdom'
-                break
-            }
-
-            const abilityModifier = abilityModifiers[baseAbilityName]
-
-            return (
-              <React.Fragment key={index}>
-                <BlackBox>
-                  {savingThrowName}
-                  <aside>({baseAbilityName})</aside>
-                </BlackBox>
-                <BoxNumberInput value={savingThrowBonus} />
-                =
-                <BoxNumberInput
-                  value={savingThrow.baseSave}
-                  onChange={setForCertainSavingThrow(
-                    savingThrowName,
-                    setBaseSave,
-                  )}
-                />
-                +
-                <BoxNumberInput value={abilityModifier} />
-                +
-                <BoxNumberInput
-                  value={savingThrow.magicModifier}
-                  onChange={setForCertainSavingThrow(
-                    savingThrowName,
-                    setSavingThrowMagicModifier,
-                  )}
-                />
-                +
-                <BoxNumberInput
-                  value={savingThrow.miscModifier}
-                  onChange={setForCertainSavingThrow(
-                    savingThrowName,
-                    setMiscSavingThrowModifier,
-                  )}
-                />
-                +
-                <BoxNumberInput
-                  value={savingThrow.temporaryModifier}
-                  onChange={setForCertainSavingThrow(
-                    savingThrowName,
-                    setTemporarySavingThrowModifier,
-                  )}
-                />
-              </React.Fragment>
+          >)
+            .sort((nameA, nameB) =>
+              t(`combatValues.savingThrows.${nameA}`).localeCompare(
+                t(`combatValues.savingThrows.${nameB}`),
+              ),
             )
-          })}
+            .map((savingThrowName, index) => {
+              const savingThrow = combatValues.savingThrows[savingThrowName]
+              let baseAbilityName: abilityName
+              let savingThrowBonus: number
+
+              switch (savingThrowName) {
+                case 'fortitude':
+                  baseAbilityName = 'constitution'
+                  savingThrowBonus = fortitudeBonus
+                  break
+                case 'reflex':
+                  baseAbilityName = 'dexterity'
+                  savingThrowBonus = reflexBonus
+                  break
+                case 'will':
+                  savingThrowBonus = willBonus
+                  baseAbilityName = 'wisdom'
+                  break
+              }
+
+              const abilityModifier = abilityModifiers[baseAbilityName]
+
+              return (
+                <React.Fragment key={index}>
+                  <BlackBox>
+                    {t(`combatValues.savingThrows.${savingThrowName}`)}
+                    <aside>({t(`abilities.${baseAbilityName}.long`)})</aside>
+                  </BlackBox>
+                  <BoxNumberInput value={savingThrowBonus} />
+                  =
+                  <BoxNumberInput
+                    value={savingThrow.baseSave}
+                    onChange={setForCertainSavingThrow(
+                      savingThrowName,
+                      setBaseSave,
+                    )}
+                  />
+                  +
+                  <BoxNumberInput value={abilityModifier} />
+                  +
+                  <BoxNumberInput
+                    value={savingThrow.magicModifier}
+                    onChange={setForCertainSavingThrow(
+                      savingThrowName,
+                      setSavingThrowMagicModifier,
+                    )}
+                  />
+                  +
+                  <BoxNumberInput
+                    value={savingThrow.miscModifier}
+                    onChange={setForCertainSavingThrow(
+                      savingThrowName,
+                      setMiscSavingThrowModifier,
+                    )}
+                  />
+                  +
+                  <BoxNumberInput
+                    value={savingThrow.temporaryModifier}
+                    onChange={setForCertainSavingThrow(
+                      savingThrowName,
+                      setTemporarySavingThrowModifier,
+                    )}
+                  />
+                </React.Fragment>
+              )
+            })}
         </div>
         <label className={'base-attack-bonus'}>
           <InvertedBorderRadius>Base Attack Bonus</InvertedBorderRadius>
