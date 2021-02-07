@@ -23,59 +23,57 @@ describe('AbilitiesReducer', () => {
   it('should be able to set an ability score to 12', () => {
     const initialState = AbilitiesReducer()
 
-    expect(AbilitiesReducer(initialState, setAbilityScore('charisma', 12)))
-      .toMatchObject({
-        ...initialState,
-        charisma: {
-          ...initialState.charisma,
-          score: 12,
-        },
-      })
+    expect(
+      AbilitiesReducer(initialState, setAbilityScore('charisma', 12)),
+    ).toMatchObject({
+      ...initialState,
+      charisma: {
+        ...initialState.charisma,
+        score: 12,
+      },
+    })
   })
 
   it('should set the score to 0 when called with NaN', () => {
     const initialState = AbilitiesReducer()
 
-    expect(AbilitiesReducer(initialState, setAbilityScore('charisma', NaN)))
-      .toMatchObject({
-        ...initialState,
-        charisma: {
-          ...initialState.charisma,
-          score: 0,
-        },
-      })
+    expect(
+      AbilitiesReducer(initialState, setAbilityScore('charisma', NaN)),
+    ).toMatchObject({
+      ...initialState,
+      charisma: {
+        ...initialState.charisma,
+        score: 0,
+      },
+    })
   })
 
   it('should be able to set a temporary ability score to 12', () => {
     const initialState = AbilitiesReducer()
 
-    expect(AbilitiesReducer(
-      initialState,
-      setAbilityTempAdjustment('charisma', 12),
-    ))
-      .toMatchObject({
-        ...initialState,
-        charisma: {
-          ...initialState.charisma,
-          temporaryAdjustment: 12,
-        },
-      })
+    expect(
+      AbilitiesReducer(initialState, setAbilityTempAdjustment('charisma', 12)),
+    ).toMatchObject({
+      ...initialState,
+      charisma: {
+        ...initialState.charisma,
+        temporaryAdjustment: 12,
+      },
+    })
   })
 
   it('should set the temp adjustment to 0 when called with NaN', () => {
     const initialState = AbilitiesReducer()
 
-    expect(AbilitiesReducer(
-      initialState,
-      setAbilityTempAdjustment('charisma', NaN),
-    ))
-      .toMatchObject({
-        ...initialState,
-        charisma: {
-          ...initialState.charisma,
-          temporaryAdjustment: 0,
-        },
-      })
+    expect(
+      AbilitiesReducer(initialState, setAbilityTempAdjustment('charisma', NaN)),
+    ).toMatchObject({
+      ...initialState,
+      charisma: {
+        ...initialState.charisma,
+        temporaryAdjustment: 0,
+      },
+    })
   })
 
   it('should return the state it was called with when called with a different action', () => {
@@ -85,11 +83,13 @@ describe('AbilitiesReducer', () => {
       setAbilityTempAdjustment('charisma', 12),
     )
 
-    expect(AbilitiesReducer(
-      otherState,
-      // @ts-ignore TypeScript wouldn't allow a different action
-      { type: 'SOME_OTHER_ACTION' },
-    )).toBe(otherState)
+    expect(
+      AbilitiesReducer(
+        otherState,
+        // @ts-ignore TypeScript wouldn't allow a different action
+        { type: 'SOME_OTHER_ACTION' },
+      ),
+    ).toBe(otherState)
   })
 })
 
@@ -117,7 +117,7 @@ describe('map score and temp adjustment to modifier', () => {
   const initialState = RootReducer(undefined, EmptyAction)
 
   it('should map the initial state to all 0s', () => {
-    Object.values(getAbilityModifiers(initialState)).forEach(score => {
+    Object.values(getAbilityModifiers(initialState)).forEach((score) => {
       expect(score).toBe(0)
     })
   })
@@ -143,7 +143,7 @@ describe('map score and temp adjustment to modifier', () => {
           score: 8,
           temporaryAdjustment: -2,
         },
-      }
+      },
     }
 
     const modifiers = getAbilityModifiers(state)

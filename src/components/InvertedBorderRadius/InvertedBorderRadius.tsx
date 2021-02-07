@@ -7,20 +7,24 @@ const InvertedBorderRadiusPropTypes = {
   style: PropTypes.object,
 }
 
-export const InvertedBorderRadius: React.FC<InferProps<typeof InvertedBorderRadiusPropTypes>> = (props = {
-  className: '',
-  style: {},
-}) => {
-  return <div
-    className={`inverted-rounded-corners ${props.className ?? ''}`}
-    style={{
-      ...(
-        props.style ?? {}
-      ),
-    }}
-  >
-    {props.children}
-  </div>
+export const InvertedBorderRadius: React.FC<
+  InferProps<typeof InvertedBorderRadiusPropTypes>
+> = (
+  props = {
+    className: '',
+    style: {},
+  },
+) => {
+  return (
+    <div
+      className={`inverted-rounded-corners ${props.className ?? ''}`}
+      style={{
+        ...(props.style ?? {}),
+      }}
+    >
+      {props.children}
+    </div>
+  )
 }
 
 InvertedBorderRadius.propTypes = InvertedBorderRadiusPropTypes

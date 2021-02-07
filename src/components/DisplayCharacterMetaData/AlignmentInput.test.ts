@@ -1,4 +1,8 @@
-import { Alignment, Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
+import {
+  Alignment,
+  Ethics,
+  Morality,
+} from '../../store/CharacterMetaData/Alignment'
 import { AlignmentInputTestIds } from './DisplayCharacterMetaData'
 import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions'
 import { createMockMetadataForm } from './createMockMetadataForm'
@@ -9,7 +13,10 @@ describe('Alignment input field', () => {
   let characterMetadataForm = createMockMetadataForm()
   let onChangeHandler: jest.SpyInstance
   beforeEach(() => {
-    onChangeHandler = jest.spyOn(CharacterMetadataActions, 'setCharacterAlignment')
+    onChangeHandler = jest.spyOn(
+      CharacterMetadataActions,
+      'setCharacterAlignment',
+    )
 
     characterMetadataForm = createMockMetadataForm()
   })
@@ -19,18 +26,28 @@ describe('Alignment input field', () => {
   })
 
   it('should render successfully', () => {
-    expect(characterMetadataForm.getByTestId(AlignmentInputTestIds.wrapper)).toBeInTheDocument()
+    expect(
+      characterMetadataForm.getByTestId(AlignmentInputTestIds.wrapper),
+    ).toBeInTheDocument()
   })
 
   it('should render a select element with 10 children (9 options + empty)', () => {
-    const select = characterMetadataForm.getByTestId(AlignmentInputTestIds.select)
+    const select = characterMetadataForm.getByTestId(
+      AlignmentInputTestIds.select,
+    )
     expect(select).toBeInTheDocument()
     expect(select.children.length).toBe(10)
   })
 
   describe('should call the onChange handler', () => {
     it('with undefined when the first option is clicked', () => {
-      expectClickOnNthButtonToSetValue(characterMetadataForm, onChangeHandler, 0, undefined, AlignmentInputTestIds.select)
+      expectClickOnNthButtonToSetValue(
+        characterMetadataForm,
+        onChangeHandler,
+        0,
+        undefined,
+        AlignmentInputTestIds.select,
+      )
     })
 
     it('with law good when the second option is clicked', () => {
@@ -39,13 +56,21 @@ describe('Alignment input field', () => {
         morality: Morality.GOOD,
       }
 
-      expectClickOnNthButtonToSetValue(characterMetadataForm, onChangeHandler, 1, lawGood, AlignmentInputTestIds.select)
+      expectClickOnNthButtonToSetValue(
+        characterMetadataForm,
+        onChangeHandler,
+        1,
+        lawGood,
+        AlignmentInputTestIds.select,
+      )
     })
   })
 
   it('should focus on the select when the label is clicked', () => {
     const labelTarget = characterMetadataForm.getByLabelText(/alignment/gim)
     expect(labelTarget.tagName).toMatch(/select/i)
-    expect(labelTarget.getAttribute('data-testid')).toBe(AlignmentInputTestIds.select)
+    expect(labelTarget.getAttribute('data-testid')).toBe(
+      AlignmentInputTestIds.select,
+    )
   })
 })

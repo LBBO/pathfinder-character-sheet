@@ -10,14 +10,20 @@ export const getModifierFromScore = (score: number) => Math.floor(score / 2) - 5
 
 export const getAbilities = (state: RootState) => state.abilities
 
-export const getCurrentModifiersFromAbilities = (abilitiesState: AbilityState) => (
-  Object.entries(abilitiesState) as Array<[abilityName, AbilityAttributes]>
-)
-  .reduce((modifiers: AbilityModifiers, [abilityName, values]) => {
-    modifiers[abilityName] = getModifierFromScore(values.score + values.temporaryAdjustment)
+export const getCurrentModifiersFromAbilities = (
+  abilitiesState: AbilityState,
+) =>
+  (Object.entries(abilitiesState) as Array<
+    [abilityName, AbilityAttributes]
+  >).reduce((modifiers: AbilityModifiers, [abilityName, values]) => {
+    modifiers[abilityName] = getModifierFromScore(
+      values.score + values.temporaryAdjustment,
+    )
 
     return modifiers
   }, {} as AbilityModifiers)
 
 export const getAbilityModifiers = createSelector(
-  [getAbilities], getCurrentModifiersFromAbilities)
+  [getAbilities],
+  getCurrentModifiersFromAbilities,
+)

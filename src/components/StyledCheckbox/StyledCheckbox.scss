@@ -1,27 +1,27 @@
-input[type="checkbox"].styled-checkbox {
-	$size: 1em;
-	$borderWidth: 0.125em;
-	-webkit-appearance: none;
-	border: $borderWidth solid #000;
-	width: $size;
-	height: $size;
-	margin: 0;
-	cursor: pointer;
-	position: relative;
-	
-	&:focus {
-		outline: none;
-	}
-	
-	&:checked {
-		&::before {
-			content: '✓';
-			font-size: 1.1em;
-			font-weight: bold;
-			position: absolute;
-			top: -0.35em;
-			left: -0.04em;
-			text-align: center;
-		}
-	}
+input[type='checkbox'].styled-checkbox {
+  $size: 1em;
+  $borderWidth: 0.125em;
+  -webkit-appearance: none;
+  border: $borderWidth solid #000;
+  width: $size;
+  height: $size;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:checked {
+    &::before {
+      content: '✓';
+      font-size: 1.1em;
+      font-weight: bold;
+      position: absolute;
+      top: -0.35em;
+      left: -0.04em;
+      text-align: center;
+    }
+  }
 }

@@ -68,7 +68,10 @@ describe('getArmorClass', () => {
       // Evaluates to dex mod of +1
       rootState = RootReducer(rootState, setAbilityScore('dexterity', 12))
       // Evaluates to size mod of +1
-      rootState = RootReducer(rootState, setCharacterSizeCategory(SizeCategory.SMALL))
+      rootState = RootReducer(
+        rootState,
+        setCharacterSizeCategory(SizeCategory.SMALL),
+      )
     })
 
     it('armor class should return the sum of all values plus 10', () => {
@@ -102,28 +105,36 @@ describe('getArmorClass', () => {
 
 describe('savingThrowReducer', () => {
   it('should set base save correctly', () => {
-    expect(getInitialCombatValuesState().savingThrows.fortitude.baseSave).toBe(0)
+    expect(getInitialCombatValuesState().savingThrows.fortitude.baseSave).toBe(
+      0,
+    )
     const action = setBaseSave(2, 'fortitude')
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.baseSave).toBe(2)
   })
 
   it('should set magic modifier correctly', () => {
-    expect(getInitialCombatValuesState().savingThrows.fortitude.magicModifier).toBe(0)
+    expect(
+      getInitialCombatValuesState().savingThrows.fortitude.magicModifier,
+    ).toBe(0)
     const action = setSavingThrowMagicModifier(2, 'fortitude')
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.magicModifier).toBe(2)
   })
 
   it('should set misc modifier correctly', () => {
-    expect(getInitialCombatValuesState().savingThrows.fortitude.miscModifier).toBe(0)
+    expect(
+      getInitialCombatValuesState().savingThrows.fortitude.miscModifier,
+    ).toBe(0)
     const action = setMiscSavingThrowModifier(2, 'fortitude')
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.miscModifier).toBe(2)
   })
 
   it('should set temp modifier correctly', () => {
-    expect(getInitialCombatValuesState().savingThrows.fortitude.temporaryModifier).toBe(0)
+    expect(
+      getInitialCombatValuesState().savingThrows.fortitude.temporaryModifier,
+    ).toBe(0)
     const action = setTemporarySavingThrowModifier(2, 'fortitude')
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.savingThrows.fortitude.temporaryModifier).toBe(2)
@@ -155,17 +166,21 @@ describe('attack bonuses', () => {
   })
 
   describe('saving throws', () => {
-    let state =
-
-      beforeEach(() => {
-        state = RootReducer(undefined, EmptyAction)
-      })
+    let state = beforeEach(() => {
+      state = RootReducer(undefined, EmptyAction)
+    })
 
     const setValuesFor = (savingThrowName: keyof SavingThrowsState) => {
       state = RootReducer(state, setBaseSave(1, savingThrowName))
-      state = RootReducer(state, setSavingThrowMagicModifier(1, savingThrowName))
+      state = RootReducer(
+        state,
+        setSavingThrowMagicModifier(1, savingThrowName),
+      )
       state = RootReducer(state, setMiscSavingThrowModifier(1, savingThrowName))
-      state = RootReducer(state, setTemporarySavingThrowModifier(1, savingThrowName))
+      state = RootReducer(
+        state,
+        setTemporarySavingThrowModifier(1, savingThrowName),
+      )
     }
 
     it('should return the sum of all required values and constitution mod for fortitude', () => {

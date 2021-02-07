@@ -1,4 +1,10 @@
-import { CharacterClass, CharacterGender, CharacterMetaData, CharacterRace, SizeCategory } from './Character'
+import {
+  CharacterClass,
+  CharacterGender,
+  CharacterMetaData,
+  CharacterRace,
+  SizeCategory,
+} from './Character'
 import { Alignment } from './Alignment'
 
 export const UPDATE_CHARACTER_NAME = 'UPDATE_CHARACTER_NAME'
@@ -99,7 +105,7 @@ type UpdateCampaignAction = {
 }
 
 export type UpdateCharacterMetaDataActionTypes =
-  UpdateCharacterNameAction
+  | UpdateCharacterNameAction
   | UpdateCharacterClassAction
   | UpdateCharacterRaceAction
   | UpdateCharacterAlignmentAction

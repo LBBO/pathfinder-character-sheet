@@ -6,7 +6,10 @@ import {
   UpdateSkillActionTypes,
 } from './types'
 
-export const setSkillRanks = (skillName: SkillName, ranks: number): UpdateSkillActionTypes => {
+export const setSkillRanks = (
+  skillName: SkillName,
+  ranks: number,
+): UpdateSkillActionTypes => {
   return {
     type: UPDATE_SKILL_RANKS,
     payload: {
@@ -16,7 +19,10 @@ export const setSkillRanks = (skillName: SkillName, ranks: number): UpdateSkillA
   }
 }
 
-export const setSkillMiscMod = (skillName: SkillName, miscModifier: number): UpdateSkillActionTypes => {
+export const setSkillMiscMod = (
+  skillName: SkillName,
+  miscModifier: number,
+): UpdateSkillActionTypes => {
   return {
     type: UPDATE_SKILL_MISC_MODIFIER,
     payload: {
@@ -26,12 +32,15 @@ export const setSkillMiscMod = (skillName: SkillName, miscModifier: number): Upd
   }
 }
 
-export const setIsSkillClassSkill = (skillName: SkillName, isClassSkill: boolean): UpdateSkillActionTypes => {
+export const setIsSkillClassSkill = (
+  skillName: SkillName,
+  isClassSkill: boolean,
+): UpdateSkillActionTypes => {
   return {
     type: UPDATE_SKILL_IS_CLASS_SKILL,
     payload: {
       skillName,
       isClassSkill,
-    }
+    },
   }
 }

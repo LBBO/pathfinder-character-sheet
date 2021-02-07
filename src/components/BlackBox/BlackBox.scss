@@ -1,14 +1,14 @@
 .black-box {
-	background-color: black;
-	color: white;
-	box-sizing: border-box;
-	$top-padding: 1px;
-	$side-padding: 3px;
-	padding: $top-padding $side-padding;
-	text-align: center;
-	font-size: calc((1em - #{ $top-padding}) * 1);
-	
-	aside {
-		font-size: 0.5em;
-	}
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+  $top-padding: 1px;
+  $side-padding: 3px;
+  padding: $top-padding $side-padding;
+  text-align: center;
+  font-size: calc((1em - #{$top-padding}) * 1);
+
+  aside {
+    font-size: 0.5em;
+  }
 }

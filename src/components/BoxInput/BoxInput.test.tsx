@@ -20,10 +20,9 @@ describe('BoxInput', () => {
 
     act(() => {
       component.unmount()
-      component = render(<BoxInput
-        labelTestId={defaultContainerTestId}
-        className={className}
-      />)
+      component = render(
+        <BoxInput labelTestId={defaultContainerTestId} className={className} />,
+      )
     })
 
     expect(component.getByTestId(defaultContainerTestId)).toHaveClass(className)
@@ -32,22 +31,23 @@ describe('BoxInput', () => {
   it('should set the hide-box class if hideBox is true', () => {
     act(() => {
       component.unmount()
-      component = render(<BoxInput
-        labelTestId={defaultContainerTestId}
-      />)
+      component = render(<BoxInput labelTestId={defaultContainerTestId} />)
     })
 
-    expect(component.getByTestId(defaultContainerTestId)).not.toHaveClass('hide-box')
+    expect(component.getByTestId(defaultContainerTestId)).not.toHaveClass(
+      'hide-box',
+    )
 
     act(() => {
       component.unmount()
-      component = render(<BoxInput
-        labelTestId={defaultContainerTestId}
-        hideBox={true}
-      />)
+      component = render(
+        <BoxInput labelTestId={defaultContainerTestId} hideBox={true} />,
+      )
     })
 
-    expect(component.getByTestId(defaultContainerTestId)).toHaveClass('hide-box')
+    expect(component.getByTestId(defaultContainerTestId)).toHaveClass(
+      'hide-box',
+    )
   })
 
   it('should correctly set the value', () => {
@@ -55,13 +55,13 @@ describe('BoxInput', () => {
 
     act(() => {
       component.unmount()
-      component = render(<BoxInput
-        testId={defaultInputTestId}
-        value={value}
-      />)
+      component = render(<BoxInput testId={defaultInputTestId} value={value} />)
     })
 
-    expect(component.getByTestId(defaultInputTestId)).toHaveAttribute('value', value.toString())
+    expect(component.getByTestId(defaultInputTestId)).toHaveAttribute(
+      'value',
+      value.toString(),
+    )
   })
 
   it('should correctly set the type', () => {
@@ -69,13 +69,13 @@ describe('BoxInput', () => {
 
     act(() => {
       component.unmount()
-      component = render(<BoxInput
-        testId={defaultInputTestId}
-        type={type}
-      />)
+      component = render(<BoxInput testId={defaultInputTestId} type={type} />)
     })
 
-    expect(component.getByTestId(defaultInputTestId)).toHaveAttribute('type', type)
+    expect(component.getByTestId(defaultInputTestId)).toHaveAttribute(
+      'type',
+      type,
+    )
   })
 
   it('should correctly set the label', () => {
@@ -83,13 +83,12 @@ describe('BoxInput', () => {
 
     act(() => {
       component.unmount()
-      component = render(<BoxInput
-        testId={defaultInputTestId}
-        label={label}
-      />)
+      component = render(<BoxInput testId={defaultInputTestId} label={label} />)
     })
 
     expect(component.getByLabelText(label)).toBeInTheDocument()
-    expect(component.getByLabelText(label)).toBe(component.getByTestId(defaultInputTestId))
+    expect(component.getByLabelText(label)).toBe(
+      component.getByTestId(defaultInputTestId),
+    )
   })
 })

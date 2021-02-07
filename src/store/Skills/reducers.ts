@@ -10,17 +10,16 @@ import { RootActionTypes } from '../root-reducer'
 export const createInitialState = () => {
   const result = {} as SkillState
 
-  (
-    Object.keys(quickSkillDefinitions) as Array<keyof SkillState>
-  )
-    .forEach((skillName: keyof SkillState) => {
+  ;(Object.keys(quickSkillDefinitions) as Array<keyof SkillState>).forEach(
+    (skillName: keyof SkillState) => {
       result[skillName] = {
         name: skillName,
         isClassSkill: false,
         miscModifier: 0,
         ranks: 0,
       }
-    })
+    },
+  )
 
   return result
 }

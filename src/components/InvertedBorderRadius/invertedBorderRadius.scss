@@ -1,34 +1,33 @@
 .inverted-rounded-corners {
-	$actual-padding: 0.3em;
-	$side-padding-for-corners: 2em;
-	$circle-width: 1.7em;
-	$circle-height: 1em;
-	
-	background-color: black;
-	color: white;
-	position: relative;
-	width: fit-content;
-	height: min-content;
-	overflow: hidden;
-	padding: $actual-padding #{$actual-padding + $side-padding-for-corners};
-	display: inline-block;
-	text-align: center;
+  $actual-padding: 0.3em;
+  $side-padding-for-corners: 2em;
+  $circle-width: 1.7em;
+  $circle-height: 1em;
 
-	&::before, &::after {
-		content: '';
-		padding: $circle-height $circle-width;
-		border-radius: 50%;
-		background-color: #fff;
-		box-shadow:
-				0 0 currentColor,
-				0 #{1em + $circle-height} currentColor;
-		position: absolute;
-		top: #{-1 * $circle-height};
-		left: #{-1 * $circle-width};
-	}
-	
-	&::after {
-		left: unset;
-		right: #{-1 * $circle-width};
-	}
+  background-color: black;
+  color: white;
+  position: relative;
+  width: fit-content;
+  height: min-content;
+  overflow: hidden;
+  padding: $actual-padding #{$actual-padding + $side-padding-for-corners};
+  display: inline-block;
+  text-align: center;
+
+  &::before,
+  &::after {
+    content: '';
+    padding: $circle-height $circle-width;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 currentColor, 0 #{1em + $circle-height} currentColor;
+    position: absolute;
+    top: #{-1 * $circle-height};
+    left: #{-1 * $circle-width};
+  }
+
+  &::after {
+    left: unset;
+    right: #{-1 * $circle-width};
+  }
 }

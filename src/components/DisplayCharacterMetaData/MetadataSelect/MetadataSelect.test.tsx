@@ -45,16 +45,20 @@ describe('Metadata select', () => {
 
   beforeEach(() => {
     onChangeHandler.mockReset()
-    genderInput = render(<MetadataSelect
-      onChange={onChangeHandler}
-      id={'gender'}
-      options={options}
-      value={undefined}
-    />)
+    genderInput = render(
+      <MetadataSelect
+        onChange={onChangeHandler}
+        id={'gender'}
+        options={options}
+        value={undefined}
+      />,
+    )
   })
 
   it('should render successfully', () => {
-    expect(genderInput.getByTestId(MetadataSelectTestIds.wrapper)).toBeInTheDocument()
+    expect(
+      genderInput.getByTestId(MetadataSelectTestIds.wrapper),
+    ).toBeInTheDocument()
   })
 
   it(`should render a select element with ${options.length} children`, () => {
@@ -67,7 +71,13 @@ describe('Metadata select', () => {
     options.forEach(({ label, value }, index) => {
       it(`with ${value} when the option ${index} is clicked`, () => {
         expectClickOnNthButtonToSetValue(
-          genderInput, onChangeHandler, index, value, MetadataSelectTestIds.select, label)
+          genderInput,
+          onChangeHandler,
+          index,
+          value,
+          MetadataSelectTestIds.select,
+          label,
+        )
       })
     })
   })
@@ -75,7 +85,9 @@ describe('Metadata select', () => {
   it('should focus on the select when the label is clicked', () => {
     const labelTarget = genderInput.getByLabelText(/.*/)
     expect(labelTarget.tagName).toMatch(/select/i)
-    expect(labelTarget.getAttribute('data-testid')).toBe(MetadataSelectTestIds.select)
+    expect(labelTarget.getAttribute('data-testid')).toBe(
+      MetadataSelectTestIds.select,
+    )
   })
 
   it('should render the correct label when the value is different data types', () => {
@@ -90,14 +102,18 @@ describe('Metadata select', () => {
 
     options.forEach((option, index) => {
       genderInput.unmount()
-      genderInput = render(<MetadataSelect
-        onChange={onChangeHandler}
-        id={'gender'}
-        options={options}
-        value={option.value}
-      />)
+      genderInput = render(
+        <MetadataSelect
+          onChange={onChangeHandler}
+          id={'gender'}
+          options={options}
+          value={option.value}
+        />,
+      )
 
-      const selectElement = genderInput.getByTestId(MetadataSelectTestIds.select) as HTMLSelectElement
+      const selectElement = genderInput.getByTestId(
+        MetadataSelectTestIds.select,
+      ) as HTMLSelectElement
       const selectedIndex = selectElement.selectedIndex
       expect(selectedIndex).toBe(index)
     })
@@ -113,12 +129,14 @@ describe('Metadata select', () => {
 
     expect(consoleErrorMock).not.toHaveBeenCalled()
 
-    render(<MetadataSelect
-      onChange={onChangeHandler}
-      id={'gender'}
-      options={options}
-      value={undefined}
-    />)
+    render(
+      <MetadataSelect
+        onChange={onChangeHandler}
+        id={'gender'}
+        options={options}
+        value={undefined}
+      />,
+    )
 
     expect(consoleErrorMock).toHaveBeenCalledTimes(1)
 

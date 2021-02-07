@@ -80,17 +80,26 @@ describe('CharacterMetaDataReducer', () => {
 
 describe('getSizeModifier', () => {
   it('should return 0 when the size category is medium', () => {
-    const state = RootReducer(undefined, setCharacterSizeCategory(SizeCategory.MEDIUM))
+    const state = RootReducer(
+      undefined,
+      setCharacterSizeCategory(SizeCategory.MEDIUM),
+    )
     expect(getSizeModifier(state)).toBe(0)
   })
 
   it('should return 1 when the size category is small', () => {
-    const state = RootReducer(undefined, setCharacterSizeCategory(SizeCategory.SMALL))
+    const state = RootReducer(
+      undefined,
+      setCharacterSizeCategory(SizeCategory.SMALL),
+    )
     expect(getSizeModifier(state)).toBe(1)
   })
 
   it('should return -1 when the size category is large', () => {
-    const state = RootReducer(undefined, setCharacterSizeCategory(SizeCategory.LARGE))
+    const state = RootReducer(
+      undefined,
+      setCharacterSizeCategory(SizeCategory.LARGE),
+    )
     expect(getSizeModifier(state)).toBe(-1)
   })
 })
