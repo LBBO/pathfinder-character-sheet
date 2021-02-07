@@ -21,6 +21,10 @@ export type TranslationResource = Resource & {
         short: string
         long: string
       }
+      ability: {
+        short: string
+        long: string
+      }
       total: string
       bonus: string
     }
@@ -39,6 +43,13 @@ export type TranslationResource = Resource & {
     }
     skills: {
       [key in SkillName]: string
+    }
+    skillsTable: {
+      title: string
+      skillName: string
+      ranks: string
+      classSkill: string
+      trainedOnly: string
     }
     combatValues: {
       savingThrows: {

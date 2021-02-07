@@ -53,14 +53,20 @@ export const DisplaySkills = connector(
         <table>
           <thead>
             <tr>
-              <th>Skill Names</th>
-              <th>Total Bonus</th>
+              <th>{t('skillsTable.skillName')}</th>
+              <th>
+                {t('general.total')} {t('general.bonus')}
+              </th>
               <th> {/* Base ability name */} </th>
-              <th>Ability Mod.</th>
+              <th>
+                {t('general.ability.short')}.-{t('general.modifier.short')}.
+              </th>
               <th> {/* + */} </th>
-              <th>Ranks</th>
+              <th>{t('skillsTable.ranks')}</th>
               <th> {/* + */} </th>
-              <th>Misc. Mod.</th>
+              <th>
+                {t('general.misc.short')}. {t('general.modifier.short')}.
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -83,9 +89,8 @@ export const DisplaySkills = connector(
                             setIsSkillClassSkill(skillName, !skill.isClassSkill)
                           }
                         />
-
                         {t(`skills.${skillName}`)}
-                        {isTrainedOnly ? '*' : ''}
+                        {isTrainedOnly ? ' *' : ''}
                       </label>
                     </td>
                     <td>{totalSkillBonuses[skillName]}</td>
@@ -113,7 +118,8 @@ export const DisplaySkills = connector(
             <tr className={'legend'}>
               <td>
                 <StyledCheckbox checked={true} disabled />
-                Class Skill &nbsp; &nbsp; * Trained Only
+                {t('skillsTable.classSkill')} &nbsp; &nbsp; *{' '}
+                {t('skillsTable.trainedOnly')}
               </td>
             </tr>
           </tbody>

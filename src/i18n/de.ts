@@ -16,6 +16,10 @@ export const de: TranslationResource = {
         short: 'Sonst',
         long: 'Sonstig',
       },
+      ability: {
+        short: 'Attr',
+        long: 'Attribut',
+      },
       total: 'Gesamt',
       bonus: 'Bonus',
     },
@@ -88,6 +92,13 @@ export const de: TranslationResource = {
       survival: 'Überlebenskunst',
       swim: 'Schwimmen',
       useMagicDevice: 'Magischen Gegenstand benutzen',
+    },
+    skillsTable: {
+      title: 'Fertigkeiten',
+      ranks: 'Ränge',
+      skillName: 'Fertigkeit',
+      classSkill: 'Klassenfertigkeit',
+      trainedOnly: 'Nur geübt',
     },
     combatValues: {
       savingThrows: {
