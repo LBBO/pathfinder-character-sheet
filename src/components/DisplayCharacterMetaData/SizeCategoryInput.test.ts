@@ -1,3 +1,4 @@
+import '../../i18n/i18nSetup'
 import { SizeCategory } from '../../store/CharacterMetaData/Character'
 import { SizeCategoryInputTestIds } from './DisplayCharacterMetaData'
 import { expectClickOnNthButtonToSetValue } from './MetadataSelect/MetadataSelect.test'

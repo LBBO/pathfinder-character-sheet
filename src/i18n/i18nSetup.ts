@@ -139,5 +139,3 @@ i18n.use(initReactI18next).init({
   lng: 'en',
   fallbackLng: 'en',
 })
-
-console.log('i18n setup done')

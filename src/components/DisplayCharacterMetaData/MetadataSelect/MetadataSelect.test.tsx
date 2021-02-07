@@ -1,5 +1,6 @@
 import { MetadataSelect, MetadataSelectTestIds } from './MetadataSelect'
 import React from 'react'
+import '../../../i18n/i18nSetup'
 import { fireEvent, render } from '@testing-library/react'
 
 export const expectClickOnNthButtonToSetValue = (

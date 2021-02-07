@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../i18n/i18nSetup'
 import { fireEvent, render } from '@testing-library/react'
 import { DisplayCombatValues } from './DisplayCombatValues'
 import {
