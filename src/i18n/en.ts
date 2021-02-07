@@ -16,6 +16,10 @@ export const en: TranslationResource = {
         short: 'Misc',
         long: 'Miscellaneous',
       },
+      ability: {
+        short: 'Abil',
+        long: 'Ability',
+      },
       total: 'Total',
       bonus: 'Bonus',
     },
@@ -88,6 +92,13 @@ export const en: TranslationResource = {
       survival: 'survival',
       swim: 'swim',
       useMagicDevice: 'use magic device',
+    },
+    skillsTable: {
+      title: 'Skills',
+      ranks: 'Ranks',
+      skillName: 'Skill names',
+      classSkill: 'Class skill',
+      trainedOnly: 'Trained only',
     },
     combatValues: {
       savingThrows: {
