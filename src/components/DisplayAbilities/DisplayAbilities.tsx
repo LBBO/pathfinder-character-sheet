@@ -106,11 +106,11 @@ export const DisplayAbilities = connector(
       <table>
         <thead>
           <tr>
-            <td>Ability Name</td>
-            <td>Score</td>
-            <td>Mod</td>
-            <td>Temp adjustment</td>
-            <td>Temp mod</td>
+            <td>{t('abilitiesTable.abilityName')}</td>
+            <td>{t('abilitiesTable.score')}</td>
+            <td>{t('abilitiesTable.modifier')}</td>
+            <td>{t('abilitiesTable.tempAdjustment')}</td>
+            <td>{t('abilitiesTable.tempModifier')}</td>
           </tr>
         </thead>
         <tbody>{abilityElements}</tbody>

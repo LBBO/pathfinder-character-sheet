@@ -34,6 +34,13 @@ export const de: TranslationResource = {
         long: 'Weisheit',
       },
     },
+    abilitiesTable: {
+      abilityName: 'Attribut',
+      score: 'Attributs­wert',
+      modifier: 'Attributs­mod.',
+      tempAdjustment: 'Temp. Wert',
+      tempModifier: 'Temp. Mod.',
+    },
     skills: {
       acrobatics: 'Akrobatik',
       appraise: 'Schätzen',
