@@ -136,7 +136,7 @@ i18n.use(initReactI18next).init({
     en,
     de,
   },
-  lng: 'de',
+  lng: 'en',
   fallbackLng: 'en',
 })
 

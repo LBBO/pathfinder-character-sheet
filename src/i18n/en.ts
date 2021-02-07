@@ -138,46 +138,46 @@ export const en: TranslationResource = {
     alignments: {
       ethics: {
         [Ethics.LAW]: {
-          long: 'lawful',
+          long: 'Lawful',
           short: 'L',
         },
         [Ethics.NEUTRAL]: {
-          long: 'neutral',
+          long: 'Neutral',
           short: 'N',
         },
         [Ethics.CHAOS]: {
-          long: 'chaos',
+          long: 'Chaos',
           short: 'C',
         },
       },
       morality: {
         [Morality.GOOD]: {
-          long: 'good',
+          long: 'Good',
           short: 'G',
         },
         [Morality.NEUTRAL]: {
-          long: 'neutral',
+          long: 'Neutral',
           short: 'N',
         },
         [Morality.BAD]: {
-          long: 'bad',
+          long: 'Bad',
           short: 'B',
         },
       },
       neutral: {
-        long: 'neutral',
+        long: 'Neutral',
         short: 'N',
       },
     },
     genders: {
-      [CharacterGender.MALE]: 'male',
-      [CharacterGender.FEMALE]: 'female',
-      [CharacterGender.OTHER]: 'other',
+      [CharacterGender.MALE]: 'Male',
+      [CharacterGender.FEMALE]: 'Female',
+      [CharacterGender.OTHER]: 'Other',
     },
     sizeCategories: {
-      [SizeCategory.SMALL]: 'small',
-      [SizeCategory.MEDIUM]: 'normal',
-      [SizeCategory.LARGE]: 'large',
+      [SizeCategory.SMALL]: 'Small',
+      [SizeCategory.MEDIUM]: 'Normal',
+      [SizeCategory.LARGE]: 'Large',
     },
     characterMetaData: {
       characterName: 'character name',
