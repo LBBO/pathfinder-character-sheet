@@ -12,6 +12,18 @@ import {
 
 export type TranslationResource = Resource & {
   translation: {
+    general: {
+      modifier: {
+        short: string
+        long: string
+      }
+      misc: {
+        short: string
+        long: string
+      }
+      total: string
+      bonus: string
+    }
     abilities: {
       [key in abilityName]: {
         short: string
@@ -33,6 +45,34 @@ export type TranslationResource = Resource & {
         fortitude: string
         reflex: string
         will: string
+      }
+      initiative: {
+        short: string
+        long: string
+      }
+      armorClass: {
+        short: string
+        long: string
+      }
+      armorBonus: string
+      shield: string
+      sizeModifier: string
+      naturalArmor: string
+      deflectionModifier: string
+      touch: string
+      flatFooted: string
+      baseAttackBonus: {
+        short: string
+        long: string
+      }
+      spellResistance: string
+      combatManeuverBonus: {
+        short: string
+        long: string
+      }
+      combatManeuverDefense: {
+        short: string
+        long: string
       }
     }
     alignments: {
