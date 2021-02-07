@@ -64,8 +64,11 @@ export const DisplaySkills = connector(
             </tr>
           </thead>
           <tbody>
-            {(Object.entries(skills) as Array<[SkillName, Skill]>).map(
-              ([skillName, skill], index) => {
+            {(Object.entries(skills) as Array<[SkillName, Skill]>)
+              .sort(([skillA], [skillB]) =>
+                t(`skills.${skillA}`).localeCompare(t(`skills.${skillB}`)),
+              )
+              .map(([skillName, skill], index) => {
                 const {
                   baseAbility: abilityName,
                   isTrainedOnly,
@@ -81,7 +84,7 @@ export const DisplaySkills = connector(
                           }
                         />
 
-                        {skillName}
+                        {t(`skills.${skillName}`)}
                         {isTrainedOnly ? '*' : ''}
                       </label>
                     </td>
@@ -106,8 +109,7 @@ export const DisplaySkills = connector(
                     </td>
                   </tr>
                 )
-              },
-            )}
+              })}
             <tr className={'legend'}>
               <td>
                 <StyledCheckbox checked={true} disabled />

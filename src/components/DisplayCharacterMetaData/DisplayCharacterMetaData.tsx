@@ -12,6 +12,8 @@ import {
 import { MetadataSelect } from './MetadataSelect/MetadataSelect'
 import { Ethics, Morality } from '../../store/CharacterMetaData/Alignment'
 
+import { useTranslation } from 'react-i18next'
+
 const GenderInputOptions = [
   { label: undefined, value: undefined },
   { label: 'Male', value: CharacterGender.MALE },
@@ -139,6 +141,8 @@ export const DisplayCharacterMetaData = connector(
     gender,
     setCharacterGender,
   }: Props) => {
+    const { t } = useTranslation()
+
     const callWithStringValue = useCallback(
       (callback: (value: string) => any) =>
         useCallback(
@@ -161,108 +165,149 @@ export const DisplayCharacterMetaData = connector(
       [],
     )
 
+    const translatedAlignmentOptions = AlignmentOptions.map(
+      (alignmentOption) => {
+        const ethics = alignmentOption.value?.ethics
+        const morality = alignmentOption.value?.morality
+
+        let newLabel =
+          t(`alignments.ethics.${ethics}.long`) +
+          ' ' +
+          t(`alignments.morality.${morality}.long`)
+
+        if (ethics === Ethics.NEUTRAL && morality === Morality.NEUTRAL) {
+          newLabel = t('alignments.neutral.long')
+        } else if (ethics === undefined && morality === undefined) {
+          newLabel = ''
+        }
+
+        return {
+          ...alignmentOption,
+          label: newLabel,
+        }
+      },
+    )
+
+    const translatedGenderOptions = GenderInputOptions.map((genderOption) => ({
+      ...genderOption,
+      label:
+        genderOption.value !== undefined
+          ? t(`genders.${genderOption.value}`)
+          : '',
+    }))
+
+    const translatedSizeOptions = SizeCategoryInputOptions.map(
+      (sizeOption) => ({
+        ...sizeOption,
+        label:
+          sizeOption.value !== undefined
+            ? t(`sizeCategories.${sizeOption.value}`)
+            : '',
+      }),
+    )
+
     return (
       <div className={'character-meta-data'}>
         <MetadataStringInput
           id={'character-name'}
           value={characterName}
-          label={'Charakter Name'}
+          label={t('characterMetaData.characterName')}
           onChange={callWithStringValue(setCharacterName)}
         />
         <MetadataSelect
           onChange={setCharacterAlignment}
-          options={AlignmentOptions}
+          options={translatedAlignmentOptions}
           id={'alignment'}
-          label={'Alignment'}
+          label={t('characterMetaData.alignment')}
           value={alignment}
           testIds={AlignmentInputTestIds}
         />
         <MetadataStringInput
           id={'player-name'}
           value={playerName}
-          label={'Player'}
+          label={t('characterMetaData.player')}
           onChange={callWithStringValue(setPlayerName)}
         />
         <MetadataStringInput
           id={'class-name'}
           value={className}
-          label={'Character Class'}
+          label={t('characterMetaData.characterClass')}
           onChange={callWithStringValue(setCharacterClass)}
         />
         <MetadataNumberInput
           id={'level'}
           value={level}
-          label={'Level'}
+          label={t('characterMetaData.level')}
           onChange={callWithNumberValue(setCharacterLevel)}
         />
         <MetadataStringInput
           id={'deity'}
           value={deity}
-          label={'Deity'}
+          label={t('characterMetaData.deity')}
           onChange={callWithStringValue(setCharacterDeity)}
         />
         <MetadataSelect
           testIds={SizeCategoryInputTestIds}
           onChange={setCharacterSizeCategory}
-          options={SizeCategoryInputOptions}
+          options={translatedSizeOptions}
           id={'size-category'}
           value={sizeCategory}
-          label={'Size Category'}
+          label={t('characterMetaData.sizeCategory')}
         />
         <MetadataSelect
           testIds={GenderInputTestIds}
           onChange={setCharacterGender}
-          options={GenderInputOptions}
+          options={translatedGenderOptions}
           id={'gender'}
           value={gender}
-          label={'Gender'}
+          label={t('characterMetaData.gender')}
         />
         <MetadataStringInput
           id={'campaign'}
           value={campaign}
-          label={'Campaign'}
+          label={t('characterMetaData.campaign')}
           onChange={callWithStringValue(setCampaign)}
         />
         <MetadataStringInput
           id={'homeland'}
           value={homeland}
-          label={'Homeland'}
+          label={t('characterMetaData.homeland')}
           onChange={callWithStringValue(setCharacterHomeland)}
         />
         <MetadataStringInput
           id={'race'}
           value={race}
-          label={'Race'}
+          label={t('characterMetaData.race')}
           onChange={callWithStringValue(setCharacterRace)}
         />
         <MetadataStringInput
           id={'hair'}
           value={hair}
-          label={'Hair'}
+          label={t('characterMetaData.hair')}
           onChange={callWithStringValue(setCharacterHair)}
         />
         <MetadataStringInput
           id={'eyes'}
           value={eyes}
-          label={'Eyes'}
+          label={t('characterMetaData.eyes')}
           onChange={callWithStringValue(setCharacterEyes)}
         />
         <MetadataNumberInput
           id={'age'}
           value={age}
-          label={'Age'}
+          label={t('characterMetaData.age')}
           onChange={callWithNumberValue(setCharacterAge)}
         />
         <MetadataNumberInput
           id={'height'}
           value={height}
-          label={'Height'}
+          label={t('characterMetaData.height')}
           onChange={callWithNumberValue(setCharacterHeight)}
         />
         <MetadataNumberInput
           id={'weight'}
           value={weight}
-          label={'Weight'}
+          label={t('characterMetaData.weight')}
           onChange={callWithNumberValue(setCharacterWeight)}
         />
       </div>
