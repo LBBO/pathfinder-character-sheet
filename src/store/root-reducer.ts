@@ -13,12 +13,15 @@ import {
 } from './CombatValues/types'
 import { CombatValuesReducer } from './CombatValues/reducers'
 import { combineReducers } from 'redux'
+import { AppState, AppStateActionTypes } from './AppState/types'
+import { AppStateReducer } from './AppState/reducers'
 
 export type RootState = {
   characterMetaData: CharacterMetaDataState
   abilities: AbilityState
   skills: SkillState
   combatValues: CombatValuesState
+  appState: AppState
 }
 
 export type EmptyActionType = { type: 'EMPTY_ACTION' }
@@ -31,6 +34,7 @@ export type RootActionTypes =
   | UpdateCharacterMetaDataActionTypes
   | AbilitiesActionTypes
   | UpdateSkillActionTypes
+  | AppStateActionTypes
   | EmptyActionType
 
 // export const RootReducer = (state?: RootState, action?: RootActionTypes) => (
@@ -47,4 +51,5 @@ export const RootReducer = combineReducers<RootState, RootActionTypes>({
   abilities: AbilitiesReducer,
   skills: SkillsReducer,
   combatValues: CombatValuesReducer,
+  appState: AppStateReducer,
 })
