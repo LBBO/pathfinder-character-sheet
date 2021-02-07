@@ -7,6 +7,18 @@ import {
 
 export const en: TranslationResource = {
   translation: {
+    general: {
+      modifier: {
+        short: 'Mod',
+        long: 'Modifier',
+      },
+      misc: {
+        short: 'Misc',
+        long: 'Miscellaneous',
+      },
+      total: 'Total',
+      bonus: 'Bonus',
+    },
     abilities: {
       charisma: {
         short: 'CHA',
@@ -82,6 +94,34 @@ export const en: TranslationResource = {
         fortitude: 'fortitude',
         reflex: 'reflex',
         will: 'will',
+      },
+      initiative: {
+        short: 'INI',
+        long: 'Initiative',
+      },
+      armorClass: {
+        short: 'AC',
+        long: 'Armor class',
+      },
+      armorBonus: 'Armor',
+      shield: 'Shield',
+      sizeModifier: 'Size',
+      naturalArmor: 'Natural armor',
+      deflectionModifier: 'Deflection',
+      flatFooted: 'Flat-footed',
+      touch: 'Touch',
+      baseAttackBonus: {
+        short: 'BAB',
+        long: 'Base attack bonus',
+      },
+      spellResistance: 'Spell resistance',
+      combatManeuverBonus: {
+        short: 'CMB',
+        long: 'Combat Maneuver Bonus',
+      },
+      combatManeuverDefense: {
+        short: 'CMD',
+        long: 'Combat Maneuver Defense',
       },
     },
     alignments: {

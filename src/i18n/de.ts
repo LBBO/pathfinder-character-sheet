@@ -1,4 +1,3 @@
-import { en } from './en'
 import { Ethics, Morality } from '../store/CharacterMetaData/Alignment'
 import { TranslationResource } from './i18nSetup'
 import {
@@ -8,6 +7,18 @@ import {
 
 export const de: TranslationResource = {
   translation: {
+    general: {
+      modifier: {
+        short: 'Mod',
+        long: 'Modifikator',
+      },
+      misc: {
+        short: 'Sonst',
+        long: 'Sonstig',
+      },
+      total: 'Gesamt',
+      bonus: 'Bonus',
+    },
     abilities: {
       charisma: {
         short: 'CH',
@@ -83,6 +94,34 @@ export const de: TranslationResource = {
         fortitude: 'Zähigkeit',
         reflex: 'Reflex',
         will: 'Wille',
+      },
+      initiative: {
+        short: 'INI',
+        long: 'Initiative',
+      },
+      armorClass: {
+        short: 'RK',
+        long: 'Rüstungs­klasse',
+      },
+      armorBonus: 'Rüstungs',
+      shield: 'Schild',
+      sizeModifier: 'Größen',
+      naturalArmor: 'Natürl. Rüstung',
+      deflectionModifier: 'Ablenkungs',
+      flatFooted: 'Auf dem falschen Fuß',
+      touch: 'Berührung',
+      baseAttackBonus: {
+        short: 'GAB',
+        long: 'Grund-Angriffsbonus',
+      },
+      spellResistance: 'Zauber­resistenz',
+      combatManeuverBonus: {
+        short: 'KMB',
+        long: 'Kampfmaneuverbonus',
+      },
+      combatManeuverDefense: {
+        short: 'KMV',
+        long: 'Kampfmaneuververteidigung',
       },
     },
     alignments: {
