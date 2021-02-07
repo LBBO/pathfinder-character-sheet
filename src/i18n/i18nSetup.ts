@@ -18,6 +18,13 @@ export type TranslationResource = Resource & {
         long: string
       }
     }
+    abilitiesTable: {
+      abilityName: string
+      score: string
+      modifier: string
+      tempAdjustment: string
+      tempModifier: string
+    }
     skills: {
       [key in SkillName]: string
     }

@@ -33,6 +33,13 @@ export const en: TranslationResource = {
         long: 'wisdom',
       },
     },
+    abilitiesTable: {
+      abilityName: 'Ability name',
+      score: 'Score',
+      modifier: 'Mod.',
+      tempAdjustment: 'Temp. Adjustment',
+      tempModifier: 'Temp. Mod.',
+    },
     skills: {
       acrobatics: 'acrobatics',
       appraise: 'appraise',
