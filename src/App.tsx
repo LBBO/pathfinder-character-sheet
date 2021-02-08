@@ -1,6 +1,4 @@
 import React from 'react'
-import './i18n/i18nSetup'
-
 import { Provider } from 'react-redux'
 import { store } from './store'
 import { CharacterSheet } from './components/CharacterSheet/CharacterSheet'
