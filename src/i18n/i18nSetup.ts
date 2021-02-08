@@ -134,20 +134,21 @@ export type TranslationResource = Resource & {
   }
 }
 
+export const initializeI18n = () => {
+  return i18n.use(initReactI18next).init({
+    resources: {
+      en,
+      de,
+    },
+    lng: 'en',
+    fallbackLng: 'en',
+  })
+}
+
 export const useI18nSetup = () => {
   const [hasLoaded, setHasBeenInitialized] = useState(false)
   useEffect(() => {
-    i18n
-      .use(initReactI18next)
-      .init({
-        resources: {
-          en,
-          de,
-        },
-        lng: 'en',
-        fallbackLng: 'en',
-      })
-      .then(() => setHasBeenInitialized(true))
+    initializeI18n().then(() => setHasBeenInitialized(true))
   }, [])
 
   const language = useSelector(getLanguage)

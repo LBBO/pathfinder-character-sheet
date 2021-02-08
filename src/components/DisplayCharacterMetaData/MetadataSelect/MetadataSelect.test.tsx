@@ -1,7 +1,11 @@
 import { MetadataSelect, MetadataSelectTestIds } from './MetadataSelect'
 import React from 'react'
-import '../../../i18n/i18nSetup'
 import { fireEvent, render } from '@testing-library/react'
+import { initializeI18n } from '../../../i18n/i18nSetup'
+
+beforeAll(async () => {
+  await initializeI18n()
+})
 
 export const expectClickOnNthButtonToSetValue = (
   // This type is seemingly impossible to get other than having it inferred

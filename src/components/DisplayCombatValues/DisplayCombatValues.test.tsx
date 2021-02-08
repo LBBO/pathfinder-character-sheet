@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../i18n/i18nSetup'
 import { fireEvent, render } from '@testing-library/react'
 import { DisplayCombatValues } from './DisplayCombatValues'
 import {
@@ -22,6 +21,11 @@ import {
 import { setCharacterSizeCategory } from '../../store/CharacterMetaData/actions'
 import { SizeCategory } from '../../store/CharacterMetaData/Character'
 import { getSizeModifier } from '../../store/CharacterMetaData/selectors'
+import { initializeI18n } from '../../i18n/i18nSetup'
+
+beforeAll(async () => {
+  await initializeI18n()
+})
 
 const editingNumberInputFieldShouldSetState = ({
   inputElement,
