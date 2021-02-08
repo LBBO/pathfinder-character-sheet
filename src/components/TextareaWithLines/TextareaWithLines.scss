@@ -2,22 +2,21 @@
   border: none;
   resize: none;
   width: 100%;
-  font-size: 1em;
+  font-size: inherit;
 
   // lines under text
   $lineHeight: 1.5em;
   line-height: $lineHeight;
   $lineColor: black;
-  $offset: 1.5;
   $ruleHeight: 2;
   background-image: linear-gradient(
     transparent,
-    transparent calc(#{$lineHeight} - #{($offset + $ruleHeight) / 16}em),
-    $lineColor calc(#{$lineHeight} - #{($offset + $ruleHeight) / 16}em),
-    $lineColor calc(#{$lineHeight} - #{$offset/16}em),
-    transparent calc(#{$lineHeight} - #{$offset/16}em)
+    transparent calc(#{$lineHeight} - #{$ruleHeight}px),
+    $lineColor calc(#{$lineHeight} - #{$ruleHeight}px),
+    $lineColor calc(#{$lineHeight}),
+    transparent calc(#{$lineHeight})
   );
-  background-size: 100% calc(#{$lineHeight});
+  background-size: 100% calc(#{$lineHeight} - 0.5px);
   background-attachment: local;
 
   &:focus {
