@@ -9,6 +9,9 @@ import {
   CharacterGender,
   SizeCategory,
 } from '../store/CharacterMetaData/Character'
+import { useEffect, useState } from 'react'
+import { getLanguage } from '../store/AppState/selectors'
+import { useSelector } from 'react-redux'
 
 export type TranslationResource = Resource & {
   translation: {
@@ -131,11 +134,28 @@ export type TranslationResource = Resource & {
   }
 }
 
-i18n.use(initReactI18next).init({
-  resources: {
-    en,
-    de,
-  },
-  lng: 'en',
-  fallbackLng: 'en',
-})
+export const useI18nSetup = () => {
+  const [hasLoaded, setHasBeenInitialized] = useState(false)
+  useEffect(() => {
+    i18n
+      .use(initReactI18next)
+      .init({
+        resources: {
+          en,
+          de,
+        },
+        lng: 'en',
+        fallbackLng: 'en',
+      })
+      .then(() => setHasBeenInitialized(true))
+  }, [])
+
+  const language = useSelector(getLanguage)
+  useEffect(() => {
+    if (hasLoaded) {
+      i18n.changeLanguage(language).catch(console.error)
+    }
+  }, [language, hasLoaded])
+
+  return { hasLoaded }
+}
