@@ -197,5 +197,8 @@ export const en: TranslationResource = {
       hair: 'hair',
       eyes: 'eyes',
     },
+    talents: {
+      title: 'Talents',
+    },
   },
 }

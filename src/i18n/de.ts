@@ -197,5 +197,8 @@ export const de: TranslationResource = {
       hair: 'Haarfarbe',
       eyes: 'Augenfarbe',
     },
+    talents: {
+      title: 'Talente',
+    },
   },
 }
