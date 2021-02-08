@@ -5,6 +5,7 @@ import { DisplaySkills } from '../DisplaySkills/DisplaySkills'
 import { DisplayCombatValues } from '../DisplayCombatValues/DisplayCombatValues'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import { useI18nSetup } from '../../i18n/i18nSetup'
+import { DisplayTalents } from '../DisplayTalents/DisplayTalents'
 
 export const CharacterSheet: React.FC = () => {
   const { hasLoaded: i18nHasLoaded } = useI18nSetup()
@@ -21,6 +22,7 @@ export const CharacterSheet: React.FC = () => {
       <DisplayAbilities />
       <DisplayCombatValues />
       <DisplaySkills />
+      <DisplayTalents />
     </div>
   ) : null
 }
