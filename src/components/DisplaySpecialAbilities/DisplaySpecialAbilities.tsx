@@ -31,7 +31,7 @@ export const DisplaySpecialAbilities = connector(
           {t('specialAbilities.title')}
         </InvertedBorderRadius>
         <TextareaWithLines
-          minRows={12}
+          minRows={20}
           value={specialAbilities}
           onChange={onChange}
         />
