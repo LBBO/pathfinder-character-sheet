@@ -22,6 +22,8 @@ import {
   SpecialAbilitiesState,
 } from './SpecialAbilities/reducers'
 import { SpecialAbilitiesActionType } from './SpecialAbilities/actions'
+import { InventoryReducer, InventoryState } from './Inventory/reducers'
+import { InventoryActionType } from './Inventory/actions'
 
 export type RootState = {
   characterMetaData: CharacterMetaDataState
@@ -31,6 +33,7 @@ export type RootState = {
   appState: AppState
   talents: TalentsState
   specialAbilities: SpecialAbilitiesState
+  inventory: InventoryState
 }
 
 export type EmptyActionType = { type: 'EMPTY_ACTION' }
@@ -46,6 +49,7 @@ export type RootActionTypes =
   | AppStateActionTypes
   | TalentsActionType
   | SpecialAbilitiesActionType
+  | InventoryActionType
   | EmptyActionType
 
 // export const RootReducer = (state?: RootState, action?: RootActionTypes) => (
@@ -65,4 +69,5 @@ export const RootReducer = combineReducers<RootState, RootActionTypes>({
   appState: AppStateReducer,
   talents: TalentsReducer,
   specialAbilities: SpecialAbilitiesReducer,
+  inventory: InventoryReducer,
 })
