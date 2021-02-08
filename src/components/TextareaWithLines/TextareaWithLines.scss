@@ -1,0 +1,26 @@
+.textarea-with-lines {
+  border: none;
+  resize: none;
+  width: 100%;
+  font-size: 1em;
+
+  // lines under text
+  $lineHeight: 1.5em;
+  line-height: $lineHeight;
+  $lineColor: black;
+  $offset: 1.5;
+  $ruleHeight: 2;
+  background-image: linear-gradient(
+    transparent,
+    transparent calc(#{$lineHeight} - #{($offset + $ruleHeight) / 16}em),
+    $lineColor calc(#{$lineHeight} - #{($offset + $ruleHeight) / 16}em),
+    $lineColor calc(#{$lineHeight} - #{$offset/16}em),
+    transparent calc(#{$lineHeight} - #{$offset/16}em)
+  );
+  background-size: 100% calc(#{$lineHeight});
+  background-attachment: local;
+
+  &:focus {
+    outline: none;
+  }
+}
