@@ -134,6 +134,9 @@ export type TranslationResource = Resource & {
     talents: {
       title: string
     }
+    specialAbilities: {
+      title: string
+    }
   }
 }
 

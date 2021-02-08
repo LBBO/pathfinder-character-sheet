@@ -200,5 +200,8 @@ export const en: TranslationResource = {
     talents: {
       title: 'Talents',
     },
+    specialAbilities: {
+      title: 'Besondere Fähigkeiten',
+    },
   },
 }
