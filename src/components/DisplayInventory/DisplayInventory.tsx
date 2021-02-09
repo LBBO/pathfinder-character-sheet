@@ -136,7 +136,7 @@ export const DisplayInventory = connector(
                       key={key}
                       title={t(`inventory.weapons.type.${key}.long`)}
                     >
-                      {t(`inventory.weapons.type.${key}.short`)}
+                      {t(`inventory.weapons.type.${key}.short`)}&nbsp;
                       <StyledCheckbox
                         checked={weapon.type[key]}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
