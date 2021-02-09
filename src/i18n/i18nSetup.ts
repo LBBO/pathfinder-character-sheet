@@ -137,6 +137,33 @@ export type TranslationResource = Resource & {
     specialAbilities: {
       title: string
     }
+    inventory: {
+      weapons: {
+        title: string
+        attackBonus: string
+        criticalHit: string
+        multiplier: string
+        minDieValue: string
+        type: {
+          title: string
+          bludgeoning: {
+            long: string
+            short: string
+          }
+          piercing: {
+            long: string
+            short: string
+          }
+          slashing: {
+            long: string
+            short: string
+          }
+        }
+        range: string
+        ammunition: string
+        damage: string
+      }
+    }
   }
 }
 

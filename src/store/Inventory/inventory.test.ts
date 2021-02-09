@@ -1,23 +1,11 @@
-import { InventoryReducer, InventoryState, Weapon } from './reducers'
+import {
+  generateEmptyWeapon,
+  InventoryReducer,
+  InventoryState,
+  Weapon,
+} from './reducers'
 import { EmptyAction } from '../root-reducer'
 import { addWeapon, deleteWeapon, editWeapon } from './actions'
-
-const generateEmptyWeapon = () => ({
-  ammunition: '',
-  attackBonus: undefined,
-  criticalAttackProperties: {
-    multiplier: 2,
-    minDieValue: 20,
-  },
-  damage: '',
-  name: '',
-  range: undefined,
-  type: {
-    hieb: true,
-    stich: false,
-    wucht: false,
-  },
-})
 
 const generateEmptyState = (): InventoryState => ({
   armor: [],

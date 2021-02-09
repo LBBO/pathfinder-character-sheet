@@ -203,5 +203,32 @@ export const en: TranslationResource = {
     specialAbilities: {
       title: 'Besondere Fähigkeiten',
     },
+    inventory: {
+      weapons: {
+        title: 'Weapon',
+        attackBonus: 'Attack bonus',
+        criticalHit: 'Critical hit',
+        multiplier: 'Multiplier',
+        minDieValue: 'Min. die value',
+        type: {
+          title: 'Type',
+          bludgeoning: {
+            long: 'Bludgeoning',
+            short: 'B',
+          },
+          piercing: {
+            long: 'Piercing',
+            short: 'P',
+          },
+          slashing: {
+            long: 'Slashing',
+            short: 'S',
+          },
+        },
+        range: 'Range',
+        ammunition: 'Ammunition',
+        damage: 'Damage',
+      },
+    },
   },
 }

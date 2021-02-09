@@ -24,9 +24,9 @@ export type Weapon = {
     minDieValue: number
   }
   type: {
-    hieb: boolean
-    stich: boolean
-    wucht: boolean
+    slashing: boolean
+    piercing: boolean
+    bludgeoning: boolean
   }
   range?: number
   ammunition: string
@@ -39,10 +39,27 @@ export type InventoryState = {
   weapons: Array<Weapon>
 }
 
+export const generateEmptyWeapon = (): Weapon => ({
+  ammunition: '',
+  attackBonus: undefined,
+  criticalAttackProperties: {
+    multiplier: 2,
+    minDieValue: 20,
+  },
+  damage: '',
+  name: '',
+  range: undefined,
+  type: {
+    bludgeoning: false,
+    piercing: false,
+    slashing: false,
+  },
+})
+
 const initialState: InventoryState = {
   armor: [],
   gear: [],
-  weapons: [],
+  weapons: [generateEmptyWeapon()],
 }
 
 export const InventoryReducer = createReducer(initialState, (builder) => {

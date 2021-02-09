@@ -1,0 +1,116 @@
+.inventory {
+  .weapons {
+    .weapon {
+      display: grid;
+      grid-template-rows: 1fr 1fr 2fr 1fr 2fr;
+      grid-template-columns: 1fr 1fr 3fr repeat(2, max-content);
+      grid-template-areas:
+        'title title title . .'
+        'title title title attack-bonus-title critical-hit-title'
+        'name-input name-input name-input attack-bonus-input critical-hit-input'
+        'type-title range-title ammunition-title damage-title damage-title'
+        'type-input range-input ammunition-input damage-input damage-input';
+
+      .title {
+        background-color: black;
+        color: white;
+        padding: 0.2em 1em;
+        text-align: center;
+      }
+
+      .input {
+        padding: 0.2em 1em;
+      }
+
+      .header {
+        width: initial;
+        font-size: 1.5em;
+        align-self: center;
+        border: none;
+      }
+
+      .type-input {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .critical-hit-input {
+        input {
+          width: 2em;
+        }
+      }
+
+      // table cell borders
+      $borderWidth: 1px;
+      & > * {
+        border: $borderWidth solid black;
+      }
+      .type-input,
+      .range-input,
+      .ammunition-input,
+      .damage-input {
+        border-bottom-width: #{2 * $borderWidth};
+      }
+      .critical-hit-title,
+      .critical-hit-input,
+      .damage-title,
+      .damage-input {
+        border-right-width: #{2 * $borderWidth};
+      }
+      .name-input,
+      .type-title,
+      .type-input {
+        border-left-width: #{2 * $borderWidth};
+      }
+      .name-input {
+        border-top-color: transparent;
+      }
+
+      // grid areas
+      .header {
+        grid-area: title;
+      }
+      .name-input {
+        grid-area: name-input;
+      }
+      .attack-bonus-title {
+        grid-area: attack-bonus-title;
+      }
+      .attack-bonus-input {
+        grid-area: attack-bonus-input;
+      }
+      .critical-hit-title {
+        grid-area: critical-hit-title;
+      }
+      .critical-hit-input {
+        grid-area: critical-hit-input;
+      }
+      .type-title {
+        grid-area: type-title;
+      }
+      .type-input {
+        grid-area: type-input;
+      }
+      .range-title {
+        grid-area: range-title;
+      }
+      .range-input {
+        grid-area: range-input;
+      }
+      .ammunition-title {
+        grid-area: ammunition-title;
+      }
+      .ammunition-input {
+        grid-area: ammunition-input;
+      }
+      .damage-title {
+        grid-area: damage-title;
+      }
+      .damage-input {
+        grid-area: damage-input;
+      }
+    }
+  }
+}
