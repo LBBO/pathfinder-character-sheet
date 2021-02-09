@@ -3,6 +3,7 @@
   $side-padding-for-corners: 2em;
   $circle-width: 1.7em;
   $circle-height: 1em;
+  $offsetExpression: #{-1 * $circle-width};
 
   background-color: black;
   color: white;
@@ -19,16 +20,16 @@
     content: '';
     padding: $circle-height $circle-width;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: currentColor;
     box-shadow: 0 0 currentColor, 0 #{1em + $circle-height} currentColor;
     position: absolute;
     top: #{-1 * $circle-height};
-    left: #{-1 * $circle-width};
+    left: $offsetExpression;
   }
 
   &::after {
     left: unset;
-    right: #{-1 * $circle-width};
+    right: $offsetExpression;
   }
 
   &.fill-top-right::after,
@@ -38,6 +39,6 @@
 
   &.fill-bottom-right::after,
   &.fill-bottom-left::before {
-    box-shadow: 0 0 black, 0 #{1em + $circle-height} black;
+    box-shadow: none;
   }
 }
