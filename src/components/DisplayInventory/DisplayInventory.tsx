@@ -4,7 +4,7 @@ import * as InventoryActions from '../../store/Inventory/actions'
 import { connect, ConnectedProps } from 'react-redux'
 import { getWeapons } from '../../store/Inventory/getters'
 import { useTranslation } from 'react-i18next'
-import { generateEmptyWeapon } from '../../store/Inventory/reducers'
+import { generateEmptyWeapon, Weapon } from '../../store/Inventory/reducers'
 import './DisplayInventory.scss'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 import { NumberInput } from '../util/NumberInput'
@@ -106,9 +106,19 @@ export const DisplayInventory = connector(
                 {t('inventory.weapons.type.title')}
               </span>
               <div className="input type-input">
-                {(['bludgeoning', 'slashing', 'piercing'] as const).map(
-                  (key) => (
-                    <label key={key}>
+                {(['bludgeoning', 'slashing', 'piercing'] as Array<
+                  keyof Weapon['type']
+                >)
+                  .sort((a, b) =>
+                    t(`inventory.weapons.type.${a}.short`).localeCompare(
+                      t(`inventory.weapons.type.${b}.short`),
+                    ),
+                  )
+                  .map((key) => (
+                    <label
+                      key={key}
+                      title={t(`inventory.weapons.type.${key}.long`)}
+                    >
                       {t(`inventory.weapons.type.${key}.short`)}
                       <input
                         type={'checkbox'}
@@ -127,8 +137,7 @@ export const DisplayInventory = connector(
                         }
                       />
                     </label>
-                  ),
-                )}
+                  ))}
               </div>
               <span className={'title range-title'}>
                 {t('inventory.weapons.range')}
