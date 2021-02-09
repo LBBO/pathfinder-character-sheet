@@ -35,7 +35,11 @@ export const InvertedBorderRadius: React.FC<
         ...(props.style ?? {}),
       }}
     >
-      {props.children}
+      <div className={'corners'}>
+        <div className={'corner-container left'} />
+        <div className={'corner-container right'} />
+      </div>
+      <div className={'content'}>{props.children}</div>
     </div>
   )
 }
