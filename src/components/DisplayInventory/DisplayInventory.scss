@@ -22,11 +22,39 @@
         padding: 0.2em 1em;
       }
 
-      .header {
-        width: initial;
-        font-size: 1.5em;
-        align-self: center;
+      .header-container {
+        display: flex;
+        align-content: stretch;
         border: none;
+        position: relative;
+
+        .header {
+          justify-self: stretch;
+          flex-grow: 1;
+          width: initial;
+          font-size: 1.5em;
+          align-self: center;
+          border: none;
+        }
+
+        // half-height border left and right
+        &:after,
+        &:before {
+          content: '';
+          position: absolute;
+          z-index: 1;
+          bottom: 0;
+          width: 2px;
+          height: 50%;
+          background-color: black;
+        }
+        &:before {
+          left: 0;
+        }
+        &:after {
+          right: 0;
+          width: 1px;
+        }
       }
 
       .type-input {
@@ -69,7 +97,7 @@
       }
 
       // grid areas
-      .header {
+      .header-container {
         grid-area: title;
       }
       .name-input {

@@ -29,9 +29,11 @@ export const DisplayInventory = connector(
         <div className={'weapons'}>
           {weapons.map((weapon, weaponIndex) => (
             <div className={'weapon'} key={weaponIndex}>
-              <InvertedBorderRadius className={'header'}>
-                {t('inventory.weapons.title')}
-              </InvertedBorderRadius>
+              <div className={'header-container'}>
+                <InvertedBorderRadius className={'header'}>
+                  {t('inventory.weapons.title')}
+                </InvertedBorderRadius>
+              </div>
               <input
                 className={'input name-input'}
                 value={weapon.name}
