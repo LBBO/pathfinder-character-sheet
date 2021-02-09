@@ -18,7 +18,7 @@ export type Armor = {
 
 export type Weapon = {
   name: string
-  attackBonus?: number
+  attackBonus: string
   criticalAttackProperties: {
     multiplier?: number
     minDieValue?: number
@@ -41,7 +41,7 @@ export type InventoryState = {
 
 export const generateEmptyWeapon = (): Weapon => ({
   ammunition: '',
-  attackBonus: undefined,
+  attackBonus: '',
   criticalAttackProperties: {
     multiplier: 2,
     minDieValue: 20,

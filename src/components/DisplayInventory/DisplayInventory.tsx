@@ -64,15 +64,15 @@ export const DisplayInventory = connector(
               <span className={'title attack-bonus-title'}>
                 {t('inventory.weapons.attackBonus')}
               </span>
-              <NumberInput
+              <input
                 className={'input attack-bonus-input'}
                 value={weapon.attackBonus}
-                onChange={(value) =>
+                onChange={(e) =>
                   editWeapon({
                     oldWeaponIndex: weaponIndex,
                     newWeapon: {
                       ...weapon,
-                      attackBonus: value,
+                      attackBonus: e.target.value,
                     },
                   })
                 }
