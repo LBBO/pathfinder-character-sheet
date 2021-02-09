@@ -17,7 +17,12 @@ const mapDispatchToProps = InventoryActions
 const connector = connect(mapStateToProps, mapDispatchToProps)
 
 export const DisplayInventory = connector(
-  ({ weapons, addWeapon, editWeapon }: ConnectedProps<typeof connector>) => {
+  ({
+    weapons,
+    addWeapon,
+    editWeapon,
+    deleteWeapon,
+  }: ConnectedProps<typeof connector>) => {
     const { t } = useTranslation()
 
     const onCreateNewWeapon = useCallback(() => {
@@ -32,6 +37,12 @@ export const DisplayInventory = connector(
               <div className={'header-container'}>
                 <InvertedBorderRadius className={'header'}>
                   {t('inventory.weapons.title')}
+                  <span
+                    className={'delete-weapon'}
+                    onClick={() => deleteWeapon(weaponIndex)}
+                  >
+                    ❌
+                  </span>
                 </InvertedBorderRadius>
               </div>
               <input

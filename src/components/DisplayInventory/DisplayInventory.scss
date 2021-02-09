@@ -35,6 +35,22 @@
           font-size: 1.5em;
           align-self: center;
           border: none;
+          display: flex;
+          align-content: baseline;
+          justify-content: center;
+
+          .delete-weapon {
+            cursor: pointer;
+            font-size: 0.9em;
+            position: absolute;
+            right: 3em;
+            border-radius: 100%;
+            border: transparent solid 1px;
+
+            &:hover {
+              border-color: #f03a17;
+            }
+          }
         }
 
         // half-height border left and right
