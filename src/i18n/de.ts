@@ -211,7 +211,7 @@ export const de: TranslationResource = {
         multiplier: 'Multiplikator',
         minDieValue: 'Min. Würfelergebnis',
         type: {
-          title: 'Typ',
+          title: 'Art',
           bludgeoning: {
             long: 'Wucht',
             short: 'W',
