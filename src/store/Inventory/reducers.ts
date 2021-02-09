@@ -20,8 +20,8 @@ export type Weapon = {
   name: string
   attackBonus?: number
   criticalAttackProperties: {
-    multiplier: number
-    minDieValue: number
+    multiplier?: number
+    minDieValue?: number
   }
   type: {
     slashing: boolean

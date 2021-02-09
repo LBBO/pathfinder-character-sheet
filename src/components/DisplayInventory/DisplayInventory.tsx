@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { generateEmptyWeapon } from '../../store/Inventory/reducers'
 import './DisplayInventory.scss'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
+import { NumberInput } from '../util/NumberInput'
 
 const mapStateToProps = (state: RootState) => ({
   weapons: getWeapons(state),
@@ -44,19 +45,18 @@ export const DisplayInventory = connector(
               <span className={'title attack-bonus-title'}>
                 {t('inventory.weapons.attackBonus')}
               </span>
-              <input
+              <NumberInput
                 className={'input attack-bonus-input'}
-                value={weapon.attackBonus ?? ''}
-                onChange={(e) => {
-                  const value = parseInt(e.target.value)
+                value={weapon.attackBonus}
+                onChange={(value) =>
                   editWeapon({
                     oldWeaponIndex: weaponIndex,
                     newWeapon: {
                       ...weapon,
-                      attackBonus: Number.isNaN(value) ? undefined : value,
+                      attackBonus: value,
                     },
                   })
-                }}
+                }
               />
               <span className={'title critical-hit-title'}>
                 {t('inventory.weapons.criticalHit')}
@@ -64,44 +64,38 @@ export const DisplayInventory = connector(
               <div className="input critical-hit-input">
                 <label>
                   <span style={{ textTransform: 'lowercase' }}>x</span>
-                  <input
+                  <NumberInput
                     value={weapon.criticalAttackProperties.multiplier}
-                    onChange={(e) => {
-                      const value = parseInt(e.target.value)
-                      if (!Number.isNaN(value)) {
-                        editWeapon({
-                          oldWeaponIndex: weaponIndex,
-                          newWeapon: {
-                            ...weapon,
-                            criticalAttackProperties: {
-                              ...weapon.criticalAttackProperties,
-                              multiplier: value,
-                            },
+                    onChange={(value) =>
+                      editWeapon({
+                        oldWeaponIndex: weaponIndex,
+                        newWeapon: {
+                          ...weapon,
+                          criticalAttackProperties: {
+                            ...weapon.criticalAttackProperties,
+                            multiplier: value,
                           },
-                        })
-                      }
-                    }}
+                        },
+                      })
+                    }
                   />
                 </label>
                 &nbsp;/ &nbsp;
                 <label>
-                  <input
+                  <NumberInput
                     value={weapon.criticalAttackProperties.minDieValue}
-                    onChange={(e) => {
-                      const value = parseInt(e.target.value)
-                      if (!Number.isNaN(value)) {
-                        editWeapon({
-                          oldWeaponIndex: weaponIndex,
-                          newWeapon: {
-                            ...weapon,
-                            criticalAttackProperties: {
-                              ...weapon.criticalAttackProperties,
-                              minDieValue: value,
-                            },
+                    onChange={(value) =>
+                      editWeapon({
+                        oldWeaponIndex: weaponIndex,
+                        newWeapon: {
+                          ...weapon,
+                          criticalAttackProperties: {
+                            ...weapon.criticalAttackProperties,
+                            minDieValue: value,
                           },
-                        })
-                      }
-                    }}
+                        },
+                      })
+                    }
                   />
                   - 20
                 </label>
@@ -137,19 +131,18 @@ export const DisplayInventory = connector(
               <span className={'title range-title'}>
                 {t('inventory.weapons.range')}
               </span>
-              <input
+              <NumberInput
                 className={'input range-input'}
-                value={weapon.range ?? ''}
-                onChange={(e) => {
-                  const value = parseInt(e.target.value)
+                value={weapon.range}
+                onChange={(value) =>
                   editWeapon({
                     oldWeaponIndex: weaponIndex,
                     newWeapon: {
                       ...weapon,
-                      range: Number.isNaN(value) ? undefined : value,
+                      range: value,
                     },
                   })
-                }}
+                }
               />
               <span className={'title ammunition-title'}>
                 {t('inventory.weapons.ammunition')}
