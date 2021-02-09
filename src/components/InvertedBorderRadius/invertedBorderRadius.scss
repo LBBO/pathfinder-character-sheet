@@ -30,4 +30,14 @@
     left: unset;
     right: #{-1 * $circle-width};
   }
+
+  &.fill-top-right::after,
+  &.fill-top-left::before {
+    background-color: black;
+  }
+
+  &.fill-bottom-right::after,
+  &.fill-bottom-left::before {
+    box-shadow: 0 0 black, 0 #{1em + $circle-height} black;
+  }
 }

@@ -1,23 +1,36 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import './invertedBorderRadius.scss'
-import PropTypes, { InferProps } from 'prop-types'
-
-const InvertedBorderRadiusPropTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object,
-}
 
 export const InvertedBorderRadius: React.FC<
-  InferProps<typeof InvertedBorderRadiusPropTypes>
+  React.HTMLProps<HTMLDivElement> & {
+    fillCorners?: {
+      'top-left'?: boolean
+      'bottom-left'?: boolean
+      'top-right'?: boolean
+      'bottom-right'?: boolean
+    }
+  }
 > = (
   props = {
     className: '',
     style: {},
   },
 ) => {
+  const filledCornersClasses = useMemo(() => {
+    const keys = Object.keys(props.fillCorners ?? {}) as Array<
+      keyof typeof props['fillCorners']
+    >
+    return keys
+      .filter((key) => props.fillCorners?.[key] === true)
+      .map((cornerName) => `fill-${cornerName}`)
+      .join(' ')
+  }, [props.fillCorners])
+
   return (
     <div
-      className={`inverted-rounded-corners ${props.className ?? ''}`}
+      className={`inverted-rounded-corners ${filledCornersClasses} ${
+        props.className ?? ''
+      }`}
       style={{
         ...(props.style ?? {}),
       }}
@@ -26,5 +39,3 @@ export const InvertedBorderRadius: React.FC<
     </div>
   )
 }
-
-InvertedBorderRadius.propTypes = InvertedBorderRadiusPropTypes

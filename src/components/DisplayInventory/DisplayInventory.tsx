@@ -35,7 +35,12 @@ export const DisplayInventory = connector(
           {weapons.map((weapon, weaponIndex) => (
             <div className={'weapon'} key={weaponIndex}>
               <div className={'header-container'}>
-                <InvertedBorderRadius className={'header'}>
+                <InvertedBorderRadius
+                  className={'header'}
+                  fillCorners={{
+                    'bottom-right': true,
+                  }}
+                >
                   {t('inventory.weapons.title')}
                   <span
                     className={'delete-weapon'}
