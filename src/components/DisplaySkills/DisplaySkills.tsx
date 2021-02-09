@@ -9,7 +9,7 @@ import {
 import * as UpdateSkillsActions from '../../store/Skills/actions'
 
 import './DisplaySkills.scss'
-import { StyledCheckbox } from '../StyledCheckbox/StyledCheckbox'
+import { StyledCheckbox } from '../util/StyledCheckbox/StyledCheckbox'
 import { getAbilityModifiers } from '../../store/Abilities/selectors'
 import { getTotalSkillBonuses } from '../../store/Skills/selectors'
 import { useTranslation } from 'react-i18next'

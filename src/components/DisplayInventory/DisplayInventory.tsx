@@ -8,6 +8,7 @@ import { generateEmptyWeapon, Weapon } from '../../store/Inventory/reducers'
 import './DisplayInventory.scss'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 import { NumberInput } from '../util/NumberInput'
+import { StyledCheckbox } from '../util/StyledCheckbox/StyledCheckbox'
 
 const mapStateToProps = (state: RootState) => ({
   weapons: getWeapons(state),
@@ -136,10 +137,9 @@ export const DisplayInventory = connector(
                       title={t(`inventory.weapons.type.${key}.long`)}
                     >
                       {t(`inventory.weapons.type.${key}.short`)}
-                      <input
-                        type={'checkbox'}
+                      <StyledCheckbox
                         checked={weapon.type[key]}
-                        onChange={(e) =>
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                           editWeapon({
                             oldWeaponIndex: weaponIndex,
                             newWeapon: {
