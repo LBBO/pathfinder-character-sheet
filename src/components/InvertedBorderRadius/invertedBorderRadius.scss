@@ -1,3 +1,5 @@
+@import 'src/variables';
+
 .inverted-rounded-corners {
   $actual-padding: 0.3em;
   $side-padding-for-corners: 2em;
@@ -5,7 +7,7 @@
   $circle-height: 1em;
   $offsetExpression: #{-1 * $circle-width};
 
-  background-color: black;
+  background-color: $blackEquivalent;
   color: white;
   position: relative;
   width: fit-content;
