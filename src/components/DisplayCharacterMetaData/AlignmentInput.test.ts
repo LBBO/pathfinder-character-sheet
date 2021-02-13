@@ -8,6 +8,21 @@ import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions
 import { createMockMetadataForm } from './createMockMetadataForm'
 import { expectClickOnNthButtonToSetValue } from './MetadataSelect/MetadataSelect.test'
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+    i18n: {
+      changeLanguage(): Promise<Function> {
+        return new Promise(() => {})
+      },
+    },
+  }),
+}))
+
+afterAll(() => {
+  jest.resetModules()
+})
+
 describe('Alignment input field', () => {
   // Initial definition just so that the type is set correctly
   let characterMetadataForm = createMockMetadataForm()

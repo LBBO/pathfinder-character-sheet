@@ -3,10 +3,20 @@ import { SizeCategoryInputTestIds } from './DisplayCharacterMetaData'
 import { expectClickOnNthButtonToSetValue } from './MetadataSelect/MetadataSelect.test'
 import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions'
 import { createMockMetadataForm } from './createMockMetadataForm'
-import { initializeI18n } from '../../i18n/i18nSetup'
 
-beforeAll(async () => {
-  await initializeI18n()
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+    i18n: {
+      changeLanguage(): Promise<Function> {
+        return new Promise(() => {})
+      },
+    },
+  }),
+}))
+
+afterAll(() => {
+  jest.resetModules()
 })
 
 describe('Size category input field', () => {
@@ -73,7 +83,7 @@ describe('Size category input field', () => {
   })
 
   it('should focus on the select when the label is clicked', () => {
-    const labelTarget = characterMetadataForm.getByLabelText(/size category/gim)
+    const labelTarget = characterMetadataForm.getByLabelText(/sizeCategory/gim)
     expect(labelTarget.tagName).toMatch(/select/i)
     expect(labelTarget.getAttribute('data-testid')).toBe(
       SizeCategoryInputTestIds.select,

@@ -1,5 +1,12 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { addWeapon, deleteWeapon, editWeapon } from './actions'
+import {
+  addGearItem,
+  addWeapon,
+  deleteGearItem,
+  deleteWeapon,
+  editGearItem,
+  editWeapon,
+} from './actions'
 
 export type GearItem = {
   name: string
@@ -81,5 +88,21 @@ export const InventoryReducer = createReducer(initialState, (builder) => {
       weapons: state.weapons.filter(
         (weapon, index) => index !== action.payload,
       ),
+    }))
+    .addCase(addGearItem, (state, action) => ({
+      ...state,
+      gear: [...state.gear, action.payload],
+    }))
+    .addCase(editGearItem, (state, action) => ({
+      ...state,
+      gear: state.gear.map((gearItem, index) =>
+        index === action.payload.oldGearItemIndex
+          ? action.payload.newGearItem
+          : gearItem,
+      ),
+    }))
+    .addCase(deleteGearItem, (state, action) => ({
+      ...state,
+      gear: state.gear.filter((_, index) => index !== action.payload),
     }))
 })
