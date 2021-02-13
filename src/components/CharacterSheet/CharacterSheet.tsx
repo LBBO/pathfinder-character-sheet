@@ -8,6 +8,7 @@ import { useI18nSetup } from '../../i18n/i18nSetup'
 import { DisplayTalents } from '../DisplayTalents/DisplayTalents'
 import { DisplaySpecialAbilities } from '../DisplaySpecialAbilities/DisplaySpecialAbilities'
 import { DisplayInventory } from '../DisplayInventory/DisplayInventory'
+import { DownloadButton } from '../DownloadButton/DownloadButton'
 
 export const CharacterSheet: React.FC = () => {
   const { hasLoaded: i18nHasLoaded } = useI18nSetup()
@@ -20,6 +21,7 @@ export const CharacterSheet: React.FC = () => {
         src={'./pathfinderDE-logo.png'}
       />
       <LanguageSwitcher />
+      <DownloadButton />
       <DisplayCharacterMetaData />
       <DisplayAbilities />
       <DisplayCombatValues />

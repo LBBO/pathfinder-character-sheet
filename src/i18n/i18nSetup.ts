@@ -30,6 +30,7 @@ export type TranslationResource = Resource & {
       }
       total: string
       bonus: string
+      characterSheet: string
     }
     abilities: {
       [key in abilityName]: {

@@ -22,6 +22,7 @@ export const en: TranslationResource = {
       },
       total: 'Total',
       bonus: 'Bonus',
+      characterSheet: 'Character sheet',
     },
     abilities: {
       charisma: {
