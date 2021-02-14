@@ -7,6 +7,7 @@ import { abilityName } from '../Abilities/types'
 import { computeTotalSkillBonus, getTotalSkillBonuses } from './selectors'
 import { setCharacterSizeCategory } from '../CharacterMetaData/actions'
 import { SizeCategory } from '../CharacterMetaData/Character'
+import { addArmorItem } from '../Inventory/actions'
 
 let initialRootState: RootState
 let initialState: SkillState
@@ -167,5 +168,22 @@ describe('total skill bonus selector', () => {
     const newTotalBonuses = getTotalSkillBonuses(newState)
 
     expect(oldTotalBonuses).toBe(newTotalBonuses)
+  })
+
+  it('should subtract total armor check penalty from DEX and STR skills', () => {
+    let state = RootReducer(
+      undefined,
+      addArmorItem({
+        name: '',
+        type: '',
+        properties: '',
+        checkPenalty: 1,
+      }),
+    )
+    state = RootReducer(state, setSkillRanks('acrobatics', 2))
+    state = RootReducer(state, setSkillRanks('climb', 2))
+
+    expect(getTotalSkillBonuses(state).acrobatics).toBe(1)
+    expect(getTotalSkillBonuses(state).climb).toBe(1)
   })
 })
