@@ -1,6 +1,6 @@
 import { RootState } from '../../store/root-reducer'
 import { connect, ConnectedProps } from 'react-redux'
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
   setAbilityScore,
   setAbilityTempAdjustment,
@@ -47,10 +47,6 @@ export const DisplayAbilities = connector(
         setAbilityTempAdjustment(abilityName, newVal)
       }
     }
-
-    useEffect(() => {
-      console.log('first render')
-    }, [])
 
     const abilityNames = Object.keys(abilities) as Array<abilityName>
     const abilityElements = abilityNames
@@ -103,7 +99,7 @@ export const DisplayAbilities = connector(
         )
       })
     return (
-      <table>
+      <table className={'abilities'}>
         <thead>
           <tr>
             <td>{t('abilitiesTable.abilityName')}</td>
