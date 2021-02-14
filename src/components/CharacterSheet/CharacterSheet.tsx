@@ -12,24 +12,32 @@ import { DownloadButton } from '../DownloadButton/DownloadButton'
 import { DisplayGear } from '../DisplayInventory/DisplayGear'
 import { DisplayArmorItems } from '../DisplayInventory/DisplayArmorItems'
 import './CharacterSheet.scss'
+import { useTranslation } from 'react-i18next'
 
 export const CharacterSheet: React.FC = () => {
   const { hasLoaded: i18nHasLoaded } = useI18nSetup()
+  const { t } = useTranslation()
 
   return i18nHasLoaded ? (
     <div className={'character-sheet'}>
       <header>
-        <img
-          className={'pathfinder-logo'}
-          alt={'Pathfinder logo'}
-          src={process.env.PUBLIC_URL + '/pathfinderDE-logo.png'}
-        />
-
-        <DisplayCharacterMetaData />
         <div className={'other-controls'}>
           <DownloadButton />
           <LanguageSwitcher />
         </div>
+        <div
+          className={'logo'}
+          role={'img'}
+          aria-label={t('general.logo')}
+          style={{
+            backgroundImage: `url(${
+              process.env.PUBLIC_URL + '/pathfinderDE-logo.png'
+            })`,
+          }}
+        />
+        <h1>{t('general.characterSheet')}</h1>
+
+        <DisplayCharacterMetaData />
       </header>
       <div className={'first-page'}>
         <div className={'left-column'}>

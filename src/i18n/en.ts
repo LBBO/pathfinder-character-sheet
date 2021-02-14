@@ -23,6 +23,7 @@ export const en: TranslationResource = {
       total: 'Total',
       bonus: 'Bonus',
       characterSheet: 'Character sheet',
+      logo: 'Pathfinder Logo',
     },
     abilities: {
       charisma: {

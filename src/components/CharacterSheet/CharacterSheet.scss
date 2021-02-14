@@ -2,11 +2,35 @@
   display: flex;
   flex-direction: column;
   padding: 2em;
+  gap: 1em;
 
   header {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr 2fr min-content;
+    grid-template-rows: 1fr min-content;
+    grid-template-areas: 'logo metadata controls' 'title metadata controls';
+    grid-gap: 0.4em 1em;
+    justify-items: center;
+
+    h1 {
+      grid-area: title;
+      margin: 0;
+      font-size: 1.3em;
+    }
+    .logo {
+      grid-area: logo;
+      width: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      //background-position-x: 50%;
+      background-position: 50%;
+    }
+    .character-meta-data {
+      grid-area: metadata;
+    }
+    .other-controls {
+      grid-area: controls;
+    }
   }
 
   .first-page {
