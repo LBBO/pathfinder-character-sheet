@@ -208,5 +208,5 @@ export const useI18nSetup = () => {
     }
   }, [language, hasLoaded])
 
-  return { hasLoaded }
+  return { hasLoaded, t: hasLoaded ? i18n.t.bind(i18n) : null }
 }

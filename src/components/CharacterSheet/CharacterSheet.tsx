@@ -12,11 +12,9 @@ import { DownloadButton } from '../DownloadButton/DownloadButton'
 import { DisplayGear } from '../DisplayInventory/DisplayGear'
 import { DisplayArmorItems } from '../DisplayInventory/DisplayArmorItems'
 import './CharacterSheet.scss'
-import { useTranslation } from 'react-i18next'
 
 export const CharacterSheet: React.FC = () => {
-  const { hasLoaded: i18nHasLoaded } = useI18nSetup()
-  const { t } = useTranslation()
+  const { hasLoaded: i18nHasLoaded, t } = useI18nSetup()
 
   return i18nHasLoaded ? (
     <div className={'character-sheet'}>
@@ -28,14 +26,14 @@ export const CharacterSheet: React.FC = () => {
         <div
           className={'logo'}
           role={'img'}
-          aria-label={t('general.logo')}
+          aria-label={t?.('general.logo')}
           style={{
             backgroundImage: `url(${
               process.env.PUBLIC_URL + '/pathfinderDE-logo.png'
             })`,
           }}
         />
-        <h1>{t('general.characterSheet')}</h1>
+        <h1>{t?.('general.characterSheet')}</h1>
 
         <DisplayCharacterMetaData />
       </header>
