@@ -1,0 +1,50 @@
+.character-sheet {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+
+  header {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+  }
+
+  .first-page {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1em;
+
+    & > * {
+      width: 50%;
+    }
+  }
+
+  .second-page {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-areas: 'armor armor .' 'gear feats .' 'gear special-abilities .' '. special-abilities .' 'money special-abilities .' 'money experience .';
+    grid-gap: 1em;
+
+    .armor-items {
+      grid-area: armor;
+    }
+    .gear-items {
+      grid-area: gear;
+    }
+    .talents {
+      grid-area: feats;
+    }
+    .special-abilities {
+      grid-area: special-abilities;
+    }
+  }
+}
+
+@media print {
+  .character-sheet {
+    .other-controls {
+      display: none;
+    }
+  }
+}

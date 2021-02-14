@@ -204,8 +204,8 @@ export const DisplayInventory = connector(
           ))}
           <button onClick={onCreateNewWeapon}>Neue Waffe</button>
         </div>
-        <DisplayArmorItems />
-        <DisplayGear />
+        {/*<DisplayArmorItems />*/}
+        {/*<DisplayGear />*/}
       </div>
     )
   },
