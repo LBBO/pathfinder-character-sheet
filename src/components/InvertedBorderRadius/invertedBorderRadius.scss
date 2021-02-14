@@ -73,4 +73,26 @@
   &.fill-bottom-left .left:after {
     display: none;
   }
+
+  &.half-height-borders {
+    // half-height border left and right
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      width: 2px;
+      height: 50%;
+      background-color: $blackEquivalent;
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+  }
 }

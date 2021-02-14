@@ -41,6 +41,7 @@ export const DisplayInventory = connector(
                   fillCorners={{
                     'bottom-right': true,
                   }}
+                  enableHalfHeightBorders
                 >
                   {t('inventory.weapons.title')}
                   <span

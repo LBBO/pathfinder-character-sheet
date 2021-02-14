@@ -9,6 +9,7 @@ export const InvertedBorderRadius: React.FC<
       'top-right'?: boolean
       'bottom-right'?: boolean
     }
+    enableHalfHeightBorders?: boolean
   }
 > = (
   props = {
@@ -30,7 +31,7 @@ export const InvertedBorderRadius: React.FC<
     <div
       className={`inverted-rounded-corners ${filledCornersClasses} ${
         props.className ?? ''
-      }`}
+      } ${props.enableHalfHeightBorders ? 'half-height-borders' : ''}`}
       style={{
         ...(props.style ?? {}),
       }}
