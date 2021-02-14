@@ -167,20 +167,28 @@ export const DisplayArmorItems = connector(
           className={'input armor-bonus'}
           value={totalArmorBonus}
           readOnly
+          disabled
         />
-        <input className={'input type'} value={''} readOnly />
+        <input className={'input type'} value={''} readOnly disabled />
         <NumberInput
           className={'input check-penalty'}
           value={totalCheckPenalty}
           readOnly
+          disabled
         />
         <NumberInput
           className={'input spell-failure'}
           value={totalSpellFailure}
           readOnly
+          disabled
         />
-        <NumberInput className={'input weight'} value={totalWeight} readOnly />
-        <input className={'input properties'} value={''} readOnly />
+        <NumberInput
+          className={'input weight'}
+          value={totalWeight}
+          readOnly
+          disabled
+        />
+        <input className={'input properties'} value={''} readOnly disabled />
       </div>
     )
   },
