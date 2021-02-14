@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/pathfinder-character-sheet/static/css/main.ecccb986.chunk.css",
-    "main.js": "/pathfinder-character-sheet/static/js/main.12f82268.chunk.js",
-    "main.js.map": "/pathfinder-character-sheet/static/js/main.12f82268.chunk.js.map",
+    "main.css": "/pathfinder-character-sheet/static/css/main.14952e84.chunk.css",
+    "main.js": "/pathfinder-character-sheet/static/js/main.df33562a.chunk.js",
+    "main.js.map": "/pathfinder-character-sheet/static/js/main.df33562a.chunk.js.map",
     "runtime-main.js": "/pathfinder-character-sheet/static/js/runtime-main.057ea2ae.js",
     "runtime-main.js.map": "/pathfinder-character-sheet/static/js/runtime-main.057ea2ae.js.map",
     "static/css/2.0c6d607e.chunk.css": "/pathfinder-character-sheet/static/css/2.0c6d607e.chunk.css",
-    "static/js/2.a27fd8b6.chunk.js": "/pathfinder-character-sheet/static/js/2.a27fd8b6.chunk.js",
-    "static/js/2.a27fd8b6.chunk.js.map": "/pathfinder-character-sheet/static/js/2.a27fd8b6.chunk.js.map",
+    "static/js/2.8c12b137.chunk.js": "/pathfinder-character-sheet/static/js/2.8c12b137.chunk.js",
+    "static/js/2.8c12b137.chunk.js.map": "/pathfinder-character-sheet/static/js/2.8c12b137.chunk.js.map",
     "index.html": "/pathfinder-character-sheet/index.html",
     "static/css/2.0c6d607e.chunk.css.map": "/pathfinder-character-sheet/static/css/2.0c6d607e.chunk.css.map",
-    "static/css/main.ecccb986.chunk.css.map": "/pathfinder-character-sheet/static/css/main.ecccb986.chunk.css.map",
-    "static/js/2.a27fd8b6.chunk.js.LICENSE.txt": "/pathfinder-character-sheet/static/js/2.a27fd8b6.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/pathfinder-character-sheet/static/media/IMFellEnglish-Regular.12205539.ttf",
+    "static/css/main.14952e84.chunk.css.map": "/pathfinder-character-sheet/static/css/main.14952e84.chunk.css.map",
+    "static/js/2.8c12b137.chunk.js.LICENSE.txt": "/pathfinder-character-sheet/static/js/2.8c12b137.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/pathfinder-character-sheet/static/media/IMFellEnglish-Regular.12205539.ttf",
     "static/media/flag-icon.scss": "/pathfinder-character-sheet/static/media/zw.f5ceeff7.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.057ea2ae.js",
     "static/css/2.0c6d607e.chunk.css",
-    "static/js/2.a27fd8b6.chunk.js",
-    "static/css/main.ecccb986.chunk.css",
-    "static/js/main.12f82268.chunk.js"
+    "static/js/2.8c12b137.chunk.js",
+    "static/css/main.14952e84.chunk.css",
+    "static/js/main.df33562a.chunk.js"
   ]
 }
