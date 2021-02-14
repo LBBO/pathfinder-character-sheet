@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { GearItem, Weapon } from './reducers'
+import { Armor, GearItem, Weapon } from './reducers'
 
 export const addWeapon = createAction<Weapon, 'ADD_WEAPON'>('ADD_WEAPON')
 
@@ -36,6 +36,30 @@ export const gearActions = {
   deleteGearItem,
 }
 
+export const addArmorItem = createAction<Armor, 'ADD_ARMOR_ITEM'>(
+  'ADD_ARMOR_ITEM',
+)
+
+export const editArmorItem = createAction<
+  { oldArmorItemIndex: number; newArmorItem: Armor },
+  'EDIT_ARMOR_ITEM'
+>('EDIT_ARMOR_ITEM')
+
+export const deleteArmorItem = createAction<number, 'DELETE_ARMOR_ITEM'>(
+  'DELETE_ARMOR_ITEM',
+)
+
+export const insertArmorItemAtIndex = createAction<number, 'INSERT_ARMOR_ITEM'>(
+  'INSERT_ARMOR_ITEM',
+)
+
+export const armorActions = {
+  addArmorItem,
+  editArmorItem,
+  deleteArmorItem,
+  insertArmorItemAtIndex,
+}
+
 export type InventoryActionType = ReturnType<
   | typeof addWeapon
   | typeof editWeapon
@@ -44,4 +68,8 @@ export type InventoryActionType = ReturnType<
   | typeof insertGearItemAtIndex
   | typeof editGearItem
   | typeof deleteGearItem
+  | typeof addArmorItem
+  | typeof insertArmorItemAtIndex
+  | typeof editArmorItem
+  | typeof deleteArmorItem
 >

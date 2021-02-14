@@ -236,6 +236,15 @@ export const en: TranslationResource = {
         weight: 'WT.',
         totalWeight: 'Total weight',
       },
+      armor: {
+        title: 'AC Items',
+        bonus: 'Bonus',
+        type: 'Type',
+        checkPenalty: 'Check penalty',
+        spellFailure: 'Spell failure',
+        weight: 'Weight',
+        properties: 'Properties',
+      },
     },
   },
 }

@@ -6,7 +6,7 @@ export const NumberInput = ({
   onChange: onChangeFromProps,
   ...otherProps
 }: Omit<React.HTMLProps<HTMLInputElement>, 'onChange' | 'type' | 'value'> & {
-  onChange: (value: number | undefined) => void
+  onChange?: (value: number | undefined) => void
   type?: 'integer' | 'float'
   value: number | undefined
 }) => {

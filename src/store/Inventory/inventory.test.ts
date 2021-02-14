@@ -1,19 +1,30 @@
 import {
+  Armor,
   generateEmptyWeapon,
   InventoryReducer,
   InventoryState,
   Weapon,
 } from './reducers'
-import { EmptyAction } from '../root-reducer'
+import { EmptyAction, RootReducer } from '../root-reducer'
 import {
+  addArmorItem,
   addGearItem,
   addWeapon,
+  deleteArmorItem,
   deleteGearItem,
   deleteWeapon,
+  editArmorItem,
   editGearItem,
   editWeapon,
+  insertArmorItemAtIndex,
   insertGearItemAtIndex,
 } from './actions'
+import {
+  getTotalArmorCheckPenalty,
+  getTotalArmorItemBonus,
+  getTotalArmorSpellFailure,
+  getTotalArmorWeight,
+} from './getters'
 
 const generateEmptyState = (): InventoryState => ({
   armor: [],
@@ -196,5 +207,150 @@ describe('gear items', () => {
 
     expect(state.gear).toHaveLength(2)
     expect(state.gear).toMatchObject([firstItem, lastItem])
+  })
+})
+
+describe('armor items', () => {
+  const firstItem: Armor = {
+    name: 'first item',
+    type: 'first type',
+    properties: 'first properties',
+  }
+  const secondItem: Armor = {
+    name: 'second item',
+    type: 'second type',
+    properties: 'second properties',
+  }
+  const newArmorItem: Armor = {
+    name: '',
+    type: '',
+    properties: '',
+  }
+
+  it('should be an empty array by default', () => {
+    expect(InventoryReducer(undefined, EmptyAction).armor).toHaveLength(0)
+  })
+
+  it('should be able to add an armor item', () => {
+    const state = InventoryReducer(initialState, addArmorItem(firstItem))
+
+    expect(state.armor).toHaveLength(1)
+    expect(state.armor[0]).toMatchObject(firstItem)
+  })
+
+  it('should be able to edit an armor item', () => {
+    const oldState = InventoryReducer(initialState, addArmorItem(firstItem))
+    const newState = InventoryReducer(
+      oldState,
+      editArmorItem({
+        oldArmorItemIndex: 0,
+        newArmorItem: secondItem,
+      }),
+    )
+
+    expect(newState.armor).toHaveLength(1)
+    expect(newState.armor[0]).toMatchObject(secondItem)
+  })
+
+  it('should be able to edit an armor item', () => {
+    const oldState = InventoryReducer(initialState, addArmorItem(firstItem))
+    const newState = InventoryReducer(oldState, deleteArmorItem(0))
+
+    expect(newState.armor).toHaveLength(0)
+  })
+
+  it('should be able to insert an armor item at first position', () => {
+    const state = InventoryReducer(
+      { ...initialState, armor: [firstItem, secondItem] },
+      insertArmorItemAtIndex(0),
+    )
+
+    expect(state.armor).toHaveLength(3)
+    expect(state.armor).toMatchObject([newArmorItem, firstItem, secondItem])
+  })
+
+  it('should be able to insert an armor item between two other items', () => {
+    const state = InventoryReducer(
+      { ...initialState, armor: [firstItem, secondItem] },
+      insertArmorItemAtIndex(1),
+    )
+
+    expect(state.armor).toHaveLength(3)
+    expect(state.armor).toMatchObject([firstItem, newArmorItem, secondItem])
+  })
+
+  it('should be able to insert an armor item at the end of the list', () => {
+    const state = InventoryReducer(
+      { ...initialState, armor: [firstItem, secondItem] },
+      insertArmorItemAtIndex(2),
+    )
+
+    expect(state.armor).toHaveLength(3)
+    expect(state.armor).toMatchObject([firstItem, secondItem, newArmorItem])
+  })
+
+  it('should correctly compute the total armor bonus', () => {
+    let state = RootReducer(
+      undefined,
+      addArmorItem({ ...newArmorItem, armorBonus: 5 }),
+    )
+    state = RootReducer(
+      state,
+      addArmorItem({ ...newArmorItem, armorBonus: undefined }),
+    )
+    state = RootReducer(
+      state,
+      addArmorItem({ ...newArmorItem, armorBonus: -3 }),
+    )
+
+    expect(getTotalArmorItemBonus(state)).toBe(2)
+  })
+
+  it('should correctly compute the total check penalty', () => {
+    let state = RootReducer(
+      undefined,
+      addArmorItem({ ...newArmorItem, checkPenalty: 5 }),
+    )
+    state = RootReducer(
+      state,
+      addArmorItem({ ...newArmorItem, checkPenalty: undefined }),
+    )
+    state = RootReducer(
+      state,
+      addArmorItem({ ...newArmorItem, checkPenalty: -3 }),
+    )
+
+    expect(getTotalArmorCheckPenalty(state)).toBe(2)
+  })
+
+  it('should correctly compute the total spell failure', () => {
+    let state = RootReducer(
+      undefined,
+      addArmorItem({ ...newArmorItem, spellFailure: 5 }),
+    )
+    state = RootReducer(
+      state,
+      addArmorItem({ ...newArmorItem, spellFailure: undefined }),
+    )
+    state = RootReducer(
+      state,
+      addArmorItem({ ...newArmorItem, spellFailure: -3 }),
+    )
+
+    expect(getTotalArmorSpellFailure(state)).toBe(2)
+  })
+
+  it('should correctly compute the total armor weight', () => {
+    let state = RootReducer(
+      undefined,
+      addArmorItem({ ...newArmorItem, weight: 5 }),
+    )
+    state = RootReducer(
+      state,
+      addArmorItem({ ...newArmorItem, weight: undefined }),
+    )
+    state = RootReducer(state, addArmorItem({ ...newArmorItem, weight: -3 }))
+
+    expect(getTotalArmorWeight(state)).toBe(2)
   })
 })

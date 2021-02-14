@@ -236,6 +236,15 @@ export const de: TranslationResource = {
         weight: 'GEW.',
         totalWeight: 'Gesamtgewicht',
       },
+      armor: {
+        title: 'Rüs­tungs­ge­gen­stän­de',
+        bonus: 'Bonus',
+        type: 'Art',
+        checkPenalty: 'Rüstungsmalus',
+        spellFailure: 'Zauberpatzer',
+        weight: 'Gewicht',
+        properties: 'Eigenschaften',
+      },
     },
   },
 }

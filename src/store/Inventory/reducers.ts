@@ -1,11 +1,15 @@
 import { createReducer } from '@reduxjs/toolkit'
 import {
+  addArmorItem,
   addGearItem,
   addWeapon,
+  deleteArmorItem,
   deleteGearItem,
   deleteWeapon,
+  editArmorItem,
   editGearItem,
   editWeapon,
+  insertArmorItemAtIndex,
   insertGearItemAtIndex,
 } from './actions'
 
@@ -72,6 +76,8 @@ const initialState: InventoryState = {
 
 export const InventoryReducer = createReducer(initialState, (builder) => {
   builder
+
+    // Weapon actions
     .addCase(addWeapon, (state, action) => ({
       ...state,
       weapons: [...state.weapons, action.payload],
@@ -90,6 +96,8 @@ export const InventoryReducer = createReducer(initialState, (builder) => {
         (weapon, index) => index !== action.payload,
       ),
     }))
+
+    // Gear actions
     .addCase(addGearItem, (state, action) => ({
       ...state,
       gear: [...state.gear, action.payload],
@@ -127,6 +135,47 @@ export const InventoryReducer = createReducer(initialState, (builder) => {
       return {
         ...state,
         gear: newGear,
+      }
+    })
+
+    // Armor actions
+    .addCase(addArmorItem, (state, action) => ({
+      ...state,
+      armor: [...state.armor, action.payload],
+    }))
+    .addCase(editArmorItem, (state, action) => ({
+      ...state,
+      armor: state.armor.map((armorItem, index) =>
+        index === action.payload.oldArmorItemIndex
+          ? action.payload.newArmorItem
+          : armorItem,
+      ),
+    }))
+    .addCase(deleteArmorItem, (state, action) => ({
+      ...state,
+      armor: state.armor.filter((armorItem, index) => index !== action.payload),
+    }))
+    .addCase(insertArmorItemAtIndex, (state, action) => {
+      let newArmorItems: Array<Armor>
+      const newArmorItem: Armor = { name: '', type: '', properties: '' }
+
+      if (action.payload >= state.armor.length) {
+        newArmorItems = [...state.armor, newArmorItem]
+      } else if (action.payload < 0) {
+        newArmorItems = [newArmorItem, ...state.armor]
+      } else {
+        newArmorItems = state.armor.reduce((arr, currArmorItem, index) => {
+          if (index === action.payload) {
+            return [...arr, newArmorItem, currArmorItem]
+          } else {
+            return [...arr, currArmorItem]
+          }
+        }, [] as Array<Armor>)
+      }
+
+      return {
+        ...state,
+        armor: newArmorItems,
       }
     })
 })

@@ -170,6 +170,15 @@ export type TranslationResource = Resource & {
         weight: string
         totalWeight: string
       }
+      armor: {
+        title: string
+        bonus: string
+        type: string
+        checkPenalty: string
+        spellFailure: string
+        weight: string
+        properties: string
+      }
     }
   }
 }
