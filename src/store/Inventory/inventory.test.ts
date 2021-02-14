@@ -12,6 +12,7 @@ import {
   deleteWeapon,
   editGearItem,
   editWeapon,
+  insertGearItemAtIndex,
 } from './actions'
 
 const generateEmptyState = (): InventoryState => ({
@@ -116,6 +117,43 @@ describe('gear items', () => {
 
     expect(state.gear).toHaveLength(1)
     expect(state.gear[0]).toMatchObject(addedItem)
+  })
+
+  it('should be able to insert an empty item at index 0', () => {
+    const initialGear = [{ name: 'first item' }, { name: 'second item' }]
+    const state = InventoryReducer(
+      { ...initialState, gear: initialGear },
+      insertGearItemAtIndex(0),
+    )
+
+    expect(state.gear).toHaveLength(3)
+    expect(state.gear).toMatchObject([{ name: '' }, ...initialGear])
+  })
+
+  it('should be able to insert an empty item after another item', () => {
+    const initialGear = [{ name: 'first item' }, { name: 'second item' }]
+    const state = InventoryReducer(
+      { ...initialState, gear: initialGear },
+      insertGearItemAtIndex(1),
+    )
+
+    expect(state.gear).toHaveLength(3)
+    expect(state.gear).toMatchObject([
+      initialGear[0],
+      { name: '' },
+      initialGear[1],
+    ])
+  })
+
+  it('should be able to insert an empty item after all other items', () => {
+    const initialGear = [{ name: 'first item' }, { name: 'second item' }]
+    const state = InventoryReducer(
+      { ...initialState, gear: initialGear },
+      insertGearItemAtIndex(2),
+    )
+
+    expect(state.gear).toHaveLength(3)
+    expect(state.gear).toMatchObject([...initialGear, { name: '' }])
   })
 
   it('should be able to edit a gear item', () => {
