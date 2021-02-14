@@ -17,8 +17,9 @@ const defaultProps = {
 }
 
 type PropTypes = Overwrite<
-  PropTypes.InferProps<typeof propTypes>,
+  PropTypes.InferProps<typeof propTypes> & React.HTMLProps<HTMLInputElement>,
   {
+    value?: number | null
     onChange?: (
       value: number | undefined,
       evt: React.ChangeEvent<HTMLInputElement>,

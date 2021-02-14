@@ -1,6 +1,5 @@
 import {
   CombatValuesState,
-  SET_ARMOR_BONUS,
   SET_BASE_ATTACK_BONUS,
   SET_BASE_SAVE,
   SET_DEFLECTION_MODIFIER,
@@ -91,15 +90,6 @@ export const CombatValuesReducer = (
         armorClass: {
           ...state.armorClass,
           shieldBonus: action?.payload,
-        },
-      }
-
-    case SET_ARMOR_BONUS:
-      return {
-        ...state,
-        armorClass: {
-          ...state.armorClass,
-          armorBonus: action?.payload,
         },
       }
 

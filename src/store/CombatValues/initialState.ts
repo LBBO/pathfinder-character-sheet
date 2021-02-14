@@ -3,7 +3,6 @@ import { CombatValuesState } from './types'
 export const getInitialCombatValuesState = (): CombatValuesState => ({
   armorClass: {
     shieldBonus: 0,
-    armorBonus: 0,
     deflectionModifier: 0,
     miscModifier: 0,
     naturalArmor: 0,
