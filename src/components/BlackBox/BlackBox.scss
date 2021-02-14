@@ -1,5 +1,7 @@
+@import 'src/variables';
+
 .black-box {
-  background-color: black;
+  background-color: $blackEquivalent;
   color: white;
   box-sizing: border-box;
   $top-padding: 1px;

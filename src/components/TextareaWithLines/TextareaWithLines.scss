@@ -1,3 +1,5 @@
+@import 'src/variables';
+
 .textarea-with-lines {
   border: none;
   resize: none;
@@ -7,7 +9,7 @@
   // lines under text
   $lineHeight: 1.5em;
   line-height: $lineHeight;
-  $lineColor: black;
+  $lineColor: $blackEquivalent;
   $ruleHeight: 2;
   background-image: linear-gradient(
     transparent,

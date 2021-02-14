@@ -1,11 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Overwrite } from '../../types/util'
 import './BoxInput.scss'
 
 export const BoxInputPropTypes = {
-  className: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   label: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.string,
@@ -15,40 +12,34 @@ export const BoxInputPropTypes = {
   testId: PropTypes.string,
   labelTestId: PropTypes.string,
   hideBox: PropTypes.bool.isRequired,
-  type: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
 }
 
 export const BoxInputDefaultProps = {
-  onChange: () => {},
-  className: '',
   value: '',
   hideBox: false,
-  type: '',
-  disabled: false,
 }
 
-type PropType = Overwrite<
-  PropTypes.InferProps<typeof BoxInputPropTypes>,
-  {
-    onChange?: React.EventHandler<React.ChangeEvent>
-  }
->
+type PropType = PropTypes.InferProps<typeof BoxInputPropTypes> &
+  React.HTMLProps<HTMLInputElement>
 
 export const BoxInput = (props: PropType) => {
+  const {
+    hideBox,
+    className,
+    labelTestId,
+    testId,
+    readOnly,
+    ...otherProps
+  } = props
   return (
     <label
-      className={`box-input ${props.hideBox ? 'hide-box' : ''} ${
-        props.className
-      }`}
-      data-testid={props.labelTestId}
+      className={`box-input ${hideBox ? 'hide-box' : ''} ${className}`}
+      data-testid={labelTestId}
     >
       <input
-        onChange={props.onChange}
-        value={props.value}
-        data-testid={props.testId}
-        type={props.type}
-        disabled={props.disabled}
+        {...otherProps}
+        readOnly={readOnly ?? otherProps.onChange === undefined}
+        data-testid={testId}
       />
       {props.label ? <span className={'label'}>{props.label}</span> : null}
     </label>

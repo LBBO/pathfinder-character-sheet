@@ -1,33 +1,98 @@
+@import 'src/variables';
+
 .inverted-rounded-corners {
   $actual-padding: 0.3em;
   $side-padding-for-corners: 2em;
   $circle-width: 1.7em;
   $circle-height: 1em;
+  $offsetExpression: #{-1 * $circle-width};
 
-  background-color: black;
+  background-color: $blackEquivalent;
   color: white;
   position: relative;
   width: fit-content;
-  height: min-content;
+  //height: min-content;
   overflow: hidden;
   padding: $actual-padding #{$actual-padding + $side-padding-for-corners};
   display: inline-block;
-  text-align: center;
 
-  &::before,
-  &::after {
-    content: '';
-    padding: $circle-height $circle-width;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 0 currentColor, 0 #{1em + $circle-height} currentColor;
-    position: absolute;
-    top: #{-1 * $circle-height};
-    left: #{-1 * $circle-width};
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
-  &::after {
-    left: unset;
-    right: #{-1 * $circle-width};
+  .corners {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1.7em);
+    justify-content: space-between;
+    align-content: space-between;
+    overflow: hidden;
+
+    .corner-container {
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        //padding: calc(50% - 0.5em) 100%;
+        height: 100%;
+        width: 200%;
+        top: -50%;
+        position: relative;
+        border-radius: 100%;
+        background-color: currentColor;
+      }
+
+      &.left {
+        &:before,
+        &:after {
+          left: calc(-100% - 0.2em);
+        }
+      }
+
+      &.right {
+        &:before,
+        &:after {
+          right: -0.2em;
+        }
+      }
+    }
+  }
+
+  &.fill-top-right .right:before,
+  &.fill-top-left .left:before,
+  &.fill-bottom-right .right:after,
+  &.fill-bottom-left .left:after {
+    display: none;
+  }
+
+  &.half-height-borders {
+    // half-height border left and right
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      width: 2px;
+      height: 50%;
+      background-color: $blackEquivalent;
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
   }
 }

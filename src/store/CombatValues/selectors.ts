@@ -3,6 +3,7 @@ import { AbilityModifiers, getAbilityModifiers } from '../Abilities/selectors'
 import { getSizeModifier } from '../CharacterMetaData/selectors'
 import { RootState } from '../root-reducer'
 import { createSelector } from 'reselect'
+import { getTotalArmorItemBonus } from '../Inventory/getters'
 
 export const getCombatValues = (state: RootState) => state.combatValues
 
@@ -13,14 +14,15 @@ export const getTotalInitiativeBonus = createSelector(
 )
 
 export const getArmorClass = createSelector(
-  [getCombatValues, getAbilityModifiers, getSizeModifier],
-  (
-    state: CombatValuesState,
-    abilityModifiers: AbilityModifiers,
-    sizeModifier: number,
-  ) =>
+  [
+    getCombatValues,
+    getAbilityModifiers,
+    getSizeModifier,
+    getTotalArmorItemBonus,
+  ],
+  (state, abilityModifiers, sizeModifier, totalArmorItemBonus) =>
     10 +
-    state.armorClass.armorBonus +
+    totalArmorItemBonus +
     state.armorClass.shieldBonus +
     abilityModifiers.dexterity +
     sizeModifier +
@@ -44,14 +46,15 @@ export const getTouchArmorClass = createSelector(
 )
 
 export const getFlatFootedArmorClass = createSelector(
-  [getCombatValues, getAbilityModifiers, getSizeModifier],
-  (
-    state: CombatValuesState,
-    abilityModifiers: AbilityModifiers,
-    sizeModifier: number,
-  ) =>
+  [
+    getCombatValues,
+    getAbilityModifiers,
+    getSizeModifier,
+    getTotalArmorItemBonus,
+  ],
+  (state, abilityModifiers, sizeModifier, totalArmorItemBonus) =>
     10 +
-    state.armorClass.armorBonus +
+    totalArmorItemBonus +
     state.armorClass.shieldBonus +
     Math.min(0, abilityModifiers.dexterity) +
     sizeModifier +

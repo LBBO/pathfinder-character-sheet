@@ -22,6 +22,7 @@ export const de: TranslationResource = {
       },
       total: 'Gesamt',
       bonus: 'Bonus',
+      characterSheet: 'Charakterbogen',
     },
     abilities: {
       charisma: {
@@ -202,6 +203,48 @@ export const de: TranslationResource = {
     },
     specialAbilities: {
       title: 'Besondere Fähigkeiten',
+    },
+    inventory: {
+      weapons: {
+        title: 'Waffe',
+        attackBonus: 'Angriffsbonus',
+        criticalHit: 'Kritischer Treffer',
+        multiplier: 'Multiplikator',
+        minDieValue: 'Min. Würfelergebnis',
+        type: {
+          title: 'Art',
+          bludgeoning: {
+            long: 'Wucht',
+            short: 'W',
+          },
+          piercing: {
+            long: 'Stich',
+            short: 'S',
+          },
+          slashing: {
+            long: 'Hieb',
+            short: 'H',
+          },
+        },
+        range: 'Reichweite',
+        ammunition: 'Munition',
+        damage: 'Schaden',
+      },
+      gear: {
+        title: 'Ausrüstung',
+        item: 'Gegenstand',
+        weight: 'GEW.',
+        totalWeight: 'Gesamtgewicht',
+      },
+      armor: {
+        title: 'Rüs­tungs­ge­gen­stän­de',
+        bonus: 'Bonus',
+        type: 'Art',
+        checkPenalty: 'Rüstungsmalus',
+        spellFailure: 'Zauberpatzer',
+        weight: 'Gewicht',
+        properties: 'Eigenschaften',
+      },
     },
   },
 }

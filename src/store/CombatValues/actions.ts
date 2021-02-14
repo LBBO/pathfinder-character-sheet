@@ -1,6 +1,5 @@
 import {
   SavingThrowsState,
-  SET_ARMOR_BONUS,
   SET_BASE_ATTACK_BONUS,
   SET_BASE_SAVE,
   SET_DEFLECTION_MODIFIER,
@@ -13,7 +12,6 @@ import {
   SET_SHIELD_BONUS,
   SET_SPELL_RESISTANCE,
   SET_TEMPORARY_SAVING_THROW_MODIFIER,
-  SetArmorBonusAction,
   SetBaseAttackBonusAction,
   SetBaseSaveAction,
   SetDeflectionModifierAction,
@@ -95,11 +93,6 @@ export const setShieldBonus = (
 ): SetShieldBonusAction => ({
   type: SET_SHIELD_BONUS,
   payload: newShieldBonus,
-})
-
-export const setArmorBonus = (newArmorBonus: number): SetArmorBonusAction => ({
-  type: SET_ARMOR_BONUS,
-  payload: newArmorBonus,
 })
 
 export const setDeflectionModifier = (

@@ -1,0 +1,69 @@
+@import 'src/variables';
+
+.armor-items {
+  display: grid;
+  grid-template-columns: 10fr 3fr 4fr 4fr 4fr 3fr 4fr;
+  grid-template-rows: 1fr 1fr;
+  grid-auto-rows: auto;
+  grid-template-areas: 'title spacer spacer spacer spacer spacer spacer' 'title bonus type check-penalty spell-failure weight properties';
+
+  .input {
+    font-size: 1.5em;
+    width: 100%;
+    border: 2px solid $blackEquivalent;
+    border-top: none;
+
+    &:not(.properties) {
+      border-right: none;
+    }
+
+    &[type='number'] {
+      text-align: center;
+    }
+  }
+
+  .title {
+    grid-area: title;
+    width: 100%;
+    font-size: 1.5em;
+  }
+
+  .header.total {
+    justify-content: flex-end;
+    font-size: 1.5em;
+    padding-right: 1em;
+  }
+
+  .header {
+    background-color: $blackEquivalent;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3em;
+
+    // Grid areas
+    &.bonus {
+      grid-area: bonus;
+    }
+    &.type {
+      grid-area: type;
+    }
+    &.check-penalty {
+      grid-area: check-penalty;
+    }
+    &.spell-failure {
+      grid-area: spell-failure;
+    }
+    &.weight {
+      grid-area: weight;
+    }
+    &.properties {
+      grid-area: properties;
+    }
+  }
+  .spacer {
+    grid-area: spacer;
+  }
+}

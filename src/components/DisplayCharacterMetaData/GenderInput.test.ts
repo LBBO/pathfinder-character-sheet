@@ -4,6 +4,21 @@ import * as CharacterMetadataActions from '../../store/CharacterMetaData/actions
 import { expectClickOnNthButtonToSetValue } from './MetadataSelect/MetadataSelect.test'
 import { createMockMetadataForm } from './createMockMetadataForm'
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+    i18n: {
+      changeLanguage(): Promise<Function> {
+        return new Promise(() => {})
+      },
+    },
+  }),
+}))
+
+afterAll(() => {
+  jest.resetModules()
+})
+
 describe('Gender input field', () => {
   // Initial definition just so that the type is set correctly
   let characterMetadataForm = createMockMetadataForm()

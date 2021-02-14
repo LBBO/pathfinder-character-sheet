@@ -8,17 +8,11 @@ export type SetInitiativeMiscModifierAction = {
 }
 
 export type ArmorClassState = {
-  armorBonus: number // aus ruestung tabelle
   shieldBonus: number // aus ruestung tabelle
   naturalArmor: number // talente / volk
   deflectionModifier: number // zauber?
   miscModifier: number
   otherModifiers: string
-}
-export const SET_ARMOR_BONUS = 'SET_ARMOR_BONUS'
-export type SetArmorBonusAction = {
-  type: typeof SET_ARMOR_BONUS
-  payload: number
 }
 export const SET_SHIELD_BONUS = 'SET_SHIELD_BONUS'
 export type SetShieldBonusAction = {
@@ -116,7 +110,6 @@ export type CombatValuesState = {
 
 export type CombatValuesActionTypes =
   | SetInitiativeMiscModifierAction
-  | SetArmorBonusAction
   | SetShieldBonusAction
   | SetNaturalArmorAction
   | SetDeflectionModifierAction

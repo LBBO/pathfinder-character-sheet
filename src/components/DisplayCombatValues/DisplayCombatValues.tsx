@@ -23,6 +23,7 @@ import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadi
 import './DisplayCombatValues.scss'
 import { BlackBox } from '../BlackBox/BlackBox'
 import { useTranslation } from 'react-i18next'
+import { getTotalArmorItemBonus } from '../../store/Inventory/getters'
 
 const callIfDefined: <T>(
   callback: (param: T) => void,
@@ -47,6 +48,7 @@ const mapStateToProps = (state: RootState) => ({
   willBonus: getWillBonus(state),
   combatManeuverBonus: getCombatManeuverBonus(state),
   combatManeuverDefense: getCombatManeuverDefense(state),
+  armorBonus: getTotalArmorItemBonus(state),
 })
 const mapDispatchToProps = CombatValueActions
 const connector = connect(mapStateToProps, mapDispatchToProps)
@@ -60,7 +62,6 @@ export const DisplayCombatValues = connector(
     totalInitiativeBonus,
     abilityModifiers,
     totalArmorClass,
-    setArmorBonus,
     setShieldBonus,
     setNaturalArmor,
     setDeflectionModifier,
@@ -71,6 +72,7 @@ export const DisplayCombatValues = connector(
     fortitudeBonus,
     reflexBonus,
     willBonus,
+    armorBonus,
     combatManeuverBonus,
     combatManeuverDefense,
     setBaseSave,
@@ -141,11 +143,12 @@ export const DisplayCombatValues = connector(
             value={10}
             testId={'armor-class-general-bonus'}
             hideBox={true}
+            readOnly
           />
           +
           <BoxNumberInput
-            onChange={callIfDefined(setArmorBonus)}
-            value={combatValues.armorClass.armorBonus}
+            value={armorBonus}
+            readOnly
             label={`${t('combatValues.armorBonus')}-${t('general.bonus')}`}
             testId={'armor-class-armor-bonus'}
           />

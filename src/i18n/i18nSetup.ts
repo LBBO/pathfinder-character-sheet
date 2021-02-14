@@ -30,6 +30,7 @@ export type TranslationResource = Resource & {
       }
       total: string
       bonus: string
+      characterSheet: string
     }
     abilities: {
       [key in abilityName]: {
@@ -136,6 +137,48 @@ export type TranslationResource = Resource & {
     }
     specialAbilities: {
       title: string
+    }
+    inventory: {
+      weapons: {
+        title: string
+        attackBonus: string
+        criticalHit: string
+        multiplier: string
+        minDieValue: string
+        type: {
+          title: string
+          bludgeoning: {
+            long: string
+            short: string
+          }
+          piercing: {
+            long: string
+            short: string
+          }
+          slashing: {
+            long: string
+            short: string
+          }
+        }
+        range: string
+        ammunition: string
+        damage: string
+      }
+      gear: {
+        title: string
+        item: string
+        weight: string
+        totalWeight: string
+      }
+      armor: {
+        title: string
+        bonus: string
+        type: string
+        checkPenalty: string
+        spellFailure: string
+        weight: string
+        properties: string
+      }
     }
   }
 }

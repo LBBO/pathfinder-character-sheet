@@ -21,10 +21,20 @@ import {
 import { setCharacterSizeCategory } from '../../store/CharacterMetaData/actions'
 import { SizeCategory } from '../../store/CharacterMetaData/Character'
 import { getSizeModifier } from '../../store/CharacterMetaData/selectors'
-import { initializeI18n } from '../../i18n/i18nSetup'
 
-beforeAll(async () => {
-  await initializeI18n()
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+    i18n: {
+      changeLanguage(): Promise<Function> {
+        return new Promise(() => {})
+      },
+    },
+  }),
+}))
+
+afterAll(() => {
+  jest.resetModules()
 })
 
 const editingNumberInputFieldShouldSetState = ({
@@ -192,13 +202,6 @@ describe('DisplayCombatValues', () => {
       expect(totalArmorClassInput.value).toBe(
         getArmorClass(store.getState()).toString(),
       )
-    })
-
-    it('should set the state correctly when armor bonus is edited', () => {
-      editingNumberInputFieldShouldSetState({
-        inputElement: armorBonusInput,
-        getState: () => getArmorValues().armorBonus,
-      })
     })
 
     it('should set the state correctly when shield bonus is edited', () => {
