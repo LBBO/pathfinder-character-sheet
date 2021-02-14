@@ -6,6 +6,7 @@ import {
   deleteWeapon,
   editGearItem,
   editWeapon,
+  insertGearItemAtIndex,
 } from './actions'
 
 export type GearItem = {
@@ -105,4 +106,27 @@ export const InventoryReducer = createReducer(initialState, (builder) => {
       ...state,
       gear: state.gear.filter((_, index) => index !== action.payload),
     }))
+    .addCase(insertGearItemAtIndex, (state, action) => {
+      let newGear: Array<GearItem>
+      const newGearItem = { name: '' }
+
+      if (action.payload >= state.gear.length) {
+        newGear = [...state.gear, newGearItem]
+      } else if (action.payload < 0) {
+        newGear = [newGearItem, ...state.gear]
+      } else {
+        newGear = state.gear.reduce((arr, currGearItem, index) => {
+          if (index === action.payload) {
+            return [...arr, newGearItem, currGearItem]
+          } else {
+            return [...arr, currGearItem]
+          }
+        }, [] as Array<GearItem>)
+      }
+
+      return {
+        ...state,
+        gear: newGear,
+      }
+    })
 })

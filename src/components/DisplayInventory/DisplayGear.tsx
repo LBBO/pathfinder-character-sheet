@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { RootState } from '../../store/root-reducer'
 import { getGear } from '../../store/Inventory/getters'
 import { gearActions } from '../../store/Inventory/actions'
@@ -9,14 +9,19 @@ import { GearItem } from '../../store/Inventory/reducers'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 import './DisplayGear.scss'
 
+export const gearNameInputTestID = 'gear-name-input'
+export const gearWeightInputTestID = 'gear-weight-input'
+
 const DisplayGearItem = ({
   index,
   gearItem,
   onChange,
+  onPressEnter,
 }: {
   index: number
   gearItem: GearItem
   onChange: (index: number, newGearItem: GearItem) => void
+  onPressEnter?: (index: number) => void
 }) => {
   const onChangeWeight = useCallback(
     (newWeight: number | undefined) => {
@@ -37,17 +42,30 @@ const DisplayGearItem = ({
     [gearItem, index, onChange],
   )
 
+  const onKeyPress = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        onPressEnter?.(index)
+      }
+    },
+    [index, onPressEnter],
+  )
+
   return (
     <>
       <input
         className={'name-input'}
         value={gearItem.name}
         onChange={onChangeName}
+        data-testid={gearNameInputTestID}
+        onKeyPress={onKeyPress}
       />
       <NumberInput
         className={'weight-input'}
         onChange={onChangeWeight}
         value={gearItem.weight}
+        data-testid={gearWeightInputTestID}
+        onKeyPress={onKeyPress}
       />
     </>
   )
@@ -61,6 +79,7 @@ const connector = connect(mapStateToProps, gearActions)
 export const DisplayGear = connector(
   ({
     addGearItem,
+    insertGearItemAtIndex,
     editGearItem,
     deleteGearItem,
     gear,
@@ -86,8 +105,21 @@ export const DisplayGear = connector(
       [addGearItem, deleteGearItem, editGearItem, gear.length],
     )
 
+    const containerRef = useRef<HTMLDivElement>(null)
+    const onPressEnter = useCallback(
+      (index: number) => {
+        // Insert after item, where enter was pressed
+        insertGearItemAtIndex(index + 1)
+        const el = containerRef.current?.querySelectorAll(`.name-input`)[
+          index + 1
+        ] as HTMLInputElement | undefined
+        el?.focus()
+      },
+      [insertGearItemAtIndex],
+    )
+
     return (
-      <div className={'gear-items'}>
+      <div ref={containerRef} className={'gear-items'}>
         <InvertedBorderRadius className={'title'} enableHalfHeightBorders>
           {t('inventory.gear.title')}
         </InvertedBorderRadius>
@@ -99,6 +131,7 @@ export const DisplayGear = connector(
             index={index}
             gearItem={gearItem}
             onChange={onChangeGearItem}
+            onPressEnter={onPressEnter}
           />
         ))}
       </div>
