@@ -9,6 +9,7 @@ import './DisplayInventory.scss'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 import { NumberInput } from '../util/NumberInput'
 import { StyledCheckbox } from '../util/StyledCheckbox/StyledCheckbox'
+import { DisplayGear } from './DisplayGear'
 
 const mapStateToProps = (state: RootState) => ({
   weapons: getWeapons(state),
@@ -202,6 +203,7 @@ export const DisplayInventory = connector(
           ))}
           <button onClick={onCreateNewWeapon}>Neue Waffe</button>
         </div>
+        <DisplayGear />
       </div>
     )
   },

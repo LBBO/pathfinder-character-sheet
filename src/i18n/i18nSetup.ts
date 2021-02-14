@@ -164,6 +164,12 @@ export type TranslationResource = Resource & {
         ammunition: string
         damage: string
       }
+      gear: {
+        title: string
+        item: string
+        weight: string
+        totalWeight: string
+      }
     }
   }
 }

@@ -1,0 +1,39 @@
+@import 'src/variables';
+
+.gear-items {
+  display: grid;
+  grid-template-columns: auto min-content;
+
+  $border: 2px solid $blackEquivalent;
+
+  .title {
+    grid-column: 1 / span 2;
+    width: 100%;
+    font-size: 1.3em;
+  }
+
+  .header {
+    text-align: center;
+    border: $border;
+    border-top: none;
+
+    &.name {
+      border-right: none;
+    }
+  }
+
+  .name-input,
+  .weight-input {
+    border: $border;
+    border-top: none;
+    outline: none;
+  }
+
+  .name-input {
+    border-right: none;
+  }
+
+  .weight-input {
+    width: 6em;
+  }
+}

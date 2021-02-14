@@ -230,6 +230,12 @@ export const en: TranslationResource = {
         ammunition: 'Ammunition',
         damage: 'Damage',
       },
+      gear: {
+        title: 'Gear',
+        item: 'Item',
+        weight: 'WT.',
+        totalWeight: 'Total weight',
+      },
     },
   },
 }

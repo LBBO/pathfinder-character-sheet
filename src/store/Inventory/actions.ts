@@ -25,6 +25,8 @@ export const deleteGearItem = createAction<number, 'DELETE_GEAR_ITEM'>(
   'DELETE_GEAR_ITEM',
 )
 
+export const gearActions = { addGearItem, editGearItem, deleteGearItem }
+
 export type InventoryActionType = ReturnType<
   | typeof addWeapon
   | typeof editWeapon
