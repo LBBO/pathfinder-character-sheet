@@ -4,7 +4,6 @@ import { CombatValuesReducer } from './reducers'
 import { SizeCategory } from '../CharacterMetaData/Character'
 import { getInitialCombatValuesState } from './initialState'
 import {
-  setArmorBonus,
   setBaseAttackBonus,
   setBaseSave,
   setDeflectionModifier,
@@ -31,6 +30,7 @@ import {
   getWillBonus,
 } from './selectors'
 import { SavingThrowsState } from './types'
+import { addArmorItem } from '../Inventory/actions'
 
 describe('getTotalInitiativeBonus', () => {
   let rootState: RootState
@@ -47,6 +47,15 @@ describe('getTotalInitiativeBonus', () => {
   })
 })
 
+const addArmorWithTotalBonusOf = (
+  bonus: number,
+  prevState: RootState,
+): RootState =>
+  RootReducer(
+    prevState,
+    addArmorItem({ name: '', type: '', properties: '', armorBonus: bonus }),
+  )
+
 describe('getArmorClass', () => {
   let rootState: RootState
 
@@ -60,7 +69,7 @@ describe('getArmorClass', () => {
 
   describe('different armor classes', () => {
     beforeEach(() => {
-      rootState = RootReducer(rootState, setArmorBonus(1))
+      rootState = addArmorWithTotalBonusOf(1, rootState)
       rootState = RootReducer(rootState, setShieldBonus(1))
       rootState = RootReducer(rootState, setNaturalArmor(1))
       rootState = RootReducer(rootState, setDeflectionModifier(1))
@@ -80,7 +89,7 @@ describe('getArmorClass', () => {
 
     it('touch armor class should ignore armor bonuses', () => {
       // Should be ignored
-      rootState = RootReducer(rootState, setArmorBonus(2))
+      rootState = addArmorWithTotalBonusOf(2, rootState)
       rootState = RootReducer(rootState, setNaturalArmor(2))
       rootState = RootReducer(rootState, setShieldBonus(2))
 
@@ -230,13 +239,6 @@ describe('armorClass', () => {
     const action = setShieldBonus(2)
     const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
     expect(newState.armorClass.shieldBonus).toBe(2)
-  })
-
-  it('should set the armor bonus correctly', () => {
-    expect(getInitialCombatValuesState().armorClass.armorBonus).toBe(0)
-    const action = setArmorBonus(2)
-    const newState = CombatValuesReducer(getInitialCombatValuesState(), action)
-    expect(newState.armorClass.armorBonus).toBe(2)
   })
 
   it('should set the deflection modifier correctly', () => {

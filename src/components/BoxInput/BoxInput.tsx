@@ -23,13 +23,24 @@ type PropType = PropTypes.InferProps<typeof BoxInputPropTypes> &
   React.HTMLProps<HTMLInputElement>
 
 export const BoxInput = (props: PropType) => {
-  const { hideBox, className, labelTestId, testId, ...otherProps } = props
+  const {
+    hideBox,
+    className,
+    labelTestId,
+    testId,
+    readOnly,
+    ...otherProps
+  } = props
   return (
     <label
       className={`box-input ${hideBox ? 'hide-box' : ''} ${className}`}
       data-testid={labelTestId}
     >
-      <input {...otherProps} data-testid={testId} />
+      <input
+        {...otherProps}
+        readOnly={readOnly ?? otherProps.onChange === undefined}
+        data-testid={testId}
+      />
       {props.label ? <span className={'label'}>{props.label}</span> : null}
     </label>
   )
