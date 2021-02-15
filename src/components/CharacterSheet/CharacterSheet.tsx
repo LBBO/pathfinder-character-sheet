@@ -7,7 +7,7 @@ import { LanguageSwitcher } from '../LanguageSwitcher'
 import { useI18nSetup } from '../../i18n/i18nSetup'
 import { DisplayTalents } from '../DisplayTalents/DisplayTalents'
 import { DisplaySpecialAbilities } from '../DisplaySpecialAbilities/DisplaySpecialAbilities'
-import { DisplayInventory } from '../DisplayInventory/DisplayInventory'
+import { DisplayWeapons } from '../DisplayInventory/DisplayWeapons'
 import { DownloadButton } from '../DownloadButton/DownloadButton'
 import { DisplayGear } from '../DisplayInventory/DisplayGear'
 import { DisplayArmorItems } from '../DisplayInventory/DisplayArmorItems'
@@ -41,7 +41,7 @@ export const CharacterSheet: React.FC = () => {
         <div className={'left-column'}>
           <DisplayAbilities />
           <DisplayCombatValues />
-          <DisplayInventory />
+          <DisplayWeapons />
         </div>
         <div className={'right-column'}>
           <DisplaySkills />
