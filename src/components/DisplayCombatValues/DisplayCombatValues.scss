@@ -1,13 +1,28 @@
+.initiative {
+  display: flex;
+
+  .black-box {
+    height: min-content;
+  }
+
+  input {
+    font-size: inherit;
+  }
+}
+
 .combat-values-wrapper {
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   grid-template-columns: auto auto auto;
-  grid-template-areas: 'armor-class armor-class armor-class' 'touch-armor-class flat-footed-armor-class initiative' 'saving-throws saving-throws saving-throws' 'base-attack-bonus base-attack-bonus spell-resistance' 'combat-values combat-values combat-values';
-  grid-gap: 10px;
+  grid-template-areas: 'armor-class armor-class armor-class' 'touch-armor-class flat-footed-armor-class .' 'saving-throws saving-throws saving-throws' 'base-attack-bonus base-attack-bonus spell-resistance' 'combat-values combat-values combat-values';
+  grid-gap: inherit;
 
-  $classes: 'initiative', 'armor-class', 'touch-armor-class',
-    'flat-footed-armor-class', 'saving-throws', 'base-attack-bonus',
-    'spell-resistance', 'combat-values';
+  input {
+    font-size: inherit;
+  }
+
+  $classes: 'armor-class', 'touch-armor-class', 'flat-footed-armor-class',
+    'saving-throws', 'base-attack-bonus', 'spell-resistance', 'combat-values';
 
   @each $class in $classes {
     .#{$class} {
@@ -52,6 +67,7 @@
     grid-template-rows: 1fr 1fr;
     grid-template-columns: auto auto;
     grid-template-areas: 'bonus .' 'defense defense';
+    grid-gap: inherit;
 
     .combat-bonus {
       grid-area: bonus;
@@ -62,5 +78,12 @@
       display: flex;
       grid-area: defense;
     }
+  }
+}
+
+@media print {
+  .combat-values-wrapper,
+  .initiative {
+    font-size: 0.7em;
   }
 }

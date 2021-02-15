@@ -42,6 +42,30 @@
     & > * {
       width: 50%;
     }
+
+    .left-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(4, auto);
+      grid-template-areas: 'abilities health' 'abilities initiative' 'armor armor' 'weapons weapons';
+      grid-gap: 1em;
+
+      .abilities {
+        grid-area: abilities;
+      }
+      .health {
+        grid-area: health;
+      }
+      .initiative {
+        grid-area: initiative;
+      }
+      .combat-values-wrapper {
+        grid-area: armor;
+      }
+      .inventory {
+        grid-area: weapons;
+      }
+    }
   }
 
   .second-page {

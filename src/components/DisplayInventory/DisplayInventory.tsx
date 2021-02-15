@@ -9,8 +9,6 @@ import './DisplayInventory.scss'
 import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 import { NumberInput } from '../util/NumberInput'
 import { StyledCheckbox } from '../util/StyledCheckbox/StyledCheckbox'
-import { DisplayGear } from './DisplayGear'
-import { DisplayArmorItems } from './DisplayArmorItems'
 
 const mapStateToProps = (state: RootState) => ({
   weapons: getWeapons(state),
