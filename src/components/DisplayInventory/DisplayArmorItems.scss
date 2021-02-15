@@ -6,6 +6,7 @@
   grid-template-rows: 1fr 1fr;
   grid-auto-rows: auto;
   grid-template-areas: 'title spacer spacer spacer spacer spacer spacer' 'title bonus type check-penalty spell-failure weight properties';
+  font-size: 0.6em;
 
   .input {
     font-size: 1.5em;
