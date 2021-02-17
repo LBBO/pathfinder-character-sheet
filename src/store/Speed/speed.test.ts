@@ -18,9 +18,7 @@ describe('speed reducer', () => {
   })
 
   it('should correctly set the base speed', () => {
-    expect(SpeedReducer(undefined, setBaseSpeed(6))).toMatchObject({
-      baseSpeed: 6,
-    })
+    expect(SpeedReducer(undefined, setBaseSpeed(6)).baseSpeed).toBe(6)
   })
 
   it('should correctly set the "with armor" speed', () => {
@@ -44,6 +42,54 @@ describe('speed reducer', () => {
   it('should correctly set the "climb" speed', () => {
     expect(SpeedReducer(undefined, setClimbSpeed(6))).toMatchObject({
       climb: 6,
+    })
+  })
+
+  describe('swim and climb are usually 1/4 of base speed', () => {
+    it('should set climb and swim to 1/4 base speed if they are undefined', () => {
+      expect(SpeedReducer(undefined, setBaseSpeed(6))).toMatchObject({
+        baseSpeed: 6,
+        swim: 1.5,
+        climb: 1.5,
+      })
+
+      expect(SpeedReducer({ swim: 10 }, setBaseSpeed(6))).toMatchObject({
+        baseSpeed: 6,
+        swim: 10,
+        climb: 1.5,
+      })
+
+      expect(SpeedReducer({ climb: 10 }, setBaseSpeed(6))).toMatchObject({
+        baseSpeed: 6,
+        swim: 1.5,
+        climb: 10,
+      })
+    })
+
+    it('should set climb and swim to 1/4 base speed if they are 1/4 of old base speed', () => {
+      let state = SpeedReducer(undefined, setBaseSpeed(6))
+
+      expect(SpeedReducer(state, setBaseSpeed(12))).toMatchObject({
+        baseSpeed: 12,
+        swim: 3,
+        climb: 3,
+      })
+    })
+
+    it('should NOT set climb and swim to 1/4 base speed if they are not undefined', () => {
+      expect(SpeedReducer({ swim: 10 }, setBaseSpeed(12)).swim).toBe(10)
+      expect(SpeedReducer({ climb: 10 }, setBaseSpeed(12)).climb).toBe(10)
+    })
+
+    it('should NOT set climb and swim to 1/4 base speed if they are not 1/4 of old base speed', () => {
+      const state = SpeedReducer(undefined, setBaseSpeed(6))
+
+      expect(SpeedReducer({ ...state, swim: 10 }, setBaseSpeed(12)).swim).toBe(
+        10,
+      )
+      expect(
+        SpeedReducer({ ...state, climb: 10 }, setBaseSpeed(12)).climb,
+      ).toBe(10)
     })
   })
 

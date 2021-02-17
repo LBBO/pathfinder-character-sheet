@@ -14,10 +14,27 @@ const initialState: SpeedState = {}
 
 export const SpeedReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(setBaseSpeed, (state, action) => ({
-      ...state,
-      baseSpeed: action.payload,
-    }))
+    .addCase(setBaseSpeed, (state, action) => {
+      // Swim and climb speed are usually 1/4 of base speed. This logic sets both automatically
+      // so long the user hasn't changed them to not fit this rule.
+      const oldQuarterSpeed =
+        state.baseSpeed === undefined ? undefined : state.baseSpeed / 4
+      const shouldBeOverwritten = (oldSpeed?: number) =>
+        oldSpeed === undefined || oldSpeed === oldQuarterSpeed
+
+      return {
+        ...state,
+        baseSpeed: action.payload,
+        swim:
+          shouldBeOverwritten(state.swim) && action.payload !== undefined
+            ? action.payload / 4
+            : state.swim,
+        climb:
+          shouldBeOverwritten(state.climb) && action.payload !== undefined
+            ? action.payload / 4
+            : state.climb,
+      }
+    })
     .addCase(setSpeedWithArmor, (state, action) => ({
       ...state,
       withArmor: action.payload,
