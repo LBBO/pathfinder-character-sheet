@@ -1,0 +1,26 @@
+@import 'src/variables';
+
+.modifiers-input-textarea {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $blackEquivalent;
+  display: flex;
+  flex-direction: column;
+
+  $labelPadding: 0.4em;
+  $labelFontSize: 0.7;
+
+  span {
+    padding: $labelPadding;
+    font-size: #{$labelFontSize}em;
+  }
+
+  textarea {
+    border: none;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
+    font-family: inherit;
+  }
+}

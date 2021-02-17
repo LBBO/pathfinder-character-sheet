@@ -11,6 +11,11 @@ export const en: TranslationResource = {
       modifier: {
         short: 'Mod',
         long: 'Modifier',
+        plural: 'Modifiers',
+        prefixes: {
+          temp: 'Temp. ',
+          conditional: 'Conditional ',
+        },
       },
       misc: {
         short: 'Misc',

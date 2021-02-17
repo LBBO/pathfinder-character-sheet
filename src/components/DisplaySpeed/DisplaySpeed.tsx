@@ -3,6 +3,7 @@ import { BlackBox } from '../BlackBox/BlackBox'
 import './DisplaySpeed.scss'
 import { useTranslation } from 'react-i18next'
 import { NumberInput } from '../util/NumberInput'
+import { ModifiersInput } from '../ModifiersInput/ModifiersInput'
 
 export const DisplaySpeed = () => {
   const { t } = useTranslation()
@@ -85,7 +86,7 @@ export const DisplaySpeed = () => {
           <aside>{t('speed.squaresUnit')}</aside>
         </label>
       </div>
-      <textarea className={'modifiers'} />
+      <ModifiersInput className={'modifiers'} type={'temp'} />
     </div>
   )
 }

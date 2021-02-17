@@ -19,6 +19,11 @@ export type TranslationResource = Resource & {
       modifier: {
         short: string
         long: string
+        plural: string
+        prefixes: {
+          temp: string
+          conditional: string
+        }
       }
       misc: {
         short: string
