@@ -13,6 +13,7 @@ import { StyledCheckbox } from '../util/StyledCheckbox/StyledCheckbox'
 import { getAbilityModifiers } from '../../store/Abilities/selectors'
 import { getTotalSkillBonuses } from '../../store/Skills/selectors'
 import { useTranslation } from 'react-i18next'
+import { InvertedBorderRadius } from '../InvertedBorderRadius/InvertedBorderRadius'
 
 const mapState = (state: RootState) => ({
   skills: state.skills,
@@ -50,80 +51,73 @@ export const DisplaySkills = connector(
 
     return (
       <div className={'skills'}>
-        <table>
-          <thead>
-            <tr>
-              <th>{t('skillsTable.skillName')}</th>
-              <th>
-                {t('general.total')} {t('general.bonus')}
-              </th>
-              <th> {/* Base ability name */} </th>
-              <th>
-                {t('general.ability.short')}.-{t('general.modifier.short')}.
-              </th>
-              <th> {/* + */} </th>
-              <th>{t('skillsTable.ranks')}</th>
-              <th> {/* + */} </th>
-              <th>
-                {t('general.misc.short')}. {t('general.modifier.short')}.
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {(Object.entries(skills) as Array<[SkillName, Skill]>)
-              .sort(([skillA], [skillB]) =>
-                t(`skills.${skillA}`).localeCompare(t(`skills.${skillB}`)),
+        <InvertedBorderRadius className={'title'}>
+          {t('skillsTable.title')}
+        </InvertedBorderRadius>
+        <div className={'skills-table'}>
+          <span className={'header skill-name'}>
+            {t('skillsTable.skillName')}
+          </span>
+          <span className={'header'}>
+            {t('general.total')} {t('general.bonus')}
+          </span>
+          <span className={'header'}> {/* Base ability name */} </span>
+          <span className={'header'}>
+            {t('general.ability.short')}.-{t('general.modifier.short')}.
+          </span>
+          <span className={'header'}> {/* + */} </span>
+          <span className={'header'}>{t('skillsTable.ranks')}</span>
+          <span className={'header'}> {/* + */} </span>
+          <span className={'header'}>
+            {t('general.misc.short')}. {t('general.modifier.short')}.
+          </span>
+          {(Object.entries(skills) as Array<[SkillName, Skill]>)
+            .sort(([skillA], [skillB]) =>
+              t(`skills.${skillA}`).localeCompare(t(`skills.${skillB}`)),
+            )
+            .map(([skillName, skill], index) => {
+              const {
+                baseAbility: abilityName,
+                isTrainedOnly,
+              } = quickSkillDefinitions[skillName]
+              return (
+                <React.Fragment key={index}>
+                  <label className={'skill-name'}>
+                    <StyledCheckbox
+                      checked={skill.isClassSkill}
+                      onChange={() =>
+                        setIsSkillClassSkill(skillName, !skill.isClassSkill)
+                      }
+                    />
+                    {t(`skills.${skillName}`)}
+                    {isTrainedOnly ? ' *' : ''}
+                  </label>
+                  <span>{totalSkillBonuses[skillName]}</span>
+                  <span className={'base-ability-name'}>
+                    ={t(`abilities.${abilityName}.short`)}
+                  </span>
+                  <span>{abilityModifiers[abilityName]}</span>
+                  <span>+</span>
+                  <input
+                    type={'number'}
+                    value={skill.ranks}
+                    onChange={onSkillRanksChange(skillName)}
+                  />
+                  <span>+</span>
+                  <input
+                    type={'number'}
+                    value={skill.miscModifier}
+                    onChange={onSkillMiscModChange(skillName)}
+                  />
+                </React.Fragment>
               )
-              .map(([skillName, skill], index) => {
-                const {
-                  baseAbility: abilityName,
-                  isTrainedOnly,
-                } = quickSkillDefinitions[skillName]
-                return (
-                  <tr key={index}>
-                    <td>
-                      <label>
-                        <StyledCheckbox
-                          checked={skill.isClassSkill}
-                          onChange={() =>
-                            setIsSkillClassSkill(skillName, !skill.isClassSkill)
-                          }
-                        />
-                        {t(`skills.${skillName}`)}
-                        {isTrainedOnly ? ' *' : ''}
-                      </label>
-                    </td>
-                    <td>{totalSkillBonuses[skillName]}</td>
-                    <td>={t(`abilities.${abilityName}.short`)}</td>
-                    <td>{abilityModifiers[abilityName]}</td>
-                    <td>+</td>
-                    <td>
-                      <input
-                        type={'number'}
-                        value={skill.ranks}
-                        onChange={onSkillRanksChange(skillName)}
-                      />
-                    </td>
-                    <td>+</td>
-                    <td>
-                      <input
-                        type={'number'}
-                        value={skill.miscModifier}
-                        onChange={onSkillMiscModChange(skillName)}
-                      />
-                    </td>
-                  </tr>
-                )
-              })}
-            <tr className={'legend'}>
-              <td>
-                <StyledCheckbox checked={true} disabled />
-                {t('skillsTable.classSkill')} &nbsp; &nbsp; *{' '}
-                {t('skillsTable.trainedOnly')}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            })}
+          <div className={'legend'}>
+            <StyledCheckbox checked={true} disabled />
+            {t('skillsTable.classSkill')} &nbsp; &nbsp; *{' '}
+            {t('skillsTable.trainedOnly')}
+          </div>
+        </div>
       </div>
     )
   },

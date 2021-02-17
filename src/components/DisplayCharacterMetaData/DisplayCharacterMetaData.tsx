@@ -241,6 +241,24 @@ export const DisplayCharacterMetaData = connector(
           onChange={callWithNumberValue(setCharacterLevel)}
         />
         <MetadataStringInput
+          id={'race'}
+          value={race}
+          label={t('characterMetaData.race')}
+          onChange={callWithStringValue(setCharacterRace)}
+        />
+        <MetadataStringInput
+          id={'campaign'}
+          value={campaign}
+          label={t('characterMetaData.campaign')}
+          onChange={callWithStringValue(setCampaign)}
+        />
+        <MetadataStringInput
+          id={'homeland'}
+          value={homeland}
+          label={t('characterMetaData.homeland')}
+          onChange={callWithStringValue(setCharacterHomeland)}
+        />
+        <MetadataStringInput
           id={'deity'}
           value={deity}
           label={t('characterMetaData.deity')}
@@ -262,36 +280,6 @@ export const DisplayCharacterMetaData = connector(
           value={gender}
           label={t('characterMetaData.gender')}
         />
-        <MetadataStringInput
-          id={'campaign'}
-          value={campaign}
-          label={t('characterMetaData.campaign')}
-          onChange={callWithStringValue(setCampaign)}
-        />
-        <MetadataStringInput
-          id={'homeland'}
-          value={homeland}
-          label={t('characterMetaData.homeland')}
-          onChange={callWithStringValue(setCharacterHomeland)}
-        />
-        <MetadataStringInput
-          id={'race'}
-          value={race}
-          label={t('characterMetaData.race')}
-          onChange={callWithStringValue(setCharacterRace)}
-        />
-        <MetadataStringInput
-          id={'hair'}
-          value={hair}
-          label={t('characterMetaData.hair')}
-          onChange={callWithStringValue(setCharacterHair)}
-        />
-        <MetadataStringInput
-          id={'eyes'}
-          value={eyes}
-          label={t('characterMetaData.eyes')}
-          onChange={callWithStringValue(setCharacterEyes)}
-        />
         <MetadataNumberInput
           id={'age'}
           value={age}
@@ -309,6 +297,18 @@ export const DisplayCharacterMetaData = connector(
           value={weight}
           label={t('characterMetaData.weight')}
           onChange={callWithNumberValue(setCharacterWeight)}
+        />
+        <MetadataStringInput
+          id={'hair'}
+          value={hair}
+          label={t('characterMetaData.hair')}
+          onChange={callWithStringValue(setCharacterHair)}
+        />
+        <MetadataStringInput
+          id={'eyes'}
+          value={eyes}
+          label={t('characterMetaData.eyes')}
+          onChange={callWithStringValue(setCharacterEyes)}
         />
       </div>
     )

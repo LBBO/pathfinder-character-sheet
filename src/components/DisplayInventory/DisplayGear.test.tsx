@@ -7,9 +7,12 @@ import {
 } from '../../store/root-reducer'
 import { createStore, Store } from 'redux'
 import { Provider } from 'react-redux'
-import { DisplayInventory } from './DisplayInventory'
 import { getGear } from '../../store/Inventory/getters'
-import { gearNameInputTestID, gearWeightInputTestID } from './DisplayGear'
+import {
+  DisplayGear,
+  gearNameInputTestID,
+  gearWeightInputTestID,
+} from './DisplayGear'
 import { act } from 'react-dom/test-utils'
 import { GearItem } from '../../store/Inventory/reducers'
 import { addGearItem } from '../../store/Inventory/actions'
@@ -38,7 +41,7 @@ describe('DisplayGear', () => {
     store = createStore(RootReducer)
     component = render(
       <Provider store={store}>
-        <DisplayInventory />
+        <DisplayGear />
       </Provider>,
     )
   })

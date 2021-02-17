@@ -100,7 +100,7 @@ export const DisplayCombatValues = connector(
     )
 
     return (
-      <div className={'combat-values-wrapper'}>
+      <>
         <div className={'initiative'} data-testid={'initiative-container'}>
           <BlackBox>
             {t('combatValues.initiative.long')}
@@ -129,258 +129,260 @@ export const DisplayCombatValues = connector(
             testId={'initiative-misc-modifier'}
           />
         </div>
-        <div className={'armor-class'}>
-          <BlackBox>
-            {t('combatValues.armorClass.short')}
-            <aside>{t('combatValues.armorClass.long')}</aside>
-          </BlackBox>
-          <BoxNumberInput
-            value={totalArmorClass}
-            testId={'total-armor-class'}
-          />
-          =
-          <BoxNumberInput
-            value={10}
-            testId={'armor-class-general-bonus'}
-            hideBox={true}
-            readOnly
-          />
-          +
-          <BoxNumberInput
-            value={armorBonus}
-            readOnly
-            label={`${t('combatValues.armorBonus')}-${t('general.bonus')}`}
-            testId={'armor-class-armor-bonus'}
-          />
-          +
-          <BoxNumberInput
-            onChange={callIfDefined(setShieldBonus)}
-            value={combatValues.armorClass.shieldBonus}
-            label={`${t('combatValues.shield')}-${t('general.bonus')}`}
-            testId={'armor-class-shield-bonus'}
-          />
-          +
-          <BoxNumberInput
-            value={abilityModifiers.dexterity}
-            label={`${t('abilities.dexterity.short')}-${t(
-              'general.modifier.short',
-            )}.`}
-            testId={'armor-class-dexterity-mod'}
-          />
-          +
-          <BoxNumberInput
-            value={sizeModifier}
-            label={`${t('combatValues.sizeModifier')}-${t(
-              'general.modifier.short',
-            )}.`}
-            testId={'armor-class-size-modifier'}
-          />
-          +
-          <BoxNumberInput
-            onChange={callIfDefined(setNaturalArmor)}
-            value={combatValues.armorClass.naturalArmor}
-            label={t('combatValues.naturalArmor')}
-            testId={'armor-class-natural-armor'}
-          />
-          +
-          <BoxNumberInput
-            onChange={callIfDefined(setDeflectionModifier)}
-            value={combatValues.armorClass.deflectionModifier}
-            label={`${t('combatValues.deflectionModifier')}.-${t(
-              'general.modifier.short',
-            )}.`}
-            testId={'armor-class-deflection-modifier'}
-          />
-          +
-          <BoxNumberInput
-            onChange={callIfDefined(setMiscArmorModifier)}
-            value={combatValues.armorClass.miscModifier}
-            label={`${t('general.misc.short')}.-${t(
-              'general.modifier.short',
-            )}.`}
-            testId={'armor-class-misc-modifier'}
-          />
-        </div>
-        <div className={'touch-armor-class'}>
-          <BlackBox>
-            {t('combatValues.touch')}
-            <aside>{t('combatValues.armorClass.long')}</aside>
-          </BlackBox>
-          <BoxNumberInput
-            value={touchArmorClass}
-            testId={'touch-armor-class'}
-          />
-        </div>
-        <div className={'flat-footed-armor-class'}>
-          <BlackBox>
-            {t('combatValues.flatFooted')}
-            <aside>{t('combatValues.armorClass.long')}</aside>
-          </BlackBox>
-          <BoxNumberInput
-            value={flatFootedArmorClass}
-            testId={'flat-footed-class'}
-          />
-        </div>
-        <div className={'saving-throws'}>
-          {(Object.keys(combatValues.savingThrows) as Array<
-            keyof SavingThrowsState
-          >)
-            .sort((nameA, nameB) =>
-              t(`combatValues.savingThrows.${nameA}`).localeCompare(
-                t(`combatValues.savingThrows.${nameB}`),
-              ),
-            )
-            .map((savingThrowName, index) => {
-              const savingThrow = combatValues.savingThrows[savingThrowName]
-              let baseAbilityName: abilityName
-              let savingThrowBonus: number
-
-              switch (savingThrowName) {
-                case 'fortitude':
-                  baseAbilityName = 'constitution'
-                  savingThrowBonus = fortitudeBonus
-                  break
-                case 'reflex':
-                  baseAbilityName = 'dexterity'
-                  savingThrowBonus = reflexBonus
-                  break
-                case 'will':
-                  savingThrowBonus = willBonus
-                  baseAbilityName = 'wisdom'
-                  break
-              }
-
-              const abilityModifier = abilityModifiers[baseAbilityName]
-
-              return (
-                <React.Fragment key={index}>
-                  <BlackBox>
-                    {t(`combatValues.savingThrows.${savingThrowName}`)}
-                    <aside>({t(`abilities.${baseAbilityName}.long`)})</aside>
-                  </BlackBox>
-                  <BoxNumberInput value={savingThrowBonus} />
-                  =
-                  <BoxNumberInput
-                    value={savingThrow.baseSave}
-                    onChange={setForCertainSavingThrow(
-                      savingThrowName,
-                      setBaseSave,
-                    )}
-                  />
-                  +
-                  <BoxNumberInput value={abilityModifier} />
-                  +
-                  <BoxNumberInput
-                    value={savingThrow.magicModifier}
-                    onChange={setForCertainSavingThrow(
-                      savingThrowName,
-                      setSavingThrowMagicModifier,
-                    )}
-                  />
-                  +
-                  <BoxNumberInput
-                    value={savingThrow.miscModifier}
-                    onChange={setForCertainSavingThrow(
-                      savingThrowName,
-                      setMiscSavingThrowModifier,
-                    )}
-                  />
-                  +
-                  <BoxNumberInput
-                    value={savingThrow.temporaryModifier}
-                    onChange={setForCertainSavingThrow(
-                      savingThrowName,
-                      setTemporarySavingThrowModifier,
-                    )}
-                  />
-                </React.Fragment>
-              )
-            })}
-        </div>
-        <label className={'base-attack-bonus'}>
-          <InvertedBorderRadius>
-            {t('combatValues.baseAttackBonus.long')}
-          </InvertedBorderRadius>
-          <BoxNumberInput
-            value={combatValues.attackBonuses.baseAttackBonus}
-            onChange={callIfDefined(setBaseAttackBonus)}
-          />
-        </label>
-        <label className={'spell-resistance'}>
-          <BlackBox>{t('combatValues.spellResistance')}</BlackBox>
-          <BoxNumberInput
-            value={combatValues.attackBonuses.spellResistance}
-            onChange={callIfDefined(setSpellResistance)}
-          />
-        </label>
-        <div className={'combat-values'}>
-          <div className={'combat-bonus'}>
-            <InvertedBorderRadius>
-              {t('combatValues.combatManeuverBonus.short')}
-            </InvertedBorderRadius>
+        <div className={'combat-values-wrapper'}>
+          <div className={'armor-class'}>
+            <BlackBox>
+              {t('combatValues.armorClass.short')}
+              <aside>{t('combatValues.armorClass.long')}</aside>
+            </BlackBox>
             <BoxNumberInput
-              value={combatManeuverBonus}
-              label={t('general.total')}
+              value={totalArmorClass}
+              testId={'total-armor-class'}
             />
             =
             <BoxNumberInput
-              value={combatValues.attackBonuses.baseAttackBonus}
-              label={t('combatValues.baseAttackBonus.short')}
+              value={10}
+              testId={'armor-class-general-bonus'}
+              hideBox={true}
+              readOnly
             />
             +
             <BoxNumberInput
-              value={abilityModifiers.strength}
-              label={`${t('abilities.strength.short')}.-${t(
-                'general.modifier.short',
-              )}.`}
+              value={armorBonus}
+              readOnly
+              label={`${t('combatValues.armorBonus')}-${t('general.bonus')}`}
+              testId={'armor-class-armor-bonus'}
             />
             +
             <BoxNumberInput
-              value={-sizeModifier}
-              label={`${t('combatValues.sizeModifier')}-${t(
-                'general.modifier.short',
-              )}.`}
-            />
-          </div>
-          <div className={'combat-defense'}>
-            <InvertedBorderRadius>
-              {t('combatValues.combatManeuverDefense.short')}
-            </InvertedBorderRadius>
-            <BoxNumberInput
-              value={combatManeuverDefense}
-              label={t('general.total')}
-            />
-            =
-            <BoxNumberInput
-              value={combatValues.attackBonuses.baseAttackBonus}
-              label={t('combatValues.baseAttackBonus.short')}
-            />
-            +
-            <BoxNumberInput
-              value={abilityModifiers.strength}
-              label={`${t('abilities.strength.short')}.-${t(
-                'general.modifier.short',
-              )}.`}
+              onChange={callIfDefined(setShieldBonus)}
+              value={combatValues.armorClass.shieldBonus}
+              label={`${t('combatValues.shield')}-${t('general.bonus')}`}
+              testId={'armor-class-shield-bonus'}
             />
             +
             <BoxNumberInput
               value={abilityModifiers.dexterity}
-              label={`${t('abilities.dexterity.short')}.-${t(
+              label={`${t('abilities.dexterity.short')}-${t(
                 'general.modifier.short',
               )}.`}
+              testId={'armor-class-dexterity-mod'}
             />
             +
             <BoxNumberInput
-              value={-sizeModifier}
+              value={sizeModifier}
               label={`${t('combatValues.sizeModifier')}-${t(
                 'general.modifier.short',
               )}.`}
+              testId={'armor-class-size-modifier'}
             />
             +
-            <BoxNumberInput value={10} hideBox={true} />
+            <BoxNumberInput
+              onChange={callIfDefined(setNaturalArmor)}
+              value={combatValues.armorClass.naturalArmor}
+              label={t('combatValues.naturalArmor')}
+              testId={'armor-class-natural-armor'}
+            />
+            +
+            <BoxNumberInput
+              onChange={callIfDefined(setDeflectionModifier)}
+              value={combatValues.armorClass.deflectionModifier}
+              label={`${t('combatValues.deflectionModifier')}.-${t(
+                'general.modifier.short',
+              )}.`}
+              testId={'armor-class-deflection-modifier'}
+            />
+            +
+            <BoxNumberInput
+              onChange={callIfDefined(setMiscArmorModifier)}
+              value={combatValues.armorClass.miscModifier}
+              label={`${t('general.misc.short')}.-${t(
+                'general.modifier.short',
+              )}.`}
+              testId={'armor-class-misc-modifier'}
+            />
+          </div>
+          <div className={'touch-armor-class'}>
+            <BlackBox>
+              {t('combatValues.touch')}
+              <aside>{t('combatValues.armorClass.long')}</aside>
+            </BlackBox>
+            <BoxNumberInput
+              value={touchArmorClass}
+              testId={'touch-armor-class'}
+            />
+          </div>
+          <div className={'flat-footed-armor-class'}>
+            <BlackBox>
+              {t('combatValues.flatFooted')}
+              <aside>{t('combatValues.armorClass.long')}</aside>
+            </BlackBox>
+            <BoxNumberInput
+              value={flatFootedArmorClass}
+              testId={'flat-footed-class'}
+            />
+          </div>
+          <div className={'saving-throws'}>
+            {(Object.keys(combatValues.savingThrows) as Array<
+              keyof SavingThrowsState
+            >)
+              .sort((nameA, nameB) =>
+                t(`combatValues.savingThrows.${nameA}`).localeCompare(
+                  t(`combatValues.savingThrows.${nameB}`),
+                ),
+              )
+              .map((savingThrowName, index) => {
+                const savingThrow = combatValues.savingThrows[savingThrowName]
+                let baseAbilityName: abilityName
+                let savingThrowBonus: number
+
+                switch (savingThrowName) {
+                  case 'fortitude':
+                    baseAbilityName = 'constitution'
+                    savingThrowBonus = fortitudeBonus
+                    break
+                  case 'reflex':
+                    baseAbilityName = 'dexterity'
+                    savingThrowBonus = reflexBonus
+                    break
+                  case 'will':
+                    savingThrowBonus = willBonus
+                    baseAbilityName = 'wisdom'
+                    break
+                }
+
+                const abilityModifier = abilityModifiers[baseAbilityName]
+
+                return (
+                  <React.Fragment key={index}>
+                    <BlackBox>
+                      {t(`combatValues.savingThrows.${savingThrowName}`)}
+                      <aside>({t(`abilities.${baseAbilityName}.long`)})</aside>
+                    </BlackBox>
+                    <BoxNumberInput value={savingThrowBonus} />
+                    =
+                    <BoxNumberInput
+                      value={savingThrow.baseSave}
+                      onChange={setForCertainSavingThrow(
+                        savingThrowName,
+                        setBaseSave,
+                      )}
+                    />
+                    +
+                    <BoxNumberInput value={abilityModifier} />
+                    +
+                    <BoxNumberInput
+                      value={savingThrow.magicModifier}
+                      onChange={setForCertainSavingThrow(
+                        savingThrowName,
+                        setSavingThrowMagicModifier,
+                      )}
+                    />
+                    +
+                    <BoxNumberInput
+                      value={savingThrow.miscModifier}
+                      onChange={setForCertainSavingThrow(
+                        savingThrowName,
+                        setMiscSavingThrowModifier,
+                      )}
+                    />
+                    +
+                    <BoxNumberInput
+                      value={savingThrow.temporaryModifier}
+                      onChange={setForCertainSavingThrow(
+                        savingThrowName,
+                        setTemporarySavingThrowModifier,
+                      )}
+                    />
+                  </React.Fragment>
+                )
+              })}
+          </div>
+          <label className={'base-attack-bonus'}>
+            <InvertedBorderRadius>
+              {t('combatValues.baseAttackBonus.long')}
+            </InvertedBorderRadius>
+            <BoxNumberInput
+              value={combatValues.attackBonuses.baseAttackBonus}
+              onChange={callIfDefined(setBaseAttackBonus)}
+            />
+          </label>
+          <label className={'spell-resistance'}>
+            <BlackBox>{t('combatValues.spellResistance')}</BlackBox>
+            <BoxNumberInput
+              value={combatValues.attackBonuses.spellResistance}
+              onChange={callIfDefined(setSpellResistance)}
+            />
+          </label>
+          <div className={'combat-values'}>
+            <div className={'combat-bonus'}>
+              <InvertedBorderRadius>
+                {t('combatValues.combatManeuverBonus.short')}
+              </InvertedBorderRadius>
+              <BoxNumberInput
+                value={combatManeuverBonus}
+                label={t('general.total')}
+              />
+              =
+              <BoxNumberInput
+                value={combatValues.attackBonuses.baseAttackBonus}
+                label={t('combatValues.baseAttackBonus.short')}
+              />
+              +
+              <BoxNumberInput
+                value={abilityModifiers.strength}
+                label={`${t('abilities.strength.short')}.-${t(
+                  'general.modifier.short',
+                )}.`}
+              />
+              +
+              <BoxNumberInput
+                value={-sizeModifier}
+                label={`${t('combatValues.sizeModifier')}-${t(
+                  'general.modifier.short',
+                )}.`}
+              />
+            </div>
+            <div className={'combat-defense'}>
+              <InvertedBorderRadius>
+                {t('combatValues.combatManeuverDefense.short')}
+              </InvertedBorderRadius>
+              <BoxNumberInput
+                value={combatManeuverDefense}
+                label={t('general.total')}
+              />
+              =
+              <BoxNumberInput
+                value={combatValues.attackBonuses.baseAttackBonus}
+                label={t('combatValues.baseAttackBonus.short')}
+              />
+              +
+              <BoxNumberInput
+                value={abilityModifiers.strength}
+                label={`${t('abilities.strength.short')}.-${t(
+                  'general.modifier.short',
+                )}.`}
+              />
+              +
+              <BoxNumberInput
+                value={abilityModifiers.dexterity}
+                label={`${t('abilities.dexterity.short')}.-${t(
+                  'general.modifier.short',
+                )}.`}
+              />
+              +
+              <BoxNumberInput
+                value={-sizeModifier}
+                label={`${t('combatValues.sizeModifier')}-${t(
+                  'general.modifier.short',
+                )}.`}
+              />
+              +
+              <BoxNumberInput value={10} hideBox={true} />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     )
   },
 )

@@ -1,9 +1,25 @@
-.skills {
-  table {
-    text-align: center;
+@import 'src/variables';
 
-    th {
+.skills {
+  font-size: 0.9em;
+
+  .title {
+    width: 100%;
+    font-size: 1.2em;
+  }
+
+  .skills-table {
+    display: grid;
+    grid-template-columns: 1fr repeat(7, min-content);
+    justify-items: center;
+    align-items: baseline;
+
+    .header {
       font-weight: normal;
+      width: min-content;
+      align-self: center;
+      padding-bottom: 0.3em;
+      font-size: 0.7em;
 
       &:nth-child(2),
       &:nth-child(4) {
@@ -11,28 +27,44 @@
       }
     }
 
-    tr {
+    .skill-name,
+    .base-ability-name {
+      justify-self: start;
+    }
+
+    & > *:not(.header) {
       &:last-child {
         font-size: 0.8em;
       }
 
-      td {
-        &:nth-child(1),
-        &:nth-child(3) {
-          text-align: start;
-        }
+      .styled-checkbox {
+        margin-right: 0.6em;
+      }
+    }
 
-        .styled-checkbox {
-          margin-right: 0.6em;
-        }
+    input {
+      font-size: inherit;
+
+      &:not([type='checkbox']) {
+        width: 3.5em;
+        border: none;
+        border-bottom: 1px solid $blackEquivalent;
       }
     }
 
     .legend {
+      justify-self: start;
+
       .styled-checkbox {
         color: inherit;
         cursor: initial;
       }
     }
+  }
+}
+
+@media print {
+  .skills {
+    font-size: 0.7em;
   }
 }

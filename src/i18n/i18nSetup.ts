@@ -31,6 +31,7 @@ export type TranslationResource = Resource & {
       total: string
       bonus: string
       characterSheet: string
+      logo: string
     }
     abilities: {
       [key in abilityName]: {
@@ -207,5 +208,5 @@ export const useI18nSetup = () => {
     }
   }, [language, hasLoaded])
 
-  return { hasLoaded }
+  return { hasLoaded, t: hasLoaded ? i18n.t.bind(i18n) : null }
 }

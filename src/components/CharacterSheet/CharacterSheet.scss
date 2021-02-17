@@ -1,0 +1,98 @@
+.character-sheet {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  gap: 1em;
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr 2fr min-content;
+    grid-template-rows: 1fr min-content;
+    grid-template-areas: 'logo metadata controls' 'title metadata controls';
+    grid-gap: 0.4em 1em;
+    justify-items: center;
+
+    h1 {
+      grid-area: title;
+      margin: 0;
+      font-size: 1.3em;
+    }
+    .logo {
+      grid-area: logo;
+      width: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      //background-position-x: 50%;
+      background-position: 50%;
+    }
+    .character-meta-data {
+      grid-area: metadata;
+    }
+    .other-controls {
+      grid-area: controls;
+    }
+  }
+
+  .first-page {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1em;
+
+    & > * {
+      width: 50%;
+    }
+
+    .left-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(4, auto);
+      grid-template-areas: 'abilities health' 'abilities initiative' 'armor armor' 'weapons weapons';
+      grid-gap: 1em;
+
+      .abilities {
+        grid-area: abilities;
+      }
+      .health {
+        grid-area: health;
+      }
+      .initiative {
+        grid-area: initiative;
+      }
+      .combat-values-wrapper {
+        grid-area: armor;
+      }
+      .weapons {
+        grid-area: weapons;
+      }
+    }
+  }
+
+  .second-page {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-areas: 'armor armor .' 'gear feats .' 'gear special-abilities .' '. special-abilities .' 'money special-abilities .' 'money experience .';
+    grid-gap: 1em;
+
+    .armor-items {
+      grid-area: armor;
+    }
+    .gear-items {
+      grid-area: gear;
+    }
+    .talents {
+      grid-area: feats;
+    }
+    .special-abilities {
+      grid-area: special-abilities;
+    }
+  }
+}
+
+@media print {
+  .character-sheet {
+    .other-controls {
+      display: none;
+    }
+  }
+}
