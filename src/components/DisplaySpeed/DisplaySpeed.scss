@@ -1,0 +1,109 @@
+@import 'src/variables';
+
+.speed {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr min-content;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    'title base-speed base-speed with-armor with-armor modifiers'
+    '. base-speed-label base-speed-label with-armor-label with-armor-label modifiers'
+    'fly fly swim climb burrow modifiers'
+    'fly-label fly-label swim-label climb-label burrow-label .';
+  grid-gap: 0 0.5em;
+  font-size: 0.7em;
+
+  .speed-input {
+    border: 1px solid $blackEquivalent;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: end;
+    align-items: end;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding: 2px;
+
+      &.squares aside {
+        align-self: flex-start;
+      }
+
+      input {
+        flex-grow: 1;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-size: 1.6em;
+        text-align: center;
+      }
+
+      aside {
+        font-size: 0.7em;
+        padding: 0 0.5em;
+      }
+    }
+  }
+
+  .title {
+    grid-area: title;
+    font-size: 1.5em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    aside {
+      font-size: 0.3em;
+    }
+  }
+
+  .speed-input-label {
+    justify-self: center;
+    font-size: 0.7em;
+    align-self: start;
+    margin-bottom: 0.6em;
+    margin-top: 0.2em;
+
+    &.base-speed {
+      grid-area: base-speed-label;
+    }
+    &.with-armor {
+      grid-area: with-armor-label;
+    }
+    &.fly {
+      grid-area: fly-label;
+    }
+    &.climb {
+      grid-area: climb-label;
+    }
+    &.swim {
+      grid-area: swim-label;
+    }
+    &.burrow {
+      grid-area: burrow-label;
+    }
+  }
+
+  .base-speed {
+    grid-area: base-speed;
+  }
+  .with-armor {
+    grid-area: with-armor;
+  }
+  .modifiers {
+    grid-area: modifiers;
+  }
+  .fly {
+    grid-area: fly;
+  }
+  .climb {
+    grid-area: climb;
+  }
+  .swim {
+    grid-area: swim;
+  }
+  .burrow {
+    grid-area: burrow;
+  }
+}

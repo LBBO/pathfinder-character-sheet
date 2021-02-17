@@ -247,5 +247,18 @@ export const en: TranslationResource = {
         properties: 'Properties',
       },
     },
+    speed: {
+      speed: 'Speed',
+      land: 'Land',
+      baseSpeed: 'Base speed',
+      withArmor: 'With armor',
+      fly: 'Fly',
+      maneuverability: 'Maneuverability',
+      swim: 'Swim',
+      climb: 'Climb',
+      burrow: 'Burrow',
+      actualUnit: 'FT.',
+      squaresUnit: 'SQ.',
+    },
   },
 }

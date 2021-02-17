@@ -181,6 +181,19 @@ export type TranslationResource = Resource & {
         properties: string
       }
     }
+    speed: {
+      speed: string
+      land: string
+      baseSpeed: string
+      withArmor: string
+      fly: string
+      swim: string
+      climb: string
+      burrow: string
+      maneuverability: string
+      actualUnit: string
+      squaresUnit: string
+    }
   }
 }
 

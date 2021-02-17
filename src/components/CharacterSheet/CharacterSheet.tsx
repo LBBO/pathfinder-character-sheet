@@ -12,6 +12,7 @@ import { DownloadButton } from '../DownloadButton/DownloadButton'
 import { DisplayGear } from '../DisplayInventory/DisplayGear'
 import { DisplayArmorItems } from '../DisplayInventory/DisplayArmorItems'
 import './CharacterSheet.scss'
+import { DisplaySpeed } from '../DisplaySpeed/DisplaySpeed'
 
 export const CharacterSheet: React.FC = () => {
   const { hasLoaded: i18nHasLoaded, t } = useI18nSetup()
@@ -44,6 +45,7 @@ export const CharacterSheet: React.FC = () => {
           <DisplayWeapons />
         </div>
         <div className={'right-column'}>
+          <DisplaySpeed />
           <DisplaySkills />
         </div>
       </div>
