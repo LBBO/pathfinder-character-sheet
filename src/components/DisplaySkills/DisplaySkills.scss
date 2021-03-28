@@ -2,6 +2,8 @@
 
 .skills {
   font-size: 0.9em;
+  display: flex;
+  flex-direction: column;
 
   .title {
     width: 100%;
@@ -13,6 +15,7 @@
     grid-template-columns: 1fr repeat(7, min-content);
     justify-items: center;
     align-items: baseline;
+    align-self: center;
 
     .header {
       font-weight: normal;
